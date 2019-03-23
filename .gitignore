@@ -1,3 +1,6 @@
 **/Logs
 **/Library
 **/Wykład
+**/obj
+*.meta
+**/.vs
