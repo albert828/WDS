@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "serialthread.h"
+#include <qthread.h>
 
 namespace Ui {
 class MainWindow;
@@ -27,6 +28,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     SerialThread serial;
+    //QThread *thread = nullptr;
 };
 
 #endif // MAINWINDOW_H

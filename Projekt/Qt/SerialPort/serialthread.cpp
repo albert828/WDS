@@ -1,6 +1,6 @@
 #include "serialthread.h"
 #include "serialoptionsdialog.h"
-#include <qserialport.h>
+//#include <qserialport.h>
 #include <qdebug.h>
 
 SerialThread::SerialThread(QObject *parent) :
@@ -11,7 +11,9 @@ SerialThread::SerialThread(QObject *parent) :
 //! [0]
 SerialThread::~SerialThread()
 {
-
+    if(serial.isOpen())
+        serial.close();
+    qDebug("Closing serial from destructor");
 }
 
 void SerialThread::startSerial()
@@ -20,13 +22,42 @@ void SerialThread::startSerial()
         start();
 }
 
+void SerialThread::stopSerial()
+{
+    if (serial.isOpen())
+        serial.close();
+    qDebug("Closing serial");
+    //if(QThread::currentThread()->isRunning())
+        //QThread::currentThread()->exit();
+}
+
 void SerialThread::run()
 {
-    QSerialPort serial;
+    //QSerialPort serial;
     serial.setPortName(PortName);
     serial.setBaudRate(BaudRate);
     if (!serial.open(QIODevice::ReadOnly))
         emit error(tr("Can't open serial"));
-    //qDebug("Test");
-    serial.close();
+    qDebug("M from Thread");
+    //serial.close();
+    while(serial.isOpen())
+    {
+        QByteArray data;
+        //while (serial.waitForReadyRead(600))
+             //data += serial.readLine();
+        //QByteArray data = serial.readLine();
+        if (serial.waitForReadyRead(1000))
+        {
+            data = serial.readLine();
+            while (serial.waitForReadyRead(100))
+            {
+                data += serial.readAll();
+            }
+            qDebug() << "Data ready";
+            QString response = QString::fromUtf8(data);
+            qDebug() << "Data " << response << endl;
+        }
+        else
+            qDebug() << "Timeout";
+    }
 }

@@ -36,7 +36,6 @@ void MainWindow::StartSerial()
     ui->actionSerial_options->setEnabled(false);
     serial.startSerial();
 }
-
 void MainWindow::on_actionConnect_triggered()
 {
     StartSerial();
@@ -46,4 +45,5 @@ void MainWindow::on_actionDisconnect_triggered()
 {
     ui->actionConnect->setEnabled(true);
     ui->actionSerial_options->setEnabled(true);
+    serial.stopSerial();
 }

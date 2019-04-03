@@ -2,6 +2,7 @@
 #include "ui_serialoptionsdialog.h"
 #include <QSerialPortInfo>
 #include <serialoptionsdialog.h>
+#include "serialthread.h"
 
 QString PortName{};
 uint32_t BaudRate{};
@@ -17,6 +18,7 @@ SerialOptionsDialog::SerialOptionsDialog(QWidget *parent) :
     constexpr uint32_t tBauds[] = {9600, 115200, 500000, 1000000, 2000000};
     for(auto i : tBauds)
         ui->BaudRate->addItem(QString::number(i));
+    //connect(SerialThread::serial, SIGNAL(readyRead()), SLOT(handleReadyRead()));
 }
 
 SerialOptionsDialog::~SerialOptionsDialog()

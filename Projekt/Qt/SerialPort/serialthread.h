@@ -4,6 +4,7 @@
 //#include <QMutex>
 #include <QThread>
 #include <QWaitCondition>
+#include <qserialport.h>
 
 //! [0]
 class SerialThread : public QThread
@@ -15,6 +16,7 @@ public:
     ~SerialThread();
 
     void startSerial();
+    void stopSerial();
 
 signals:
     void request(const QString &s);
@@ -23,7 +25,7 @@ signals:
 
 private:
     void run() override;
-
+    QSerialPort serial;
     //QMutex m_mutex;
     //bool m_quit = false;
 };
