@@ -1,6 +1,6 @@
 #include "serialthread.h"
 #include "serialoptionsdialog.h"
-//#include <qserialport.h>
+#include <qserialport.h>
 #include <qdebug.h>
 
 SerialThread::SerialThread(QObject *parent) :
@@ -36,6 +36,10 @@ void SerialThread::run()
     //QSerialPort serial;
     serial.setPortName(PortName);
     serial.setBaudRate(BaudRate);
+    serial.setParity(QSerialPort::EvenParity);
+    serial.setDataBits(QSerialPort::Data8);
+    serial.setStopBits(QSerialPort::OneStop);
+
     if (!serial.open(QIODevice::ReadOnly))
         emit error(tr("Can't open serial"));
     qDebug("M from Thread");
@@ -43,9 +47,7 @@ void SerialThread::run()
     while(serial.isOpen())
     {
         QByteArray data;
-        //while (serial.waitForReadyRead(600))
-             //data += serial.readLine();
-        //QByteArray data = serial.readLine();
+
         if (serial.waitForReadyRead(1000))
         {
             data = serial.readLine();
