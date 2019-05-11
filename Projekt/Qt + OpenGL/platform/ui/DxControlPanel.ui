@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DxControlPanel</class>
+ <widget class="QWidget" name="DxControlPanel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>134</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="1">
+      <widget class="QSlider" name="_pSliderQ2">
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Rotation of the second joint</string>
+       </property>
+       <property name="minimum">
+        <number>-50</number>
+       </property>
+       <property name="maximum">
+        <number>50</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="_pLabel_Q0">
+       <property name="text">
+        <string>Platforma [deg]</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="_pLabel_Q2">
+       <property name="text">
+        <string>Ogniwo [deg]</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QSpinBox" name="_pSpinBoxQ0">
+       <property name="minimum">
+        <number>-180</number>
+       </property>
+       <property name="maximum">
+        <number>180</number>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QSpinBox" name="_pSpinBoxQ2">
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="minimum">
+        <number>-50</number>
+       </property>
+       <property name="maximum">
+        <number>50</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QSlider" name="_pSliderQ0">
+       <property name="toolTip">
+        <string>Rotation of the second joint</string>
+       </property>
+       <property name="minimum">
+        <number>-180</number>
+       </property>
+       <property name="maximum">
+        <number>180</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>_pSliderQ2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>_pSpinBoxQ2</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>304</x>
+     <y>37</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>47</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_pSpinBoxQ2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>_pSliderQ2</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>405</x>
+     <y>46</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>219</x>
+     <y>31</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_pSliderQ0</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>_pSpinBoxQ0</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>293</x>
+     <y>104</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>422</x>
+     <y>109</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_pSpinBoxQ0</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>_pSliderQ0</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>400</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>335</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
