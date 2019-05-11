@@ -1,13 +1,13 @@
 char CRC8(const char*,int);
-uint8_t H = 0, V = 0, L = 0, I = 0, CRC = 0;
 
 const char text[] = "hello";
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(9600,SERIAL_8E1);
 }
 
+uint8_t H = 0, V = 0, L = 0, I = 0, CRC = 0;
 String data;
 void loop() {
   ++H; ++V; ++L; ++I;
@@ -19,9 +19,9 @@ void loop() {
   data += String(L, DEC);
   data += String(" I");
   data += String(I, DEC);
-  CRC = CRC8(data.c_str(), strlen(data.c_str()));
+  CRC = CRC8(data.c_str(), data.length());
   data += String(" CRC");
-  data += String(CRC, HEX);
+  data += String(CRC, DEC);
   Serial.println(data);
   delay(1000);
 }

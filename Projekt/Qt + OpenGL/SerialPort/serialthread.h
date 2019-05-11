@@ -26,8 +26,7 @@ signals:
 private:
     void run() override;
     QSerialPort serial;
-    //QMutex m_mutex;
-    //bool m_quit = false;
+    char CRC8(const char*,int);
 };
 
 #endif // SERIALTHREAD_H
