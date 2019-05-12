@@ -1,7 +1,7 @@
 #ifndef SERIALTHREAD_H
 #define SERIALTHREAD_H
 
-//#include <QMutex>
+
 #include <QThread>
 #include <QWaitCondition>
 #include <qserialport.h>
@@ -15,7 +15,7 @@ public:
     explicit SerialThread(QObject *parent = nullptr);
     ~SerialThread();
 
-    void startSerial();
+    void startSerial(QWidget *pV);
     void stopSerial();
 
 signals:
@@ -26,8 +26,7 @@ signals:
 private:
     void run() override;
     QSerialPort serial;
-    //QMutex m_mutex;
-    //bool m_quit = false;
+    QWidget *pViever;
 };
 
 #endif // SERIALTHREAD_H

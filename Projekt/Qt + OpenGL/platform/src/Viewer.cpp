@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Manipulator.hh"
 #include <SOIL/SOIL.h>
+#include "constants.h"
 
 
 using namespace std;
