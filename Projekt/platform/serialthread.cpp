@@ -10,8 +10,7 @@
 #define SERIAL_WHILE 0
 
 SerialThread::SerialThread(QObject *parent) :
-    QThread(parent), pViever(nullptr), pwidgetCurrent(nullptr), pwidgetLight(nullptr),
-    pwidgetPower(nullptr), pwidgetVoltage(nullptr)
+    QThread(parent), pViever(nullptr),  pwidgetLight(nullptr), pwidgetVoltage(nullptr), pwidgetCurrent(nullptr), pwidgetPower(nullptr)
 {
 }
 
@@ -50,7 +49,7 @@ void SerialThread::run()
 {
     //QSerialPort serial;
     serial.setPortName(PortName);
-    serial.setBaudRate(BaudRate);
+    serial.setBaudRate(static_cast<qint32>(BaudRate));
     serial.setParity(QSerialPort::EvenParity);
     serial.setDataBits(QSerialPort::Data8);
     serial.setStopBits(QSerialPort::OneStop);
