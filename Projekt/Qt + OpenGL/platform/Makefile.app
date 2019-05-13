@@ -429,7 +429,8 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 		inc/GxControlPanel.hh \
 		/tmp/opengl/05-manip1/out/ui/ui_DxControlPanel.h \
 		inc/Manipulator.hh \
-		inc/Viewer.hh
+		inc/Viewer.hh \
+		inc/serialoptionsdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o /tmp/opengl/05-manip1/out/obj/GxMainWindow.o src/GxMainWindow.cpp
 
 /tmp/opengl/05-manip1/out/obj/Manipulator.o: src/Manipulator.cpp inc/Manipulator.hh

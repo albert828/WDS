@@ -8,7 +8,6 @@ SerialThread::SerialThread(QObject *parent) :
 {
 }
 
-//! [0]
 SerialThread::~SerialThread()
 {
     if(serial.isOpen())
@@ -27,8 +26,6 @@ void SerialThread::stopSerial()
     if (serial.isOpen())
         serial.close();
     qDebug("Closing serial");
-    //if(QThread::currentThread()->isRunning())
-        //QThread::currentThread()->exit();
 }
 
 void SerialThread::run()
@@ -55,23 +52,8 @@ void SerialThread::run()
             {
                 data += serial.readAll();
             }
-            //decode data
-            QString response = QString::fromLocal8Bit(data);
-            //prefer std methods so std string
-            std::string text = response.toStdString();
-            //CRC number is 3 chars after "CRC"
-            std::size_t crcPosition = text.find("CRC") + 3;
-            std::string crcString = text.substr(crcPosition);
-            uint8_t crc = std::stoi(crcString);
-            //Removing CRC and \r\n
-            std::size_t dataEndPosition = text.find_last_of(' ');
-            text = text.substr(0, dataEndPosition);
-            //Calculating here because in if sometimes is problem
-            uint8_t crcCalculated = CRC8(text.c_str(), text.length());
-            if(crc == crcCalculated)
-                qDebug() << "Data " << QString::fromStdString(text) << "Checksum correct:" << crc << endl;
-            else
-                qDebug() << "Checksum error" << endl;
+            //decode data and send into function
+            prepareData( QString::fromLocal8Bit(data) );
         }
         else
             qDebug() << "Timeout";
@@ -97,4 +79,37 @@ char SerialThread::CRC8(const char *data,int len)
       data++;
    }
    return crc;
+}
+
+void SerialThread::prepareData(const QString &response)
+{
+    using namespace std;
+    //prefer std string :)
+    string text = response.toStdString();
+    //CRC number is 3 chars after "CRC"
+    size_t crcPosition = text.find("CRC") + 3;
+    uint8_t crc = stoi( text.substr(crcPosition) );
+
+    //Removing CRC and \r\n for calculations
+    size_t dataEndPosition = text.find_last_of(' ');
+    text = text.substr(0, dataEndPosition);
+
+    //Cast values
+    size_t hPosition = text.find('H') + 1;
+    uint8_t H = stoi( text.substr(hPosition) );
+    size_t vPosition = text.find('V') + 1;
+    uint8_t V = stoi( text.substr(vPosition) );
+    size_t iPosition = text.find('I') + 1;
+    uint8_t I = stoi( text.substr(iPosition) );
+    size_t pPosition = text.find('P') + 1;
+    uint8_t P = stoi( text.substr(pPosition) );
+
+    //Calculating here because in if sometimes is problem
+    uint8_t crcCalculated = CRC8(text.c_str(), text.length());
+    if(crc == crcCalculated)
+        qDebug() << "Data " << "H" << H << "V" << V
+                 << "I" << I << "P" << P
+                 << "Checksum correct:" << crc << endl;
+    else
+        qDebug() << "Checksum error" << endl;
 }

@@ -15,8 +15,9 @@ public:
     explicit SerialThread(QObject *parent = nullptr);
     ~SerialThread();
 
-    void startSerial();
+    void startSerial(QWidget *pV);
     void stopSerial();
+    //QWidget *pViever;
 
 signals:
     void request(const QString &s);

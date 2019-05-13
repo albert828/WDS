@@ -34,6 +34,7 @@ HEADERS += inc/GxControlPanel.hh \
            inc/GxMainWindow.hh \
            inc/Manipulator.hh \
            inc/Viewer.hh \
+           inc/constants.h \
            inc/serialoptionsdialog.h \
            inc/serialthread.h
 FORMS += ui/DxControlPanel.ui ui/DxMainWindow.ui \

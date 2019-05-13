@@ -44,10 +44,11 @@ void SerialThread::run()
         emit error(tr("Can't open serial"));
     qDebug("M from Thread");
     //serial.close();
+    int counter = 0;
     while(serial.isOpen())
     {
         QByteArray data;
-
+        ++counter;
         if (serial.waitForReadyRead(1000))
         {
             data = serial.readLine();
@@ -55,11 +56,12 @@ void SerialThread::run()
             {
                 data += serial.readAll();
             }
-            qDebug() << "Data ready";
+            qDebug() << counter;
             QString response = QString::fromUtf8(data);
             qDebug() << "Data " << response << endl;
         }
         else
             qDebug() << "Timeout";
     }
+    qDebug("Finished reading");
 }

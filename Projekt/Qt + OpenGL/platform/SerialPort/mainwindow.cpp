@@ -30,6 +30,7 @@ void MainWindow::on_actionSerial_options_triggered()
     //ui->label->setText(PortName+" "+QString::number(BaudRate));
 }
 
+
 void MainWindow::StartSerial()
 {
     ui->actionConnect->setEnabled(false);

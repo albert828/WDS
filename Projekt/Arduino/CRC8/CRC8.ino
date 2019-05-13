@@ -7,10 +7,10 @@ void setup() {
   Serial.begin(9600,SERIAL_8E1);
 }
 
-uint8_t H = 0, V = 0, L = 0, I = 0, CRC = 0;
+uint8_t H = 0, V = 0, L = 0, I = 0, U = 0, P = 0, CRC = 0;
 String data;
 void loop() {
-  ++H; ++V; ++L; ++I;
+  ++H; ++V; ++L; ++I, ++U, ++P;
   data = String("H");
   data += String(H, DEC);
   data += String(" V");
@@ -19,6 +19,7 @@ void loop() {
   data += String(L, DEC);
   data += String(" I");
   data += String(I, DEC);
+
   CRC = CRC8(data.c_str(), data.length());
   data += String(" CRC");
   data += String(CRC, DEC);

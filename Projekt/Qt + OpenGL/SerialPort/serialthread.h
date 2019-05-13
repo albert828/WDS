@@ -26,7 +26,9 @@ signals:
 private:
     void run() override;
     QSerialPort serial;
+
     char CRC8(const char*,int);
+    void prepareData(const QString &);
 };
 
 #endif // SERIALTHREAD_H

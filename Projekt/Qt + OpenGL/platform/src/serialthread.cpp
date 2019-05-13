@@ -2,6 +2,11 @@
 #include "serialoptionsdialog.h"
 #include <qserialport.h>
 #include <qdebug.h>
+#include "constants.h"
+#include "Manipulator.hh"
+#include <cassert>
+#include "GxControlPanel.hh"
+#include "GxMainWindow.hh"
 
 SerialThread::SerialThread(QObject *parent) :
     QThread(parent)
@@ -16,8 +21,9 @@ SerialThread::~SerialThread()
     qDebug("Closing serial from destructor");
 }
 
-void SerialThread::startSerial()
+void SerialThread::startSerial(QWidget *pV)
 {
+    pViever = pV;
     if (!isRunning())
         start();
 }
@@ -42,10 +48,16 @@ void SerialThread::run()
         emit error(tr("Can't open serial"));
     qDebug("M from Thread");
     //serial.close();
+    uint32_t counter{0};
     while(serial.isOpen())
     {
+        ++H;
+        --V;
+        Manip.SetQ2_deg(H);
+        assert(pViever);
+        pViever->update();
+        /*
         QByteArray data;
-
         if (serial.waitForReadyRead(1000))
         {
             data = serial.readLine();
@@ -53,11 +65,13 @@ void SerialThread::run()
             {
                 data += serial.readAll();
             }
-            qDebug() << "Data ready";
+            qDebug() << counter++;
             QString response = QString::fromUtf8(data);
-            qDebug() << "Data " << response << endl;
+            qDebug() << response << endl;
         }
         else
             qDebug() << "Timeout";
+            */
+        sleep(1);
     }
 }
