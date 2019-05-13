@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <serialoptionsdialog.h>
+#include <math.h>
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -22,17 +24,17 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::StartSerial(QWidget *pViever)
+void MainWindow::StartSerial(QWidget *pViever, QCustomPlot *pLight, QCustomPlot *pVoltage, QCustomPlot *pCurrent, QCustomPlot *pPower)
 {
     ui->actionConnect->setEnabled(false);
     ui->actionSerial->setEnabled(false);
     ui->actionDisconnect->setEnabled(true);
-    serial.startSerial(pViever);
+    serial.startSerial(pViever, pLight, pVoltage, pCurrent, pPower);
 }
 
 void MainWindow::on_actionConnect_triggered()
 {
-    StartSerial(ui->_pWidget_Viewer);
+    StartSerial(ui->_pWidget_Viewer, ui->widgetLight, ui->widgetVoltage, ui->widgetCurrent, ui->widgetPower);
 }
 
 void MainWindow::on_actionDisconnect_triggered()
@@ -52,92 +54,57 @@ void MainWindow::on_actionSerial_triggered()
 
 void MainWindow::makeLightPlot()
 {
-    // generate some data:
-    QVector<double> x(101), y(101); // initialize with entries 0..100
-    for (int i=0; i<101; ++i)
-    {
-      x[i] = i/50.0 - 1; // x goes from -1 to 1
-      y[i] = x[i]*x[i]; // let's plot a quadratic function
-    }
-    // create graph and assign data to it:
-    ui->widgetLight->addGraph();
-    ui->widgetLight->graph(0)->setData(x, y);
-    // give the axes some labels:
-    ui->widgetLight->plotLayout()->insertRow(0);
-    ui->widgetLight->plotLayout()->addElement(0, 0, new QCPTextElement(ui->widgetLight, "Light"));
-    ui->widgetLight->xAxis->setLabel("Samples");
-    ui->widgetLight->yAxis->setLabel("Lux");
-    // set axes ranges, so we see all data:
-    ui->widgetLight->xAxis->setRange(-1, 1);
-    ui->widgetLight->yAxis->setRange(0, 2);
-    ui->widgetLight->replot();
+    ui->widgetLight->addGraph(); // blue line
+    ui->widgetLight->graph(0)->setPen(QPen(QColor(40, 110, 255)));
+
+    QSharedPointer<QCPAxisTickerTime> timeTicker(new QCPAxisTickerTime);
+    timeTicker->setTimeFormat("%m:%s");
+    ui->widgetLight->xAxis->setTicker(timeTicker);
+    ui->widgetLight->axisRect()->setupFullAxesBox();
+    ui->widgetLight->yAxis->setRange(0, 1.2);
+    ui->widgetLight->yAxis->setLabel("L [Lux]");
+    ui->widgetLight->xAxis->setLabel("Time [mm:ss]");
 }
 
 void MainWindow::makeCurrentPlot()
 {
-    // generate some data:
-    QVector<double> x(101), y(101); // initialize with entries 0..100
-    for (int i=0; i<101; ++i)
-    {
-      x[i] = i/50.0 - 1; // x goes from -1 to 1
-      y[i] = x[i]*x[i]; // let's plot a quadratic function
-    }
-    // create graph and assign data to it:
-    ui->widgetCurrent->addGraph();
-    ui->widgetCurrent->graph(0)->setData(x, y);
-    // give the axes some labels:
-    ui->widgetCurrent->plotLayout()->insertRow(0);
-    ui->widgetCurrent->plotLayout()->addElement(0, 0, new QCPTextElement(ui->widgetCurrent, "Current"));
-    ui->widgetCurrent->xAxis->setLabel("Samples");
+    ui->widgetCurrent->addGraph(); // blue line
+    ui->widgetCurrent->graph(0)->setPen(QPen(QColor(40, 110, 255)));
+
+    QSharedPointer<QCPAxisTickerTime> timeTicker(new QCPAxisTickerTime);
+    timeTicker->setTimeFormat("%m:%s");
+    ui->widgetCurrent->xAxis->setTicker(timeTicker);
+    ui->widgetCurrent->axisRect()->setupFullAxesBox();
+    ui->widgetCurrent->yAxis->setRange(0, 1.2);
     ui->widgetCurrent->yAxis->setLabel("I [mA]");
-    // set axes ranges, so we see all data:
-    ui->widgetCurrent->xAxis->setRange(-1, 1);
-    ui->widgetCurrent->yAxis->setRange(0, 2);
-    ui->widgetCurrent->replot();
+    ui->widgetCurrent->xAxis->setLabel("Time [mm:ss]");
 }
 
 void MainWindow::makeVoltagePlot()
 {
-    // generate some data:
-    QVector<double> x(101), y(101); // initialize with entries 0..100
-    for (int i=0; i<101; ++i)
-    {
-      x[i] = i/50.0 - 1; // x goes from -1 to 1
-      y[i] = x[i]*x[i]; // let's plot a quadratic function
-    }
-    // create graph and assign data to it:
-    ui->widgetVoltage->addGraph();
-    ui->widgetVoltage->graph(0)->setData(x, y);
-    // give the axes some labels:
-    ui->widgetVoltage->plotLayout()->insertRow(0);
-    ui->widgetVoltage->plotLayout()->addElement(0, 0, new QCPTextElement(ui->widgetVoltage, "Voltage"));
-    ui->widgetVoltage->xAxis->setLabel("Samples");
+    ui->widgetVoltage->addGraph(); // blue line
+    ui->widgetVoltage->graph(0)->setPen(QPen(QColor(40, 110, 255)));
+
+    QSharedPointer<QCPAxisTickerTime> timeTicker(new QCPAxisTickerTime);
+    timeTicker->setTimeFormat("%m:%s");
+    ui->widgetVoltage->xAxis->setTicker(timeTicker);
+    ui->widgetVoltage->axisRect()->setupFullAxesBox();
+    ui->widgetVoltage->yAxis->setRange(0, 1.2);
     ui->widgetVoltage->yAxis->setLabel("U [V]");
-    // set axes ranges, so we see all data:
-    ui->widgetVoltage->xAxis->setRange(-1, 1);
-    ui->widgetVoltage->yAxis->setRange(0, 2);
-    ui->widgetVoltage->replot();
+    ui->widgetVoltage->xAxis->setLabel("Time [mm:ss]");
 }
+
 void MainWindow::makePowerPlot()
 {
-    // generate some data:
-    QVector<double> x(101), y(101); // initialize with entries 0..100
-    for (int i=0; i<101; ++i)
-    {
-      x[i] = i/50.0 - 1; // x goes from -1 to 1
-      y[i] = x[i]*x[i]; // let's plot a quadratic function
-    }
-    // create graph and assign data to it:
-    ui->widgetPower->addGraph();
-    ui->widgetPower->graph(0)->setData(x, y);
-    // give the axes some labels:
-    ui->widgetPower->plotLayout()->insertRow(0);
-    ui->widgetPower->plotLayout()->addElement(0, 0, new QCPTextElement(ui->widgetPower, "Power"));
-    ui->widgetPower->xAxis->setLabel("Samples");
-    ui->widgetPower->yAxis->setLabel("P [W]");
-    // set axes ranges, so we see all data:
-    ui->widgetPower->xAxis->setRange(-1, 1);
-    ui->widgetPower->yAxis->setRange(0, 2);
-    ui->widgetPower->replot();
+    ui->widgetPower->addGraph(); // blue line
+    ui->widgetPower->graph(0)->setPen(QPen(QColor(40, 110, 255)));
+
+    QSharedPointer<QCPAxisTickerTime> timeTicker(new QCPAxisTickerTime);
+    timeTicker->setTimeFormat("%m:%s");
+    ui->widgetPower->xAxis->setTicker(timeTicker);
+    ui->widgetPower->axisRect()->setupFullAxesBox();
+    ui->widgetPower->yAxis->setRange(0, 1.2);
+    ui->widgetPower->yAxis->setLabel("P [mW]");
+    ui->widgetPower->xAxis->setLabel("Time [mm:ss]");
 }
 

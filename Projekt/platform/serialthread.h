@@ -5,6 +5,7 @@
 #include <QThread>
 #include <QWaitCondition>
 #include <qserialport.h>
+#include "qcustomplot.h"
 
 //! [0]
 class SerialThread : public QThread
@@ -13,9 +14,9 @@ class SerialThread : public QThread
 
 public:
     explicit SerialThread(QObject *parent = nullptr);
-    ~SerialThread();
+    ~SerialThread() override;
 
-    void startSerial(QWidget *pV);
+    void startSerial(QWidget *pV, QCustomPlot *pwidgetLight, QCustomPlot *pwidgetVoltage, QCustomPlot *pwidgetCurrent, QCustomPlot *pwidgetPower);
     void stopSerial();
 
 signals:
@@ -25,8 +26,20 @@ signals:
 
 private:
     void run() override;
+    void replotLightWidget(QCustomPlot *pwidgetLight, double key);
+    void replotPowerWidget(QCustomPlot *pwidgetPower, double key);
+    void replotVoltageWidget(QCustomPlot *pwidgetVoltage, double key);
+    void replotCurrentWidget(QCustomPlot *pwidgetCurrent, double key);
+    void replot(QCustomPlot *pwidgetLight, QCustomPlot *pwidgetVoltage, QCustomPlot *pwidgetCurrent, QCustomPlot *pwidgetPower);
+
     QSerialPort serial;
+
     QWidget *pViever;
+    QCustomPlot *pwidgetLight;
+    QCustomPlot *pwidgetVoltage;
+    QCustomPlot *pwidgetCurrent;
+    QCustomPlot *pwidgetPower;
+
     bool flag = false;
 };
 
