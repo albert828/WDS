@@ -3,8 +3,10 @@
 #include "Manipulator.hh"
 #include <SOIL/SOIL.h>
 
-using namespace std;
+#define COMPILE_TEXTURES 0
 
+using namespace std;
+#if COMPILE_TEXTURES == 1
 #define HEIGHT__CHECK_BOARD 64
 #define WIDTH__CHECK_BOARD  64
 static GLubyte Image_CheckBoard[HEIGHT__CHECK_BOARD][WIDTH__CHECK_BOARD][4];
@@ -26,11 +28,11 @@ void MakeImage_CheckBoard(void)
         }
     }
 }
-
+#endif
 void GLCreateBox( double Size_X,  double Size_Y,  double Size_Z )
 {
     glPushMatrix();
-    glScalef( Size_X, Size_Y, Size_Z );
+    glScalef( static_cast<GLfloat>(Size_X), static_cast<GLfloat>(Size_Y), static_cast<GLfloat>(Size_Z) );
 
     glBegin(GL_POLYGON);
     //glColor3f(   1.0,  1.0, 1.0 );
@@ -86,11 +88,11 @@ void Viewer::draw()
     /*-----------------------------------------------------
     *  Tworzenie tła wypełnionego wygenerowaną teksturą
     */
-
+#if COMPILE_TEXTURES == 1
     glEnable(GL_TEXTURE_2D);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
     glBindTexture(GL_TEXTURE_2D, Texture4Bg);
-
+#endif
 
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
@@ -104,6 +106,7 @@ void Viewer::draw()
     glLoadIdentity();
     glOrtho(0,1,1,0,-1,1);
 
+    glColor3f(   0.0,  0.0,  1.0 );
     glBegin(GL_QUADS);  // Tworzenie kwadratu, na którym będzie
     glTexCoord2f(0,0); // rozpięta tekstura tła.
     glVertex2f(0,0);
@@ -124,32 +127,34 @@ void Viewer::draw()
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
     glDepthMask(GL_TRUE);
-
     /*- Koniec ---
    *  Tworzenie tła wypełnionego
    *------------------------------------------------------------*/
-
-    //glBindTexture(GL_TEXTURE_2D, Texture4Manip);
+#if COMPILE_TEXTURES == 1
+    glBindTexture(GL_TEXTURE_2D, Texture4Manip);
 
     glDisable(GL_TEXTURE_2D);
-
+#endif
     glScalef( 1.0, 1.0, 1.0 );
 
     glRotatef( -90, 1.0, 0.0, 0.0);
     glRotatef( -90, 0.0, 0.0, 1.0);
-    glRotatef( Manip.GetQ0_deg(), 0.0, 0.0, 1.0 );
+    glRotatef( static_cast<GLfloat>(Manip.GetQ0_deg()), 0.0, 0.0, 1.0 );
     glTranslatef( 0.0, 0.0, -0.5 );
     glColor3f(1.0,1.0,1.0);
     GLCreateBox(0.1,0.1,1.0);
-
-    //glBindTexture(GL_TEXTURE_2D, Texture4Manip);
-    //glEnable(GL_TEXTURE_2D);
+#if COMPILE_TEXTURES == 1
+    glBindTexture(GL_TEXTURE_2D, Texture4Manip);
+    glEnable(GL_TEXTURE_2D);
+#endif
     glTranslatef( 0.0, 0.0, 0.55 );
-    glRotatef( Manip.GetQ2_deg(), 0.0, 1.0, 0 );
+    glRotatef( static_cast<GLfloat>(Manip.GetQ2_deg()), 0.0, 1.0, 0 );
     GLCreateBox(1.0,1.5,0.01);
 
     glFlush();
-    //glDisable(GL_TEXTURE_2D);
+#if COMPILE_TEXTURES == 1
+    glDisable(GL_TEXTURE_2D);
+#endif
 }
 
 void Viewer::init()
@@ -157,7 +162,7 @@ void Viewer::init()
     glClearColor (1, 1, 1, 0.0);
     glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
-
+#if COMPILE_TEXTURES == 1
     MakeImage_CheckBoard();
 
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
@@ -190,6 +195,6 @@ void Viewer::init()
                 SOIL_CREATE_NEW_ID,
                 SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
                 );
-
+#endif
 }
 
