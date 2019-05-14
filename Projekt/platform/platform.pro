@@ -35,7 +35,8 @@ SOURCES += \
         mainwindow.cpp \
         qcustomplot.cpp \
         serialoptionsdialog.cpp \
-        serialthread.cpp
+        serialthread.cpp \
+        stb_image.cpp
 
 HEADERS += \
         Manipulator.hh \
@@ -44,7 +45,8 @@ HEADERS += \
         mainwindow.h \
         qcustomplot.h \
         serialoptionsdialog.h \
-        serialthread.h
+        serialthread.h \
+        stb_image.h
 
 FORMS += \
         mainwindow.ui \

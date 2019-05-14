@@ -1,39 +1,16 @@
 #include "Viewer.hh"
 #include <iostream>
 #include "Manipulator.hh"
-#include <SOIL/SOIL.h>
-
-#define COMPILE_TEXTURES 0
+#include <stb_image.h>
+#include <qdebug.h>
 
 using namespace std;
-#if COMPILE_TEXTURES == 1
-#define HEIGHT__CHECK_BOARD 64
-#define WIDTH__CHECK_BOARD  64
-static GLubyte Image_CheckBoard[HEIGHT__CHECK_BOARD][WIDTH__CHECK_BOARD][4];
-static GLuint Texture4Bg;
-static GLuint Texture4Manip;
+static GLuint TextureBackground, TextureSolar;
 
-
-void MakeImage_CheckBoard(void)
-{
-    int Idx_Height, Idx_Width, Intensity;
-    
-    for (Idx_Height = 0; Idx_Height < HEIGHT__CHECK_BOARD; Idx_Height++) {
-        for (Idx_Width = 0; Idx_Width < WIDTH__CHECK_BOARD; Idx_Width++) {
-            Intensity = (((Idx_Height & 0x8)==0)^((Idx_Width & 0x8)==0))*255;
-            Image_CheckBoard[Idx_Height][Idx_Width][0] = static_cast<GLubyte>(Intensity);
-            Image_CheckBoard[Idx_Height][Idx_Width][1] = static_cast<GLubyte>(Intensity);
-            Image_CheckBoard[Idx_Height][Idx_Width][2] = static_cast<GLubyte>(Intensity);
-            Image_CheckBoard[Idx_Height][Idx_Width][3] = static_cast<GLubyte>(255);
-        }
-    }
-}
-#endif
 void GLCreateBox( double Size_X,  double Size_Y,  double Size_Z )
 {
     glPushMatrix();
     glScalef( static_cast<GLfloat>(Size_X), static_cast<GLfloat>(Size_Y), static_cast<GLfloat>(Size_Z) );
-
     glBegin(GL_POLYGON);
     //glColor3f(   1.0,  1.0, 1.0 );
     glTexCoord2f(0.0, 0.0); glVertex3f(  0.5, -0.5, 0.5 );
@@ -88,11 +65,9 @@ void Viewer::draw()
     /*-----------------------------------------------------
     *  Tworzenie tła wypełnionego wygenerowaną teksturą
     */
-#if COMPILE_TEXTURES == 1
     glEnable(GL_TEXTURE_2D);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-    glBindTexture(GL_TEXTURE_2D, Texture4Bg);
-#endif
+    glBindTexture(GL_TEXTURE_2D, TextureBackground);
 
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
@@ -127,14 +102,12 @@ void Viewer::draw()
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
     glDepthMask(GL_TRUE);
+
+    glDisable(GL_TEXTURE_2D);
     /*- Koniec ---
    *  Tworzenie tła wypełnionego
    *------------------------------------------------------------*/
-#if COMPILE_TEXTURES == 1
-    glBindTexture(GL_TEXTURE_2D, Texture4Manip);
 
-    glDisable(GL_TEXTURE_2D);
-#endif
     glScalef( 1.0, 1.0, 1.0 );
 
     glRotatef( -90, 1.0, 0.0, 0.0);
@@ -143,18 +116,17 @@ void Viewer::draw()
     glTranslatef( 0.0, 0.0, -0.5 );
     glColor3f(1.0,1.0,1.0);
     GLCreateBox(0.1,0.1,1.0);
-#if COMPILE_TEXTURES == 1
-    glBindTexture(GL_TEXTURE_2D, Texture4Manip);
+
     glEnable(GL_TEXTURE_2D);
-#endif
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+    glBindTexture(GL_TEXTURE_2D, TextureSolar);
+
     glTranslatef( 0.0, 0.0, 0.55 );
     glRotatef( static_cast<GLfloat>(Manip.GetQ2_deg()), 0.0, 1.0, 0 );
     GLCreateBox(1.0,1.5,0.01);
 
     glFlush();
-#if COMPILE_TEXTURES == 1
     glDisable(GL_TEXTURE_2D);
-#endif
 }
 
 void Viewer::init()
@@ -162,6 +134,48 @@ void Viewer::init()
     glClearColor (1, 1, 1, 0.0);
     glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
+
+    glGenTextures(1, &TextureBackground);
+    glBindTexture(GL_TEXTURE_2D, TextureBackground);
+    // set the texture wrapping/filtering options (on the currently bound texture object)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // load and generate the texture
+    int width, height, nrChannels;
+    unsigned char *data = stbi_load("laka.jpg", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        //glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        qDebug() << "Failed to load texture" << endl;
+    }
+    stbi_image_free(data);
+
+    glGenTextures(1, &TextureSolar);
+    glBindTexture(GL_TEXTURE_2D, TextureSolar);
+    // set the texture wrapping/filtering options (on the currently bound texture object)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // load and generate the texture
+    int width1, height1, nrChannels1;
+    unsigned char *data1 = stbi_load("solar.jpg", &width1, &height1, &nrChannels1, 0);
+    if (data1)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width1, height1, 0, GL_RGB, GL_UNSIGNED_BYTE, data1);
+        //glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        qDebug() << "Failed to load texture" << endl;
+    }
+    stbi_image_free(data1);
 #if COMPILE_TEXTURES == 1
     MakeImage_CheckBoard();
 

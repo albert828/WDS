@@ -99,7 +99,7 @@ void SerialThread::run()
         assert(pViever);
         pViever->update();
         replot(pwidgetLight, pwidgetVoltage, pwidgetCurrent, pwidgetPower);
-        msleep(50);
+        msleep(100);
     }
 }
 
