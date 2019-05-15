@@ -93,23 +93,43 @@ void SerialThread::prepareData(const QString &response)
     //Removing CRC and \r\n for calculations
     size_t dataEndPosition = text.find_last_of(' ');
     text = text.substr(0, dataEndPosition);
+    //qDebug() << QString::fromStdString(text )<< endl;
 
     //Cast values
-    size_t hPosition = text.find('H') + 1;
-    uint8_t H = stoi( text.substr(hPosition) );
-    size_t vPosition = text.find('V') + 1;
-    uint8_t V = stoi( text.substr(vPosition) );
-    size_t iPosition = text.find('I') + 1;
-    uint8_t I = stoi( text.substr(iPosition) );
-    size_t pPosition = text.find('P') + 1;
-    uint8_t P = stoi( text.substr(pPosition) );
+    size_t hPosition, vPosition, lPosition, uPosition, iPosition, pPosition;
+    uint8_t H, V, L, U, I, P;
+    try
+    {
+        hPosition = text.find('H') + 1;
+        H = stoi( text.substr(hPosition) );
 
-    //Calculating here because in if sometimes is problem
-    uint8_t crcCalculated = CRC8(text.c_str(), text.length());
-    if(crc == crcCalculated)
-        qDebug() << "Data " << "H" << H << "V" << V
-                 << "I" << I << "P" << P
-                 << "Checksum correct:" << crc << endl;
-    else
-        qDebug() << "Checksum error" << endl;
+        vPosition = text.find('V') + 1;
+        V = stoi( text.substr(vPosition) );
+
+        lPosition = text.find('L') + 1;
+        L = stoi( text.substr(vPosition) );
+
+        uPosition = text.find('U') + 1;
+        U = stoi( text.substr(uPosition) );
+
+        iPosition = text.find('I') + 1;
+        I = stoi( text.substr(iPosition) );
+
+        pPosition = text.find('P') + 1;
+        P = stoi( text.substr(pPosition) );
+
+        //Calculating here because in if sometimes is problem
+        uint8_t crcCalculated = CRC8(text.c_str(), text.length());
+        if(crc == crcCalculated)
+            qDebug() << "Data " << "H" << H << "V" << V
+                     << "U" << U << "L" << L << "I" << I << "P" << P
+                     << "Checksum correct:" << hex << crc << endl;
+        else
+            qDebug() << "Checksum error" << endl;
+    }
+    catch(std::invalid_argument)
+    {
+        qDebug() << "Invalid value from serial to casting by stoi" << endl;
+    }
+
 }
