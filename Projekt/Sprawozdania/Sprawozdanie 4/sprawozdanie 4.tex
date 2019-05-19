@@ -298,6 +298,36 @@ Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platf
 			\caption{Przykładowe wyniki}
 			\label{fig:serial_wyniki}
 		\end{figure}
+	
+	\subsection{Graficzny interfejs użytkownika}
+		\begin{enumerate}
+			\item Okno główne
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.98\textwidth]{figures/okno_glowne1.png}
+					\caption{Okno główne}
+					\label{fig:okno_glowne1}
+				\end{figure}
+			Po lewej znajdują się wykresy wartości pomiarowych. Natomiast po prawej stronie mamy wizualizację platformy fotowoltaicznej.
+					
+			\item Wykresy
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1.0\textwidth]{figures/wykresy.png}
+					\caption{Wykresy}
+					\label{fig:wykresy}
+				\end{figure}
+			Do rysowania wykresów używam biblioteki zewnętrznej QCustomPlot. Na osi pionowej znajdują się poszczególne wartości pomiarów. Na osi poziomej mamy czas w formacie minuty:sekundy. Wykres jest dynamiczny o stałym oknie czasowym. Na przykładowym rysunku \ref{fig:wykresy} wynosi ono 8 sekund.
+			
+			\item Wizualizacja
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1.0\textwidth]{figures/wizualizacja.png}
+					\caption{Wizualizacja}
+					\label{fig:wizualizacja}
+				\end{figure}
+			Zaimplementowałem dwuosiową rotację. Horyzontalna (cała platforma) oraz wertykalna (tylko panel fotowoltaiczny).
+		\end{enumerate}
 \end{document}
 
 
