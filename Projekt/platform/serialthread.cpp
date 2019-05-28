@@ -94,12 +94,12 @@ void SerialThread::run()
         ++(U %= 200);
         ++(I %= 300);
         P = I * U;
-        Manip.SetQ2_deg(H);
-        Manip.SetQ0_deg(V);
-        assert(pViever);
+        Manip.SetQ2_deg(V);
+        Manip.SetQ0_deg(H);
+        //assert(pViever);
         pViever->update();
         replot(pwidgetLight, pwidgetVoltage, pwidgetCurrent, pwidgetPower);
-        msleep(100);
+        msleep(50);
     }
 }
 
