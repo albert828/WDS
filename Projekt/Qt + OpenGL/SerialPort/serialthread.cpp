@@ -88,11 +88,18 @@ void SerialThread::prepareData(const QString &response)
     string text = response.toStdString();
     //CRC number is 3 chars after "CRC"
     size_t crcPosition = text.find("CRC") + 3;
-    uint8_t crc = stoi( text.substr(crcPosition) );
+    uint8_t crc;
+    if(crcPosition != string::npos)
+        crc = stoi( text.substr(crcPosition) );
+    else
+        qDebug() << "Error crc stoi" << endl;
 
     //Removing CRC and \r\n for calculations
     size_t dataEndPosition = text.find_last_of(' ');
-    text = text.substr(0, dataEndPosition);
+    if(dataEndPosition != string::npos)
+        text = text.substr(0, dataEndPosition);
+    else
+        qDebug() << "Error data end position" << endl;
     //qDebug() << QString::fromStdString(text )<< endl;
 
     //Cast values
@@ -121,7 +128,7 @@ void SerialThread::prepareData(const QString &response)
         //Calculating here because in if sometimes is problem
         uint8_t crcCalculated = CRC8(text.c_str(), text.length());
         if(crc == crcCalculated)
-            qDebug() << "Data " << "H" << H << "V" << V
+            qDebug() << "H" << H << "V" << V
                      << "U" << U << "L" << L << "I" << I << "P" << P
                      << "Checksum correct:" << hex << crc << endl;
         else
