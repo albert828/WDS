@@ -26,6 +26,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::StartSerial(QWidget *pViever, QCustomPlot *pLight, QCustomPlot *pVoltage, QCustomPlot *pCurrent, QCustomPlot *pPower)
 {
+
     ui->actionConnect->setEnabled(false);
     ui->actionSerial->setEnabled(false);
     ui->actionDisconnect->setEnabled(true);
