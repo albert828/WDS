@@ -27,7 +27,8 @@ void loop() {
   CRC = CRC8(data.c_str(), data.length());
   data += String(" CRC");
   data += String(CRC, DEC);
-  Serial.println(data);
+  data += '\n';
+  Serial.print(data);
   delay(1000);
 }
 
