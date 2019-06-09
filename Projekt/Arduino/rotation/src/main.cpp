@@ -1,5 +1,6 @@
 #include <limits.h>
-#include "functions.hpp"
+#include "functions.h"
+#include <StaticThreadController.h>
 
 void setup()
 {
@@ -13,33 +14,16 @@ void setup()
   delay(500);
 }
 
+StaticThreadController<4> tControler(&tRead, &tSendData, &tSetServoPosition, &tSetStepperPosition);
+
+
+
 void loop()
 {
-  ActualTime = millis();
-  if ((ActualTime - PreviousTimeRead) >= READTIME)
-  {
-    PreviousTimeRead = ActualTime;
-    ReadLight();
-    pos = FindMax();
-  }
-  if ((ActualTime - PreviousTimeStep) >= STEPTIME)
-  {
-    PreviousTimeStep = ActualTime;
-    SetStepperPosition();
-  }
-
-  if ((ActualTime - PreviousTimeServo) >= SERVOTIME)
-  {
-    PreviousTimeServo = ActualTime;
-    SetServoPosition();
-  }
-  
-  if( (ActualTime - PreviousTimePrint) >= PRINTTIME )
-  {
-    PreviousTimePrint = ActualTime;
-    SendData();
-  }
+  tControler.run();
 }
+
+
 
 void ReadLight()
 {
@@ -164,5 +148,7 @@ void SendData()
   CRC = CRC8(data.c_str(), data.length());
   data += String(" CRC");
   data += String(CRC, DEC);
-  Serial.println(data);
+  Serial.print(data);
+  Serial.print('\n');
 }
+

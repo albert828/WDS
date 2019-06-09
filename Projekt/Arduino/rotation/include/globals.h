@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <Servo.h>
+#include <Thread.h>
 
 #define PRINTTIME  500
 #define STEPTIME 5
@@ -23,13 +24,16 @@ Servo serwo;
 String data;
 
 volatile int16_t Left_Up_Value = 0, Right_Up_Value = 0, Left_Down_Value = 0, Right_Down_Value = 0;
-volatile int16_t values[4];
-volatile int16_t StepCounter = 0;
-uint32_t ActualTime = 0, PreviousTimeStep = 0, PreviousTimePrint = 0, PreviousTimeServo = 0, PreviousTimeRead = 0;
-bool state = LOW;
-uint8_t sposition = 90 , pos = 0;
 int16_t upMax, downMax, leftMax, rightMax;
+volatile int16_t values[4];
+
+volatile int16_t StepCounter = 0;
+bool state = LOW;
+
+uint8_t sposition = 90 , pos = 0;
+
 uint8_t L = 0, I = 0, U = 0, CRC = 0;
 
+uint32_t baudRate;
 
 #endif

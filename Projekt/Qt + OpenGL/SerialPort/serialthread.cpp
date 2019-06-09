@@ -89,18 +89,25 @@ void SerialThread::prepareData(const QString &response)
     //CRC number is 3 chars after "CRC"
     size_t crcPosition = text.find("CRC") + 3;
     uint8_t crc;
-    if(crcPosition != string::npos)
-        crc = stoi( text.substr(crcPosition) );
-    else
-        qDebug() << "Error crc stoi" << endl;
+    try
+    {
+        if(crcPosition != string::npos)
+            crc = stoi( text.substr(crcPosition) );
+        else
+            qDebug() << "Error crc stoi" << endl;
 
-    //Removing CRC and \r\n for calculations
-    size_t dataEndPosition = text.find_last_of(' ');
-    if(dataEndPosition != string::npos)
-        text = text.substr(0, dataEndPosition);
-    else
-        qDebug() << "Error data end position" << endl;
-    //qDebug() << QString::fromStdString(text )<< endl;
+        //Removing CRC and \r\n for calculations
+        size_t dataEndPosition = text.find_last_of(' ');
+        if(dataEndPosition != string::npos)
+            text = text.substr(0, dataEndPosition);
+        else
+            qDebug() << "Error data end position" << endl;
+        //qDebug() << QString::fromStdString(text )<< endl;
+    }
+    catch(std::out_of_range)
+    {
+        qDebug() << "Catched out of range" << endl;
+    }
 
     //Cast values
     size_t hPosition, vPosition, lPosition, uPosition, iPosition, pPosition;
@@ -108,22 +115,40 @@ void SerialThread::prepareData(const QString &response)
     try
     {
         hPosition = text.find('H') + 1;
-        H = stoi( text.substr(hPosition) );
+        if(hPosition != string::npos)
+            H = stoi( text.substr(hPosition) );
+        else
+            qDebug() << "Error hPosition" << endl;
 
         vPosition = text.find('V') + 1;
-        V = stoi( text.substr(vPosition) );
+        if(vPosition != string::npos)
+            V = stoi( text.substr(vPosition) );
+        else
+            qDebug() << "Error vPosition" << endl;
 
         lPosition = text.find('L') + 1;
-        L = stoi( text.substr(vPosition) );
+        if(lPosition != string::npos)
+            L = stoi( text.substr(vPosition) );
+        else
+            qDebug() << "Error lPosition" << endl;
 
         uPosition = text.find('U') + 1;
-        U = stoi( text.substr(uPosition) );
+        if(uPosition != string::npos)
+            U = stoi( text.substr(uPosition) );
+        else
+            qDebug() << "Error uPosition" << endl;
 
         iPosition = text.find('I') + 1;
-        I = stoi( text.substr(iPosition) );
+        if(iPosition != string::npos)
+            I = stoi( text.substr(iPosition) );
+        else
+            qDebug() << "Error iPosition" << endl;
 
         pPosition = text.find('P') + 1;
-        P = stoi( text.substr(pPosition) );
+        if(pPosition != string::npos)
+            P = stoi( text.substr(pPosition) );
+        else
+            qDebug() << "Error pPosition" << endl;
 
         //Calculating here because in if sometimes is problem
         uint8_t crcCalculated = CRC8(text.c_str(), text.length());
@@ -137,6 +162,10 @@ void SerialThread::prepareData(const QString &response)
     catch(std::invalid_argument)
     {
         qDebug() << "Invalid value from serial to casting by stoi" << endl;
+    }
+    catch(std::out_of_range)
+    {
+        qDebug() << "Catched out of range" << endl;
     }
 
 }
