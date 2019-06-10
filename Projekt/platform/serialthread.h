@@ -71,6 +71,15 @@ private:
      * @param pwidgetPower : pointer to Power widget
      */
     void replot(QCustomPlot *pwidgetLight, QCustomPlot *pwidgetVoltage, QCustomPlot *pwidgetCurrent, QCustomPlot *pwidgetPower);
+    /**
+     * @brief CRC8 - function for calculating CRC8 checksum
+     * @return checksum
+     */
+    char CRC8(const char*,int);
+    /**
+     * @brief prepareData - function for preaparing data from serial port
+     */
+    void prepareData(const QString &);
 
     QSerialPort serial;
 

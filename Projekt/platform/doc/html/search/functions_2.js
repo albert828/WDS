@@ -23,6 +23,7 @@ var searchData=
   ['coordtocell',['coordToCell',['../class_q_c_p_color_map_data.html#aca5b29e0ca2f299c9060fc6e1f74d0c8',1,'QCPColorMapData']]],
   ['coordtopixel',['coordToPixel',['../class_q_c_p_axis.html#af15d1b3a7f7e9b53d759d3ccff1fe4b4',1,'QCPAxis']]],
   ['copyfrom',['copyFrom',['../class_q_c_p_selection_decorator.html#a467a8d5cfcab27e862a17c797ac27b8a',1,'QCPSelectionDecorator']]],
+  ['crc8',['CRC8',['../class_serial_thread.html#a36733331ff00c53d6d0d7bf50008cbba',1,'SerialThread']]],
   ['createtickvector',['createTickVector',['../class_q_c_p_axis_ticker_text.html#aa195c4fd0364d0393f1798fb495d6a60',1,'QCPAxisTickerText']]],
   ['currentlayer',['currentLayer',['../class_q_custom_plot.html#a0421d647f420b0b4c57aec1708857af5',1,'QCustomPlot']]]
 ];

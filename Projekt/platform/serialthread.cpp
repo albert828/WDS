@@ -6,6 +6,7 @@
 #include <cassert>
 #include "mainwindow.h"
 #include "globals.h"
+#include <tuple>
 
 #define SERIAL_WHILE 0
 
@@ -60,14 +61,9 @@ void SerialThread::run()
     //serial.close();
     //uint32_t counter{0};
 #if SERIAL_WHILE == 1
+
     while(serial.isOpen())
     {
-        ++H;
-        --V;
-        Manip.SetQ2_deg(H);
-        assert(pViever);
-        pViever->update();
-        /*
         QByteArray data;
         if (serial.waitForReadyRead(1000))
         {
@@ -76,16 +72,18 @@ void SerialThread::run()
             {
                 data += serial.readAll();
             }
-            qDebug() << counter++;
-            QString response = QString::fromUtf8(data);
-            qDebug() << response << endl;
+            //decode data and send into function
+            prepareData( QString::fromLocal8Bit(data) );
+            Manip.SetQ2_deg(V);
+            Manip.SetQ0_deg(H);
+            pViever->update();
+            replot(pwidgetLight, pwidgetVoltage, pwidgetCurrent, pwidgetPower);
         }
         else
             qDebug() << "Timeout";
-            */
-        sleep(1);
     }
 #endif
+#if SERIAL_WHILE == 0
     while(flag)
     {
         ++H;
@@ -101,6 +99,7 @@ void SerialThread::run()
         replot(pwidgetLight, pwidgetVoltage, pwidgetCurrent, pwidgetPower);
         msleep(50);
     }
+    #endif
 }
 
 void SerialThread::replot(QCustomPlot *pwidgetLight, QCustomPlot *pwidgetVoltage, QCustomPlot *pwidgetCurrent, QCustomPlot *pwidgetPower)
@@ -161,4 +160,112 @@ void SerialThread::replotPowerWidget(QCustomPlot *pwidgetPower, double key)
     // make key axis range scroll with the data (at a constant range size of 8):
     pwidgetPower->xAxis->setRange(key, 8, Qt::AlignRight);
     pwidgetPower->replot();
+}
+
+char SerialThread::CRC8(const char *data,int len)
+{
+   char crc = 0x00;
+   char extract;
+   char sum;
+   for(int i=0;i<len;i++)
+   {
+      extract = *data;
+      for (char tempI = 8; tempI; tempI--)
+      {
+         sum = (crc ^ extract) & 0x01;
+         crc >>= 1;
+         if (sum)
+            crc ^= 0x8C;
+         extract >>= 1;
+      }
+      data++;
+   }
+   return crc;
+}
+
+void SerialThread::prepareData(const QString &response)
+{
+    using namespace std;
+    //prefer std string :)
+    string text = response.toStdString();
+    //CRC number is 3 chars after "CRC"
+    size_t crcPosition = text.find("CRC") + 3;
+    uint8_t crc = 0;
+    try
+    {
+        if(crcPosition != string::npos)
+            crc = stoi( text.substr(crcPosition) );
+        else
+            qDebug() << "Error crc stoi" << endl;
+
+        //Removing CRC and \r\n for calculations
+        size_t dataEndPosition = text.find_last_of(' ');
+        if(dataEndPosition != string::npos)
+            text = text.substr(0, dataEndPosition);
+        else
+            qDebug() << "Error data end position" << endl;
+        //qDebug() << QString::fromStdString(text )<< endl;
+    }
+    catch(std::out_of_range)
+    {
+        qDebug() << "Catched out of range" << endl;
+    }
+
+    //Cast values
+    size_t hPosition, vPosition, lPosition, uPosition, iPosition, pPosition;
+    try
+    {
+        hPosition = text.find('H') + 1;
+        if(hPosition != string::npos)
+            H = stoi( text.substr(hPosition) );
+        else
+            qDebug() << "Error hPosition" << endl;
+
+        vPosition = text.find('V') + 1;
+        if(vPosition != string::npos)
+            V = stoi( text.substr(vPosition) );
+        else
+            qDebug() << "Error vPosition" << endl;
+
+        lPosition = text.find('L') + 1;
+        if(lPosition != string::npos)
+            L = stoi( text.substr(vPosition) );
+        else
+            qDebug() << "Error lPosition" << endl;
+
+        uPosition = text.find('U') + 1;
+        if(uPosition != string::npos)
+            U = stoi( text.substr(uPosition) );
+        else
+            qDebug() << "Error uPosition" << endl;
+
+        iPosition = text.find('I') + 1;
+        if(iPosition != string::npos)
+            I = stoi( text.substr(iPosition) );
+        else
+            qDebug() << "Error iPosition" << endl;
+
+        pPosition = text.find('P') + 1;
+        if(pPosition != string::npos)
+            P = stoi( text.substr(pPosition) );
+        else
+            qDebug() << "Error pPosition" << endl;
+
+        //Calculating here because in if sometimes is problem
+        uint8_t crcCalculated = CRC8(text.c_str(), text.length());
+        if(crc == crcCalculated)
+            qDebug() << "H" << H << "V" << V
+                     << "U" << U << "L" << L << "I" << I << "P" << P
+                     << "Checksum correct:" << hex << crc << endl;
+        else
+            qDebug() << "Checksum error" << endl;
+    }
+    catch(std::invalid_argument)
+    {
+        qDebug() << "Invalid value from serial to casting by stoi" << endl;
+    }
+    catch(std::out_of_range)
+    {
+        qDebug() << "Catched out of range" << endl;
+    }
 }
