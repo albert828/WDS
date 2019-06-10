@@ -1,7 +1,7 @@
 #ifndef FUNCTIONS_HPP // jeżeli nie zdefiniowano makra NAGLOWEK_H to
 #define FUNCTIONS_HPP // definiuj makro NAGLOWEK_H
 
-#include<globals.h>
+#include <globals.h>
 
 void ReadLight();
 void SetServoPosition();
@@ -23,4 +23,16 @@ inline bool HorizontalDiff()
   rightMax = ( values[1] > values[3] ? values[1] : values[3]);
   return ( abs(leftMax - rightMax) > TOLERANCE ? true : false);
 }
+
+inline void Read()
+{
+  ReadLight();
+  pos = FindMax();
+}
+
+Thread tRead(Read, READTIME); 
+Thread tSetStepperPosition(SetStepperPosition, STEPTIME);
+Thread tSetServoPosition(SetServoPosition, SERVOTIME);
+Thread tSendData(SendData, PRINTTIME);
+
 #endif
