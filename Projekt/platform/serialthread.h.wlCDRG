@@ -80,7 +80,7 @@ private:
      * @brief prepareData - function for preaparing data from serial port
      * @return returns true if prepared without problems
      */
-    bool prepareData(const QString &, int &);
+    bool prepareData(const QString &);
 
     QSerialPort serial;
 

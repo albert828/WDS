@@ -136,9 +136,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a36733331ff00c53d6d0d7bf50008cbba"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#a36733331ff00c53d6d0d7bf50008cbba">CRC8</a> (const char *, int)</td></tr>
 <tr class="memdesc:a36733331ff00c53d6d0d7bf50008cbba"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC8 - function for calculating CRC8 checksum.  <a href="#a36733331ff00c53d6d0d7bf50008cbba">More...</a><br /></td></tr>
 <tr class="separator:a36733331ff00c53d6d0d7bf50008cbba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7287687bf8de39d17d4a8059eac1067d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#a7287687bf8de39d17d4a8059eac1067d">prepareData</a> (const QString &amp;)</td></tr>
-<tr class="memdesc:a7287687bf8de39d17d4a8059eac1067d"><td class="mdescLeft">&#160;</td><td class="mdescRight">prepareData - function for preaparing data from serial port  <a href="#a7287687bf8de39d17d4a8059eac1067d">More...</a><br /></td></tr>
-<tr class="separator:a7287687bf8de39d17d4a8059eac1067d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c76bc006d1edbe2c608a4b4bff10e7c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#a9c76bc006d1edbe2c608a4b4bff10e7c">prepareData</a> (const QString &amp;, int &amp;)</td></tr>
+<tr class="memdesc:a9c76bc006d1edbe2c608a4b4bff10e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">prepareData - function for preaparing data from serial port  <a href="#a9c76bc006d1edbe2c608a4b4bff10e7c">More...</a><br /></td></tr>
+<tr class="separator:a9c76bc006d1edbe2c608a4b4bff10e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -206,8 +206,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>flag</b> = false</td>
 
 </div>
 </div>
-<a id="a7287687bf8de39d17d4a8059eac1067d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7287687bf8de39d17d4a8059eac1067d">&#9670;&nbsp;</a></span>prepareData()</h2>
+<a id="a9c76bc006d1edbe2c608a4b4bff10e7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c76bc006d1edbe2c608a4b4bff10e7c">&#9670;&nbsp;</a></span>prepareData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -219,8 +219,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>flag</b> = false</td>
           <td class="memname">bool SerialThread::prepareData </td>
           <td>(</td>
           <td class="paramtype">const QString &amp;&#160;</td>
-          <td class="paramname"><em>response</em></td><td>)</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>counter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>

@@ -57,9 +57,13 @@ void SerialThread::run()
 
     if (!serial.open(QIODevice::ReadOnly))
         qDebug("Can't open serial");
+    else {
+        serial.readAll();
+    }
     //qDebug("M from Thread");
     //serial.close();
     //uint32_t counter{0};
+    int counter = 0;
 #if SERIAL_WHILE == 1
 
     while(serial.isOpen())
@@ -68,17 +72,23 @@ void SerialThread::run()
         if (serial.waitForReadyRead(200))
         {
             data = serial.readLine();
-            //while (serial.waitForReadyRead(10))
+            //while (serial.waitForReadyRead(1))
             //{
                 //data += serial.readAll();
             //}
             //decode data and send into function
-            if( prepareData( QString::fromLocal8Bit(data) ) )
+            if( prepareData( QString::fromLocal8Bit(data), counter ) )
             {
                 Manip.SetQ2_deg(V);
                 Manip.SetQ0_deg(H);
                 pViever->update();
                 replot(pwidgetLight, pwidgetVoltage, pwidgetCurrent, pwidgetPower);
+            }
+            if (counter > 10)
+            {
+                serial.readAll();
+                qDebug() << "Cleaning buffer" << endl;
+                counter = 0;
             }
         }
         else
@@ -185,7 +195,7 @@ char SerialThread::CRC8(const char *data,int len)
    return crc;
 }
 
-bool SerialThread::prepareData(const QString &response)
+bool SerialThread::prepareData(const QString &response, int &counter)
 {
     using namespace std;
     //prefer std string :)
@@ -201,6 +211,7 @@ bool SerialThread::prepareData(const QString &response)
         else
         {
             qDebug() << "Error crc stoi" << endl;
+            counter++;
             return false;
         }
 
@@ -211,6 +222,7 @@ bool SerialThread::prepareData(const QString &response)
         else
         {
             qDebug() << "Error data end position" << endl;
+            counter++;
             return false;
         }
         //qDebug() << QString::fromStdString(text )<< endl;
@@ -218,11 +230,13 @@ bool SerialThread::prepareData(const QString &response)
     catch(std::out_of_range)
     {
         qDebug() << "Catched out of range" << endl;
+        counter++;
         return false;
     }
     catch(std::invalid_argument)
     {
         qDebug() << "Catched invalid arg in CRC" << endl;
+        counter++;
         return false;
     }
 
@@ -236,15 +250,19 @@ bool SerialThread::prepareData(const QString &response)
         else
         {
             qDebug() << "Error hPosition" << endl;
+            counter++;
             return false;
         }
 
         vPosition = text.find('V') + 1;
         if(vPosition != string::npos)
-            V = stoi( text.substr(vPosition) );
+        {
+            V = (stoi( text.substr(vPosition) ) );
+        }
         else
         {
             qDebug() << "Error vPosition" << endl;
+            counter++;
             return false;
         }
 
@@ -254,6 +272,7 @@ bool SerialThread::prepareData(const QString &response)
         else
         {
             qDebug() << "Error lPosition" << endl;
+            counter++;
             return false;
         }
 
@@ -263,6 +282,7 @@ bool SerialThread::prepareData(const QString &response)
         else
         {
             qDebug() << "Error uPosition" << endl;
+            counter++;
             return false;
         }
 
@@ -272,6 +292,7 @@ bool SerialThread::prepareData(const QString &response)
         else
         {
             qDebug() << "Error iPosition" << endl;
+            counter++;
             return false;
         }
 
@@ -281,6 +302,7 @@ bool SerialThread::prepareData(const QString &response)
         else
         {
             qDebug() << "Error pPosition" << endl;
+            counter++;
             return false;
         }
 
@@ -288,23 +310,28 @@ bool SerialThread::prepareData(const QString &response)
         uint8_t crcCalculated = CRC8(text.c_str(), text.length());
         if(crc == crcCalculated)
             qDebug() << "Splited data: "<< "H" << H << "V" << V
-                     << "U" << U << "L" << L << "I" << I << "P" << P
+                     << "L" << L << "U" << U << "I" << I << "P" << P
                      << "Checksum correct:" << hex << crc << endl;
         else
         {
             qDebug() << "Checksum error" << endl;
+            counter++;
             return false;
         }
     }
     catch(std::invalid_argument)
     {
         qDebug() << "Invalid value from serial to casting by stoi" << endl;
+        counter++;
         return false;
     }
     catch(std::out_of_range)
     {
         qDebug() << "Catched out of range" << endl;
+        counter++;
         return false;
     }
+    counter = 0;
     return true;
 }
+

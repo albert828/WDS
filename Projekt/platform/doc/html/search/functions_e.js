@@ -16,5 +16,5 @@ var searchData=
   ['plottables',['plottables',['../class_q_c_p_axis.html#ac5e0f6f65c75efb5fd32275d6e4ef0d6',1,'QCPAxis::plottables()'],['../class_q_c_p_axis_rect.html#a587d073a97b27bc7293fab4b2774ad59',1,'QCPAxisRect::plottables()']]],
   ['position',['position',['../class_q_c_p_abstract_item.html#a2589c3d298f9a576d77d9addb440a18d',1,'QCPAbstractItem']]],
   ['positions',['positions',['../class_q_c_p_abstract_item.html#a709f655ac3f7f22d452714134662b454',1,'QCPAbstractItem']]],
-  ['preparedata',['prepareData',['../class_serial_thread.html#a7287687bf8de39d17d4a8059eac1067d',1,'SerialThread']]]
+  ['preparedata',['prepareData',['../class_serial_thread.html#a9c76bc006d1edbe2c608a4b4bff10e7c',1,'SerialThread']]]
 ];
