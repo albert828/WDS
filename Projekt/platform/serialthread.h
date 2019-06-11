@@ -7,7 +7,9 @@
 #include <qserialport.h>
 #include "qcustomplot.h"
 
-//! [0]
+/**
+ * @brief The SerialThread class
+ */
 class SerialThread : public QThread
 {
     Q_OBJECT
@@ -77,17 +79,33 @@ private:
      */
     char CRC8(const char*,int);
     /**
-     * @brief prepareData - function for preaparing data from serial port
-     * @return returns true if prepared without problems
+     * @brief prepareData function for preaparing data from serial port
+     * @param response data to prepare from serial port
+     * @param counter numer of errors
+     * @return true if preparing succesful
      */
-    bool prepareData(const QString &, int &);
+    bool prepareData(const QString &response, int &counter);
 
     QSerialPort serial;
-
+    /**
+     * @brief pViever - pointer to OpenGLwidget
+     */
     QWidget *pViever;
+    /**
+     * @brief pwidgetLight - pointer to Light plot
+     */
     QCustomPlot *pwidgetLight;
+    /**
+     * @brief pwidgetVoltage - pointer to Voltage plot
+     */
     QCustomPlot *pwidgetVoltage;
+    /**
+     * @brief pwidgetCurrent - - pointer to Current plot
+     */
     QCustomPlot *pwidgetCurrent;
+    /**
+     * @brief pwidgetPower - pointer to Power plot
+     */
     QCustomPlot *pwidgetPower;
 
     bool flag = false;
