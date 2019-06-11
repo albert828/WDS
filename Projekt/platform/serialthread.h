@@ -78,8 +78,9 @@ private:
     char CRC8(const char*,int);
     /**
      * @brief prepareData - function for preaparing data from serial port
+     * @return returns true if prepared without problems
      */
-    void prepareData(const QString &);
+    bool prepareData(const QString &);
 
     QSerialPort serial;
 
