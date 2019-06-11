@@ -28,6 +28,7 @@ var searchData=
   ['coordtocell',['coordToCell',['../class_q_c_p_color_map_data.html#aca5b29e0ca2f299c9060fc6e1f74d0c8',1,'QCPColorMapData']]],
   ['coordtopixel',['coordToPixel',['../class_q_c_p_axis.html#af15d1b3a7f7e9b53d759d3ccff1fe4b4',1,'QCPAxis']]],
   ['copyfrom',['copyFrom',['../class_q_c_p_selection_decorator.html#a467a8d5cfcab27e862a17c797ac27b8a',1,'QCPSelectionDecorator']]],
+  ['crc8',['CRC8',['../class_serial_thread.html#a36733331ff00c53d6d0d7bf50008cbba',1,'SerialThread']]],
   ['createtickvector',['createTickVector',['../class_q_c_p_axis_ticker_text.html#aa195c4fd0364d0393f1798fb495d6a60',1,'QCPAxisTickerText']]],
   ['cscandlestick',['csCandlestick',['../class_q_c_p_financial.html#a0f800e21ee98d646dfc6f8f89d10ebfbac803cbd39f26e3f206bcc7028679e62f',1,'QCPFinancial']]],
   ['csohlc',['csOhlc',['../class_q_c_p_financial.html#a0f800e21ee98d646dfc6f8f89d10ebfba3a516016c9298d3e95dd82aa203c4390',1,'QCPFinancial']]],

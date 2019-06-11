@@ -8,7 +8,7 @@ void setup()
   pinMode(DIRECTION, OUTPUT);
   digitalWrite(DIRECTION, HIGH);
   pinMode(STP, OUTPUT);
-  Serial.begin(2000000);
+  Serial.begin(9600,SERIAL_8E1);
   serwo.attach(SERVOPIN);
   serwo.write(sposition);
   delay(500);
@@ -131,11 +131,12 @@ void SendData()
 {
   I = Right_Up_Value/100;
   U = Left_Down_Value;
-  int16_t H = ( static_cast<int32_t>(StepCounter) * 180) / 1360;
+  int V = map(sposition, 0, 180, -60, 60);
+  int16_t H = ( (( static_cast<int32_t>(StepCounter) * 180 ) / 1360) % 360 );
   data = String("H");
   data += String(H , DEC); //z wolframa rownanie 1367 krokow (*2 Counter) na 360 stopni
   data += String(" V");
-  data += String(sposition, DEC);
+  data += String(V, DEC);
   data += String(" L");
   data += String(L, DEC);
   data += String(" U");
@@ -148,7 +149,7 @@ void SendData()
   CRC = CRC8(data.c_str(), data.length());
   data += String(" CRC");
   data += String(CRC, DEC);
+  data += String('\n');
   Serial.print(data);
-  Serial.print('\n');
 }
 

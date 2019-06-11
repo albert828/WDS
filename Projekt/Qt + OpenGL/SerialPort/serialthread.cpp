@@ -33,7 +33,7 @@ void SerialThread::run()
     //QSerialPort serial;
     serial.setPortName(PortName);
     serial.setBaudRate(BaudRate);
-    serial.setParity(QSerialPort::EvenParity);
+    serial.setParity(QSerialPort::NoParity);
     serial.setDataBits(QSerialPort::Data8);
     serial.setStopBits(QSerialPort::OneStop);
 

@@ -133,6 +133,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a07720f446e8abf466d6fc39892f200c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2">replot</a> (<a class="el" href="class_q_custom_plot.html">QCustomPlot</a> *pwidgetLight, <a class="el" href="class_q_custom_plot.html">QCustomPlot</a> *pwidgetVoltage, <a class="el" href="class_q_custom_plot.html">QCustomPlot</a> *pwidgetCurrent, <a class="el" href="class_q_custom_plot.html">QCustomPlot</a> *pwidgetPower)</td></tr>
 <tr class="memdesc:a07720f446e8abf466d6fc39892f200c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs all replot methods.  <a href="#a07720f446e8abf466d6fc39892f200c2">More...</a><br /></td></tr>
 <tr class="separator:a07720f446e8abf466d6fc39892f200c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36733331ff00c53d6d0d7bf50008cbba"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#a36733331ff00c53d6d0d7bf50008cbba">CRC8</a> (const char *, int)</td></tr>
+<tr class="memdesc:a36733331ff00c53d6d0d7bf50008cbba"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC8 - function for calculating CRC8 checksum.  <a href="#a36733331ff00c53d6d0d7bf50008cbba">More...</a><br /></td></tr>
+<tr class="separator:a36733331ff00c53d6d0d7bf50008cbba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8e2bf76ae861620655a7573e1978b21"><td class="memItemLeft" align="right" valign="top"><a id="ab8e2bf76ae861620655a7573e1978b21"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#ab8e2bf76ae861620655a7573e1978b21">prepareData</a> (const QString &amp;)</td></tr>
+<tr class="memdesc:ab8e2bf76ae861620655a7573e1978b21"><td class="mdescLeft">&#160;</td><td class="mdescRight">prepareData - function for preaparing data from serial port <br /></td></tr>
+<tr class="separator:ab8e2bf76ae861620655a7573e1978b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -161,6 +168,45 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>flag</b> = false</td>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>[0] </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a36733331ff00c53d6d0d7bf50008cbba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36733331ff00c53d6d0d7bf50008cbba">&#9670;&nbsp;</a></span>CRC8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char SerialThread::CRC8 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>CRC8 - function for calculating CRC8 checksum. </p>
+<dl class="section return"><dt>Returns</dt><dd>checksum </dd></dl>
+
+</div>
+</div>
 <a id="a07720f446e8abf466d6fc39892f200c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a07720f446e8abf466d6fc39892f200c2">&#9670;&nbsp;</a></span>replot()</h2>
 

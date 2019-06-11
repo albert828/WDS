@@ -57,6 +57,63 @@ void GLCreateBox( double Size_X,  double Size_Y,  double Size_Z )
     glPopMatrix();
 }
 
+void GLCreateTextureBox( double Size_X,  double Size_Y,  double Size_Z )
+{
+    glPushMatrix();
+    glScalef( static_cast<GLfloat>(Size_X), static_cast<GLfloat>(Size_Y), static_cast<GLfloat>(Size_Z) );
+
+    glEnable(GL_TEXTURE_2D);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+    glBindTexture(GL_TEXTURE_2D, TextureSolar);
+
+    glBegin(GL_POLYGON);
+    //glColor3f(   1.0,  1.0, 1.0 );
+    glTexCoord2f(0.0, 0.0); glVertex3f(  0.5, -0.5, 0.5 );
+    glTexCoord2f(0.0, 1.0); glVertex3f(  0.5,  0.5, 0.5 );
+    glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, 0.5 );
+    glTexCoord2f(1.0, 0.0); glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+
+    glDisable(GL_TEXTURE_2D);
+
+    // Purple side - RIGHT
+    glBegin(GL_POLYGON);
+    // glColor3f(  1.0,  0.0,  1.0 );
+    glTexCoord2f(0.0, 0.0); glVertex3f( 0.5, -0.5, -0.5 );
+    glTexCoord2f(0.0, 1.0); glVertex3f( 0.5,  0.5, -0.5 );
+    glTexCoord2f(1.0, 1.0); glVertex3f( 0.5,  0.5,  0.5 );
+    glTexCoord2f(1.0, 0.0); glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+
+    // Green side - LEFT
+    glBegin(GL_POLYGON);
+    // glColor3f(   0.0,  1.0,  0.0 );
+    glTexCoord2f(0.0, 0.0); glVertex3f( -0.5, -0.5,  0.5 );
+    glTexCoord2f(0.0, 1.0); glVertex3f( -0.5,  0.5,  0.5 );
+    glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, -0.5 );
+    glTexCoord2f(1.0, 0.0); glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+
+    // Blue side - TOP
+    glBegin(GL_POLYGON);
+    // glColor3f(   0.0,  0.0,  1.0 );
+    glTexCoord2f(0.0, 0.0); glVertex3f(  0.5,  0.5,  0.5 );
+    glTexCoord2f(0.0, 1.0); glVertex3f(  0.5,  0.5, -0.5 );
+    glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, -0.5 );
+    glTexCoord2f(1.0, 0.0); glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+
+    // Red side - BOTTOM
+    glBegin(GL_POLYGON);
+    //   glColor3f(   1.0,  0.0,  0.0 );
+    glTexCoord2f(0.0, 0.0); glVertex3f(  0.5, -0.5, -0.5 );
+    glTexCoord2f(0.0, 1.0); glVertex3f(  0.5, -0.5,  0.5 );
+    glTexCoord2f(1.0, 1.0); glVertex3f( -0.5, -0.5,  0.5 );
+    glTexCoord2f(1.0, 0.0); glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glPopMatrix();
+}
+
 // Draws a spiral
 void Viewer::draw()
 {
@@ -117,16 +174,14 @@ void Viewer::draw()
     glColor3f(1.0,1.0,1.0);
     GLCreateBox(0.1,0.1,1.0);
 
-    glEnable(GL_TEXTURE_2D);
-    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-    glBindTexture(GL_TEXTURE_2D, TextureSolar);
-
     glTranslatef( 0.0, 0.0, 0.55 );
     glRotatef( static_cast<GLfloat>(Manip.GetQ2_deg()), 0.0, 1.0, 0 );
-    GLCreateBox(1.0,1.5,0.01);
+    GLCreateTextureBox(1.0,1.5,0.01);
+
+    glTranslatef( 0.0, 0.0, -0.019);
+    GLCreateBox(1.05,1.55,0.02);
 
     glFlush();
-    glDisable(GL_TEXTURE_2D);
 }
 
 void Viewer::init()

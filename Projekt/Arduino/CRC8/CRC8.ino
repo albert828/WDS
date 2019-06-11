@@ -29,7 +29,7 @@ void loop() {
   data += String(CRC, DEC);
   data += '\n';
   Serial.print(data);
-  delay(1000);
+  delay(100);
 }
 
 char CRC8(const char *data,int len) 

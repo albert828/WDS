@@ -5,7 +5,7 @@
 #include <Servo.h>
 #include <Thread.h>
 
-#define PRINTTIME  500
+#define PRINTTIME  100
 #define STEPTIME 5
 #define TOLERANCE 20
 #define SERVOTIME 15
