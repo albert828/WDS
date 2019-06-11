@@ -27,9 +27,14 @@ var searchData=
   ['position',['position',['../class_q_c_p_abstract_item.html#a2589c3d298f9a576d77d9addb440a18d',1,'QCPAbstractItem']]],
   ['positions',['positions',['../class_q_c_p_abstract_item.html#a709f655ac3f7f22d452714134662b454',1,'QCPAbstractItem']]],
   ['positiontype',['PositionType',['../class_q_c_p_item_position.html#aad9936c22bf43e3d358552f6e86dbdc8',1,'QCPItemPosition']]],
-  ['preparedata',['prepareData',['../class_serial_thread.html#a9c76bc006d1edbe2c608a4b4bff10e7c',1,'SerialThread']]],
+  ['preparedata',['prepareData',['../class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132',1,'SerialThread']]],
   ['ptabsolute',['ptAbsolute',['../class_q_c_p_item_position.html#aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0',1,'QCPItemPosition']]],
   ['ptaxisrectratio',['ptAxisRectRatio',['../class_q_c_p_item_position.html#aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75',1,'QCPItemPosition']]],
   ['ptplotcoords',['ptPlotCoords',['../class_q_c_p_item_position.html#aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c',1,'QCPItemPosition']]],
-  ['ptviewportratio',['ptViewportRatio',['../class_q_c_p_item_position.html#aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a',1,'QCPItemPosition']]]
+  ['ptviewportratio',['ptViewportRatio',['../class_q_c_p_item_position.html#aad9936c22bf43e3d358552f6e86dbdc8ac7d6aa89ceacb39658b0d6da061c789a',1,'QCPItemPosition']]],
+  ['pviever',['pViever',['../class_serial_thread.html#a25ab5d7f81059e639e76c83e0838fc80',1,'SerialThread']]],
+  ['pwidgetcurrent',['pwidgetCurrent',['../class_serial_thread.html#a9ca5f57e8e2b2d8a530575e4be9ddf05',1,'SerialThread']]],
+  ['pwidgetlight',['pwidgetLight',['../class_serial_thread.html#a5416113bb965526a07dbcb3647eaddb6',1,'SerialThread']]],
+  ['pwidgetpower',['pwidgetPower',['../class_serial_thread.html#add01655d420a73f7a159b622cd5d24fd',1,'SerialThread']]],
+  ['pwidgetvoltage',['pwidgetVoltage',['../class_serial_thread.html#a7be72ddc12aad76e1c62cd54d0645a8b',1,'SerialThread']]]
 ];
