@@ -27,7 +27,7 @@ var searchData=
   ['position',['position',['../class_q_c_p_abstract_item.html#a2589c3d298f9a576d77d9addb440a18d',1,'QCPAbstractItem']]],
   ['positions',['positions',['../class_q_c_p_abstract_item.html#a709f655ac3f7f22d452714134662b454',1,'QCPAbstractItem']]],
   ['positiontype',['PositionType',['../class_q_c_p_item_position.html#aad9936c22bf43e3d358552f6e86dbdc8',1,'QCPItemPosition']]],
-  ['preparedata',['prepareData',['../class_serial_thread.html#ab8e2bf76ae861620655a7573e1978b21',1,'SerialThread']]],
+  ['preparedata',['prepareData',['../class_serial_thread.html#a9c76bc006d1edbe2c608a4b4bff10e7c',1,'SerialThread']]],
   ['ptabsolute',['ptAbsolute',['../class_q_c_p_item_position.html#aad9936c22bf43e3d358552f6e86dbdc8a564f5e53e550ead1ec5fc7fc7d0b73e0',1,'QCPItemPosition']]],
   ['ptaxisrectratio',['ptAxisRectRatio',['../class_q_c_p_item_position.html#aad9936c22bf43e3d358552f6e86dbdc8a01080fd00eaf09fa238ef6b73bbfef75',1,'QCPItemPosition']]],
   ['ptplotcoords',['ptPlotCoords',['../class_q_c_p_item_position.html#aad9936c22bf43e3d358552f6e86dbdc8ad5ffb8dc99ad73263f7010c77342294c',1,'QCPItemPosition']]],

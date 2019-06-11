@@ -8,7 +8,7 @@
 #include "globals.h"
 #include <tuple>
 
-#define SERIAL_WHILE 0
+#define SERIAL_WHILE 1
 
 SerialThread::SerialThread(QObject *parent) :
     QThread(parent), pViever(nullptr),  pwidgetLight(nullptr), pwidgetVoltage(nullptr), pwidgetCurrent(nullptr), pwidgetPower(nullptr)
@@ -56,28 +56,40 @@ void SerialThread::run()
     serial.setStopBits(QSerialPort::OneStop);
 
     if (!serial.open(QIODevice::ReadOnly))
-        emit error(tr("Can't open serial"));
-    qDebug("M from Thread");
+        qDebug("Can't open serial");
+    else {
+        serial.readAll();
+    }
+    //qDebug("M from Thread");
     //serial.close();
     //uint32_t counter{0};
+    int counter = 0;
 #if SERIAL_WHILE == 1
 
     while(serial.isOpen())
     {
         QByteArray data;
-        if (serial.waitForReadyRead(1000))
+        if (serial.waitForReadyRead(200))
         {
             data = serial.readLine();
-            while (serial.waitForReadyRead(100))
-            {
-                data += serial.readAll();
-            }
+            //while (serial.waitForReadyRead(1))
+            //{
+                //data += serial.readAll();
+            //}
             //decode data and send into function
-            prepareData( QString::fromLocal8Bit(data) );
-            Manip.SetQ2_deg(V);
-            Manip.SetQ0_deg(H);
-            pViever->update();
-            replot(pwidgetLight, pwidgetVoltage, pwidgetCurrent, pwidgetPower);
+            if( prepareData( QString::fromLocal8Bit(data), counter ) )
+            {
+                Manip.SetQ2_deg(V);
+                Manip.SetQ0_deg(H);
+                pViever->update();
+                replot(pwidgetLight, pwidgetVoltage, pwidgetCurrent, pwidgetPower);
+            }
+            if (counter > 10)
+            {
+                serial.readAll();
+                qDebug() << "Cleaning buffer" << endl;
+                counter = 0;
+            }
         }
         else
             qDebug() << "Timeout";
@@ -183,10 +195,11 @@ char SerialThread::CRC8(const char *data,int len)
    return crc;
 }
 
-void SerialThread::prepareData(const QString &response)
+bool SerialThread::prepareData(const QString &response, int &counter)
 {
     using namespace std;
     //prefer std string :)
+    qDebug() << "Received data: "<< response << " ";
     string text = response.toStdString();
     //CRC number is 3 chars after "CRC"
     size_t crcPosition = text.find("CRC") + 3;
@@ -196,19 +209,35 @@ void SerialThread::prepareData(const QString &response)
         if(crcPosition != string::npos)
             crc = stoi( text.substr(crcPosition) );
         else
+        {
             qDebug() << "Error crc stoi" << endl;
+            counter++;
+            return false;
+        }
 
         //Removing CRC and \r\n for calculations
         size_t dataEndPosition = text.find_last_of(' ');
         if(dataEndPosition != string::npos)
             text = text.substr(0, dataEndPosition);
         else
+        {
             qDebug() << "Error data end position" << endl;
+            counter++;
+            return false;
+        }
         //qDebug() << QString::fromStdString(text )<< endl;
     }
     catch(std::out_of_range)
     {
         qDebug() << "Catched out of range" << endl;
+        counter++;
+        return false;
+    }
+    catch(std::invalid_argument)
+    {
+        qDebug() << "Catched invalid arg in CRC" << endl;
+        counter++;
+        return false;
     }
 
     //Cast values
@@ -219,53 +248,90 @@ void SerialThread::prepareData(const QString &response)
         if(hPosition != string::npos)
             H = stoi( text.substr(hPosition) );
         else
+        {
             qDebug() << "Error hPosition" << endl;
+            counter++;
+            return false;
+        }
 
         vPosition = text.find('V') + 1;
         if(vPosition != string::npos)
-            V = stoi( text.substr(vPosition) );
+        {
+            V = (stoi( text.substr(vPosition) ) );
+        }
         else
+        {
             qDebug() << "Error vPosition" << endl;
+            counter++;
+            return false;
+        }
 
         lPosition = text.find('L') + 1;
         if(lPosition != string::npos)
             L = stoi( text.substr(vPosition) );
         else
+        {
             qDebug() << "Error lPosition" << endl;
+            counter++;
+            return false;
+        }
 
         uPosition = text.find('U') + 1;
         if(uPosition != string::npos)
             U = stoi( text.substr(uPosition) );
         else
+        {
             qDebug() << "Error uPosition" << endl;
+            counter++;
+            return false;
+        }
 
         iPosition = text.find('I') + 1;
         if(iPosition != string::npos)
             I = stoi( text.substr(iPosition) );
         else
+        {
             qDebug() << "Error iPosition" << endl;
+            counter++;
+            return false;
+        }
 
         pPosition = text.find('P') + 1;
         if(pPosition != string::npos)
             P = stoi( text.substr(pPosition) );
         else
+        {
             qDebug() << "Error pPosition" << endl;
+            counter++;
+            return false;
+        }
 
         //Calculating here because in if sometimes is problem
         uint8_t crcCalculated = CRC8(text.c_str(), text.length());
         if(crc == crcCalculated)
-            qDebug() << "H" << H << "V" << V
-                     << "U" << U << "L" << L << "I" << I << "P" << P
+            qDebug() << "Splited data: "<< "H" << H << "V" << V
+                     << "L" << L << "U" << U << "I" << I << "P" << P
                      << "Checksum correct:" << hex << crc << endl;
         else
+        {
             qDebug() << "Checksum error" << endl;
+            counter++;
+            return false;
+        }
     }
     catch(std::invalid_argument)
     {
         qDebug() << "Invalid value from serial to casting by stoi" << endl;
+        counter++;
+        return false;
     }
     catch(std::out_of_range)
     {
         qDebug() << "Catched out of range" << endl;
+        counter++;
+        return false;
     }
+    counter = 0;
+    return true;
 }
+

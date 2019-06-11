@@ -91,7 +91,7 @@ void MainWindow::makeVoltagePlot()
     ui->widgetVoltage->xAxis->setTicker(timeTicker);
     ui->widgetVoltage->axisRect()->setupFullAxesBox();
     ui->widgetVoltage->yAxis->setRange(0, 1.2);
-    ui->widgetVoltage->yAxis->setLabel("U [V]");
+    ui->widgetVoltage->yAxis->setLabel("U [mV]");
     ui->widgetVoltage->xAxis->setLabel("Time [mm:ss]");
 }
 
