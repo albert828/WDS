@@ -1,0 +1,5 @@
+<map id="mapf" name="mapf">
+<area shape="rect" id="node1" title=" " alt="" coords="397,5,448,32"/>
+<area shape="rect" id="node2" href="$class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132" title="prepareData function is used for decoding data from serial port" alt="" coords="175,5,349,32"/>
+<area shape="rect" id="node3" href="$class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class&#45;&#45;&#45;&#45;— &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;— dopisać..." alt="" coords="5,5,127,32"/>
+</map>
