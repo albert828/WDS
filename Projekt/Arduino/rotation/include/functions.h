@@ -30,9 +30,15 @@ inline void Read()
   pos = FindMax();
 }
 
+inline void ReadBH()
+{
+  L = LightSensor.readLightLevel();
+}
+
 Thread tRead(Read, READTIME); 
 Thread tSetStepperPosition(SetStepperPosition, STEPTIME);
 Thread tSetServoPosition(SetServoPosition, SERVOTIME);
 Thread tSendData(SendData, PRINTTIME);
+Thread tReadBH(ReadBH, BHTIME);
 
 #endif

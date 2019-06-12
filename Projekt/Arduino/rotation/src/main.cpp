@@ -1,6 +1,7 @@
 #include <limits.h>
 #include "functions.h"
 #include <StaticThreadController.h>
+#include <Wire.h>
 
 void setup()
 {
@@ -11,10 +12,12 @@ void setup()
   Serial.begin(9600,SERIAL_8E1);
   serwo.attach(SERVOPIN);
   serwo.write(sposition);
+  Wire.setClock(400000);
+  LightSensor.begin();
   delay(500);
 }
 
-StaticThreadController<4> tControler(&tRead, &tSendData, &tSetServoPosition, &tSetStepperPosition);
+StaticThreadController<5> tControler(&tRead, &tSendData, &tSetServoPosition, &tSetStepperPosition, &tReadBH);
 
 
 
