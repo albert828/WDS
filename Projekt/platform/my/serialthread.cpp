@@ -6,13 +6,13 @@
 #include <cassert>
 #include "mainwindow.h"
 #include "globals.h"
-#include <tuple>
 
-
-#define SERIAL_WHILE 1
-
-
-int mapf(int x, int in_min, int in_max, int out_min, int out_max) {
+/**
+ * @brief mapf function is used to change the range of vertical rotation values
+ * 
+ */
+int mapf(int x, int in_min, int in_max, int out_min, int out_max) 
+{
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
@@ -26,7 +26,6 @@ SerialThread::~SerialThread()
 {
     if(serial.isOpen())
         serial.close();
-    flag = false;
     quit();
     qDebug("Closing serial from destructor");
 }
@@ -41,14 +40,12 @@ void SerialThread::startSerial(QWidget *pV,  QCustomPlot *pwidgetL,  QCustomPlot
     pwidgetVoltage = pwidgetV;
     if (!isRunning())
         start();
-    flag = true;
 }
 
 void SerialThread::stopSerial()
 {
     if (serial.isOpen())
         serial.close();
-    flag = false;
     qDebug("Closing serial");
 }
 

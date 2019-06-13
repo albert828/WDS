@@ -6,13 +6,13 @@
 /**
  * @brief Keeps Serial Port name
  *
- * Used in settings. Allows user to make choice which port wants to use
+ * Used in settings. Contains the name of the serial port that the user chose
  */
 extern QString PortName;
 /**
  * @brief Contains value of the Baud Rate
  * 
- * Used in settings. Allows user to make choice which speed want to use
+ * Used in settings. Contains the baud rate of the serial port that the user chose
  */
 extern uint32_t BaudRate;
 

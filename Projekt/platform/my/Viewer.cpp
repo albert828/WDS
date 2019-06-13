@@ -5,50 +5,62 @@
 #include <qdebug.h>
 
 using namespace std;
-static GLuint TextureBackground, TextureSolar;
 
+/**
+ * @brief Contains a background texture
+ * 
+ */
+static GLuint TextureBackground;
+/**
+ * @brief Contains a solar panel texture
+ * 
+ */
+static GLuint TextureSolar;
+
+/**
+ * @brief Creates a cuboid in one color
+
+ * @param [in] Size_X - size in x axis
+ * @param [in] Size_Y - size in y axis
+ * @param [in] Size_Z - size in z axis
+ */
 void GLCreateBox( double Size_X,  double Size_Y,  double Size_Z )
 {
     glPushMatrix();
     glScalef( static_cast<GLfloat>(Size_X), static_cast<GLfloat>(Size_Y), static_cast<GLfloat>(Size_Z) );
     glBegin(GL_POLYGON);
-    //glColor3f(   1.0,  1.0, 1.0 );
     glTexCoord2f(0.0, 0.0); glVertex3f(  0.5, -0.5, 0.5 );
     glTexCoord2f(0.0, 1.0); glVertex3f(  0.5,  0.5, 0.5 );
     glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, 0.5 );
     glTexCoord2f(1.0, 0.0); glVertex3f( -0.5, -0.5, 0.5 );
     glEnd();
 
-    // Purple side - RIGHT
+    //RIGHT
     glBegin(GL_POLYGON);
-    // glColor3f(  1.0,  0.0,  1.0 );
     glTexCoord2f(0.0, 0.0); glVertex3f( 0.5, -0.5, -0.5 );
     glTexCoord2f(0.0, 1.0); glVertex3f( 0.5,  0.5, -0.5 );
     glTexCoord2f(1.0, 1.0); glVertex3f( 0.5,  0.5,  0.5 );
     glTexCoord2f(1.0, 0.0); glVertex3f( 0.5, -0.5,  0.5 );
     glEnd();
 
-    // Green side - LEFT
+    //LEFT
     glBegin(GL_POLYGON);
-    // glColor3f(   0.0,  1.0,  0.0 );
     glTexCoord2f(0.0, 0.0); glVertex3f( -0.5, -0.5,  0.5 );
     glTexCoord2f(0.0, 1.0); glVertex3f( -0.5,  0.5,  0.5 );
     glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, -0.5 );
     glTexCoord2f(1.0, 0.0); glVertex3f( -0.5, -0.5, -0.5 );
     glEnd();
 
-    // Blue side - TOP
+    //TOP
     glBegin(GL_POLYGON);
-    // glColor3f(   0.0,  0.0,  1.0 );
     glTexCoord2f(0.0, 0.0); glVertex3f(  0.5,  0.5,  0.5 );
     glTexCoord2f(0.0, 1.0); glVertex3f(  0.5,  0.5, -0.5 );
     glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, -0.5 );
     glTexCoord2f(1.0, 0.0); glVertex3f( -0.5,  0.5,  0.5 );
     glEnd();
 
-    // Red side - BOTTOM
+    //BOTTOM
     glBegin(GL_POLYGON);
-    //   glColor3f(   1.0,  0.0,  0.0 );
     glTexCoord2f(0.0, 0.0); glVertex3f(  0.5, -0.5, -0.5 );
     glTexCoord2f(0.0, 1.0); glVertex3f(  0.5, -0.5,  0.5 );
     glTexCoord2f(1.0, 1.0); glVertex3f( -0.5, -0.5,  0.5 );
@@ -57,6 +69,13 @@ void GLCreateBox( double Size_X,  double Size_Y,  double Size_Z )
     glPopMatrix();
 }
 
+/**
+ * @brief Creates a cuboid with solar panel texture on the front side
+
+ * @param [in] Size_X - size in x axis
+ * @param [in] Size_Y - size in y axis
+ * @param [in] Size_Z - size in z axis
+ */
 void GLCreateTextureBox( double Size_X,  double Size_Y,  double Size_Z )
 {
     glPushMatrix();
@@ -67,7 +86,6 @@ void GLCreateTextureBox( double Size_X,  double Size_Y,  double Size_Z )
     glBindTexture(GL_TEXTURE_2D, TextureSolar);
 
     glBegin(GL_POLYGON);
-    //glColor3f(   1.0,  1.0, 1.0 );
     glTexCoord2f(0.0, 0.0); glVertex3f(  0.5, -0.5, 0.5 );
     glTexCoord2f(0.0, 1.0); glVertex3f(  0.5,  0.5, 0.5 );
     glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, 0.5 );
@@ -76,36 +94,32 @@ void GLCreateTextureBox( double Size_X,  double Size_Y,  double Size_Z )
 
     glDisable(GL_TEXTURE_2D);
 
-    // Purple side - RIGHT
+    //RIGHT
     glBegin(GL_POLYGON);
-    // glColor3f(  1.0,  0.0,  1.0 );
     glTexCoord2f(0.0, 0.0); glVertex3f( 0.5, -0.5, -0.5 );
     glTexCoord2f(0.0, 1.0); glVertex3f( 0.5,  0.5, -0.5 );
     glTexCoord2f(1.0, 1.0); glVertex3f( 0.5,  0.5,  0.5 );
     glTexCoord2f(1.0, 0.0); glVertex3f( 0.5, -0.5,  0.5 );
     glEnd();
 
-    // Green side - LEFT
+    //LEFT
     glBegin(GL_POLYGON);
-    // glColor3f(   0.0,  1.0,  0.0 );
     glTexCoord2f(0.0, 0.0); glVertex3f( -0.5, -0.5,  0.5 );
     glTexCoord2f(0.0, 1.0); glVertex3f( -0.5,  0.5,  0.5 );
     glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, -0.5 );
     glTexCoord2f(1.0, 0.0); glVertex3f( -0.5, -0.5, -0.5 );
     glEnd();
 
-    // Blue side - TOP
+    //TOP
     glBegin(GL_POLYGON);
-    // glColor3f(   0.0,  0.0,  1.0 );
     glTexCoord2f(0.0, 0.0); glVertex3f(  0.5,  0.5,  0.5 );
     glTexCoord2f(0.0, 1.0); glVertex3f(  0.5,  0.5, -0.5 );
     glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, -0.5 );
     glTexCoord2f(1.0, 0.0); glVertex3f( -0.5,  0.5,  0.5 );
     glEnd();
 
-    // Red side - BOTTOM
+    //BOTTOM
     glBegin(GL_POLYGON);
-    //   glColor3f(   1.0,  0.0,  0.0 );
     glTexCoord2f(0.0, 0.0); glVertex3f(  0.5, -0.5, -0.5 );
     glTexCoord2f(0.0, 1.0); glVertex3f(  0.5, -0.5,  0.5 );
     glTexCoord2f(1.0, 1.0); glVertex3f( -0.5, -0.5,  0.5 );
@@ -114,14 +128,11 @@ void GLCreateTextureBox( double Size_X,  double Size_Y,  double Size_Z )
     glPopMatrix();
 }
 
-// Draws a spiral
+// Draws view
 void Viewer::draw()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    /*-----------------------------------------------------
-    *  Tworzenie tła wypełnionego wygenerowaną teksturą
-    */
     glEnable(GL_TEXTURE_2D);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
     glBindTexture(GL_TEXTURE_2D, TextureBackground);
@@ -139,8 +150,8 @@ void Viewer::draw()
     glOrtho(0,1,1,0,-1,1);
 
     glColor3f(   0.0,  0.0,  1.0 );
-    glBegin(GL_QUADS);  // Tworzenie kwadratu, na którym będzie
-    glTexCoord2f(0,0); // rozpięta tekstura tła.
+    glBegin(GL_QUADS);  // Tworzenie kwadratu, na teksture tla
+    glTexCoord2f(0,0);
     glVertex2f(0,0);
 
     glTexCoord2f(1,0);
@@ -161,9 +172,7 @@ void Viewer::draw()
     glDepthMask(GL_TRUE);
 
     glDisable(GL_TEXTURE_2D);
-    /*- Koniec ---
-   *  Tworzenie tła wypełnionego
-   *------------------------------------------------------------*/
+
 
     glScalef( 1.0, 1.0, 1.0 );
 

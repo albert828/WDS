@@ -1,7 +1,6 @@
 #ifndef SERIALTHREAD_H
 #define SERIALTHREAD_H
 
-//#include <QMutex>
 #include <QThread>
 #include <QWaitCondition>
 #include <qserialport.h>
@@ -41,47 +40,49 @@ public:
      */
     void stopSerial();
 
-signals:
-    void request(const QString &s);
-    void error(const QString &s);
-    void timeout(const QString &s);
+//signals:
+    //void request(const QString &s);
+    //void error(const QString &s);
+    //void timeout(const QString &s);
 
 private:
     /**
-     * @brief Runs serial comunication thread. It's overrided from Qthread class-------
-     * ----------------------- dopisać co robi. 
+     * @brief Runs serial comunication thread. It's overrided from Qthread class.
+              Reads data from serial port and calls preapareData() method. If decoding
+              was succesful, it changes values of the rotation angles, updates OpenGl and 
+              updates plots widgets. If comunication goes wrong 10 times it clears serial port buffer. 
      */
     void run() override;
     /**
      * @brief Updates Light Widget
-     * @param pwidgetLight : pointer to Light widget
-     * @param key : x axis time value
+     * @param[in] pwidgetLight : pointer to Light widget
+     * @param[in] key : x axis time value
      */
     void replotLightWidget(QCustomPlot *pwidgetLight, double key);
     /**
      * @brief Updates Power Widget
-     * @param pwidgetPower : pointer to Power widget
-     * @param key : x axis time value
+     * @param[in] pwidgetPower : pointer to Power widget
+     * @param[in] key : x axis time value
      */
     void replotPowerWidget(QCustomPlot *pwidgetPower, double key);
     /**
      * @brief Updates Voltage Widget
-     * @param pwidgetVoltage : pointer to Voltage widget
-     * @param key : x axis time value
+     * @param[in] pwidgetVoltage : pointer to Voltage widget
+     * @param[in] key : x axis time value
      */
     void replotVoltageWidget(QCustomPlot *pwidgetVoltage, double key);
     /**
      * @brief Updates Current Widget
-     * @param pwidgetCurrent : pointer to Current widget
-     * @param key : x axis time value
+     * @param[in] pwidgetCurrent : pointer to Current widget
+     * @param[in] key : x axis time value
      */
     void replotCurrentWidget(QCustomPlot *pwidgetCurrent, double key);
     /**
      * @brief Runs all replot methods
-     * @param pwidgetLight : pointer to Light widget
-     * @param pwidgetVoltage : pointer to Voltage widget
-     * @param pwidgetCurrent : pointer to Current widget
-     * @param pwidgetPower : pointer to Power widget
+     * @param[in] pwidgetLight : pointer to Light widget
+     * @param[in] pwidgetVoltage : pointer to Voltage widget
+     * @param[in] pwidgetCurrent : pointer to Current widget
+     * @param[in] pwidgetPower : pointer to Power widget
      */
     void replot(QCustomPlot *pwidgetLight, QCustomPlot *pwidgetVoltage, QCustomPlot *pwidgetCurrent, QCustomPlot *pwidgetPower);
     /**
@@ -90,9 +91,10 @@ private:
      */
     char CRC8(const char*,int);
     /**
-     * @brief prepareData : function is used for decoding data from serial port
-     * @param response : data to prepare from serial port
-     * @param counter : numer of errors
+     * @brief prepareData : function is used for decoding data from serial port and split it into 
+            variables
+     * @param response[in] : data to prepare from serial port
+     * @param counter[in] : numer of errors
      * @return true if decoding was succesful else returns false
      */
     bool prepareData(const QString &response, int &counter);
@@ -121,8 +123,6 @@ private:
      * @brief pwidgetPower - pointer to Power plot
      */
     QCustomPlot *pwidgetPower;
-
-    bool flag = false;
 };
 
 #endif // SERIALTHREAD_H

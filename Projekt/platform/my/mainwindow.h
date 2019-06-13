@@ -18,9 +18,10 @@ class MainWindow : public QMainWindow
 
 public:
     /**
-     * @brief Construct a new Main Window object
+     * @brief Construct a new Main Window object. It disables disconnect button. Creates plots and
+        runs dialog with serial comunication options.
      * 
-     * @param parent 
+     * @param[in] parent 
      */
     explicit MainWindow(QWidget *parent = nullptr);
     /**
@@ -32,31 +33,27 @@ public:
      * @brief StartSerial Sets up Main Window widget. Disables
      * Connect and Options button and enables Disconnect button.
      * On the end calls startSerial() method for serial object.
-     * @param pViever : pointer to OpenGL viewer widget
-     * @param pLight : pointer to Light chart widget
-     * @param pVoltage : pointer to Voltage chart widget
-     * @param pCurrent : pointer to Current chart widget
-     * @param pPower : pointer to Power chart widget
+     * @param[in] pViever : pointer to OpenGL viewer widget
+     * @param[in] pLight : pointer to Light chart widget
+     * @param[in] pVoltage : pointer to Voltage chart widget
+     * @param[in] pCurrent : pointer to Current chart widget
+     * @param[in] pPower : pointer to Power chart widget
      */
     void StartSerial(QWidget *pViever, QCustomPlot *pLight, QCustomPlot *pVoltage, QCustomPlot *pCurrent, QCustomPlot *pPower);
 
 private slots:
     /**
-     * @brief Runs when Connect button clicked
-     *
-     * Runs serial comunication
+     * @brief Runs when Connect button clicked. It calls StartSerial() method.
      */
     void on_actionConnect_triggered();
     /**
-     * @brief Runs when Doscconect button clicked
-     *
-     * Closes serial comunication
+     * @brief Runs when Dosconnect button clicked. Used to close serial communication.
+     Changes button activity and calls stopSerial() method on serial object.
      */
     void on_actionDisconnect_triggered();
     /**
-     * @brief Runs when serial options button clicked
-     *
-     * Opens serial options dialog
+     * @brief Runs when serial options button clicked. Creates new dialog with 
+     serial settings
      */
     void on_actionSerial_triggered();
     /**

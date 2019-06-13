@@ -3,6 +3,10 @@
 #include <qserialport.h>
 #include <qdebug.h>
 
+int mapf(int x, int in_min, int in_max, int out_min, int out_max) {
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 SerialThread::SerialThread(QObject *parent) :
     QThread(parent)
 {
@@ -48,10 +52,10 @@ void SerialThread::run()
         if (serial.waitForReadyRead(1000))
         {
             data = serial.readLine();
-            while (serial.waitForReadyRead(100))
-            {
-                data += serial.readAll();
-            }
+            //while (serial.waitForReadyRead(10))
+            //{
+            //    data += serial.readAll();
+            //}
             //decode data and send into function
             prepareData( QString::fromLocal8Bit(data) );
         }
@@ -85,6 +89,7 @@ void SerialThread::prepareData(const QString &response)
 {
     using namespace std;
     //prefer std string :)
+    qDebug() << response << endl;
     string text = response.toStdString();
     //CRC number is 3 chars after "CRC"
     size_t crcPosition = text.find("CRC") + 3;
@@ -122,7 +127,10 @@ void SerialThread::prepareData(const QString &response)
 
         vPosition = text.find('V') + 1;
         if(vPosition != string::npos)
+        {
             V = stoi( text.substr(vPosition) );
+            V = mapf(V, 0, 180, -60, 60);
+        }
         else
             qDebug() << "Error vPosition" << endl;
 

@@ -134,12 +134,13 @@ void SendData()
 {
   I = Right_Up_Value/100;
   U = Left_Down_Value;
-  int V = map(sposition, 0, 180, -60, 60);
+  //int V = map(sposition, 0, 180, -60, 60);
   int16_t H = ( (( static_cast<int32_t>(StepCounter) * 180 ) / 1360) % 360 );
+  int16_t H1 = (H > 0) ? H : (360 + H);
   data = String("H");
-  data += String(H , DEC); //z wolframa rownanie 1367 krokow (*2 Counter) na 360 stopni
+  data += String(H1 , DEC); //z wolframa rownanie 1367 krokow (*2 Counter) na 360 stopni
   data += String(" V");
-  data += String(V, DEC);
+  data += String(sposition, DEC);
   data += String(" L");
   data += String(L, DEC);
   data += String(" U");
