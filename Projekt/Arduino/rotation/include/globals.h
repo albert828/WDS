@@ -37,7 +37,7 @@ bool state = LOW;
 
 uint8_t sposition = 90 , pos = 0;
 
-uint8_t L = 0, I = 0, U = 0, CRC = 0;
+uint16_t L = 0, I = 0, U = 0, CRC = 0;
 
 uint32_t baudRate;
 

@@ -27,6 +27,7 @@
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{units}
 
+
 \include{preambula}
 	
 \begin{document}
@@ -57,7 +58,6 @@
 		{\large \today}
 	\end{center}	
 \end{titlepage}
-
 \newpage
 \tableofcontents
 \newpage
@@ -168,7 +168,7 @@ Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platf
 				Powinna umożliwić wybranie portu do którego podłączony jest sterownik.
 			\item Lista wyboru prędkości połączenia
 				\newline
-				Powinna zawierać takie prędkości wyrażone w bodach względem których przesłanie pakietu danych będzie trwało mniej niż 1/60[s]. 
+				Powinna zawierać takie prędkości wyrażone w bodach względem których przesłanie pakietu danych będzie trwało mniej niż \unit[1/60]{s}. 
 			\item Przycisk nawiązania połączenia
 				\newline
 				Przycisk umożliwiający nawiązanie połączenia ze sterownikiem po wybraniu odpowiednich parametrów.
@@ -239,9 +239,22 @@ Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platf
 		\subsection{Zmiany w projekcie}
 		Nastąpiła zmiana środowiska programistycznego z Unity na Qt + OpenGL. To pociągnęło za sobą zmiany w harmonogramie pracy i podejście do projektu. Najpierw zostanie stworzona komunikacja między PC a sterownikiem a następnie wizualizacja 3D. Dodatkowo zmieni się format przesyłanych danych. Aktualnie przewiduję że pakiet danych będzie wyglądał następująco: 
 		\begin{center}
-			"H\footnote{rotacja horyzontalna} ... V\footnote{rotacja wertykalna} ... L\footnote{natężenie światła} ... I\footnote{Zmierzone natężenie prądu} ... CRC\footnote{32-bitowa suma kontrolna} ... $\backslash$n\footnote{znak końca pakietu danych}".
+			"H<liczba1> V<liczba2> L<liczba3> I<liczba4> CRC<liczba5>$\backslash$n".
 		\end{center}
-		Gdzie ... to poszczególne wartości. Natomiast separator to znak spacji.
+		Gdzie:
+		\begin{itemize}
+			\item H - Symbol poprzedzający wartość kąta rotacji w kierunku horyzontalnym
+			\item <liczba1> - wartość kąta rotacji w kierunku horyzontalnym wyrażona w stopniach z zakresu \newline \unit[0 - 360]{\textdegree}
+			\item V - Symbol poprzedzający wartość kąta rotacji w kierunku wertykalnym
+			\item <liczba2> - wartość kąta rotacji w kierunku wertykalnym wyrażona w stopniach z zakresu 0 - \unit[180]{\textdegree}
+			\item L - Symbol poprzedzający wartość natężenia światła
+			\item <liczba3> - wartość natężenia światła wyrażona w luksach z zakresu 1 - \unit[65535]{lux}
+			\item I - Symbol poprzedzający wartość przepływu prądu
+			\item <liczba4> - wartość przepływu prądu wyrażona w miliamperach z zakresu 0 - \unit[65535]{mA}
+			\item CRC - Ciąg znaków poprzedzający wartość 8-bitowej sumy kontrolnej
+			\item <liczba5> - wartość sumy kontrolnej z zakresu 0 - 255
+			\item $\backslash$n - symbol końca pakietu danych
+		\end{itemize}
 		
 		\subsection{Zrealizowane zadania}
 			\begin{enumerate}
@@ -271,9 +284,27 @@ Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platf
 	\subsection{Komunikacja}
 	Zmianie uległ format danych. Zostały dodane dodatkowe pola. Oraz liczona jest suma kontrolna 8-bitowa. Nazwa sumy: CRC-8-Dallas/Maxim, Wielomian: 0x8C.
 		\begin{center}
-			"H\footnote{rotacja horyzontalna}... V\footnote{rotacja wertykalna}... L\footnote{natężenie światła}... U\footnote{Napięcie}... I\footnote{Prąd}... P\footnote{Moc}... CRC\footnote{8-bitowa suma kontrolna}... $\backslash$r$\backslash$n\footnote{znak końca pakietu danych}".
+			"H<liczba1> V<liczba2> L<liczba3> U<liczba4> I<liczba5> P<liczba6> CRC<liczba7> $\backslash$n"
 		\end{center}
-	Przykładowe wyniki:
+	Gdzie:
+		\begin{itemize}
+			\item H - Symbol poprzedzający wartość kąta rotacji w kierunku horyzontalnym
+			\item <liczba1> - wartość kąta rotacji w kierunku horyzontalnym wyrażona w stopniach z zakresu \newline \unit[0 - 360]{\textdegree}
+			\item V - Symbol poprzedzający wartość kąta rotacji w kierunku wertykalnym
+			\item <liczba2> - wartość kąta rotacji w kierunku wertykalnym wyrażona w stopniach z zakresu 0 - \unit[180]{\textdegree}
+			\item L - Symbol poprzedzający wartość natężenia światła
+			\item <liczba3> - wartość natężenia światła wyrażona w luksach z zakresu 1 - \unit[65535]{lux}
+			\item U - Symbol poprzedzający wartość napięcia
+			\item <liczba4> - wartość napięcia wyrażona w miliwoltach z zakresu 0 - \unit[65535]{mV}
+			\item I - Symbol poprzedzający wartość przepływu prądu
+			\item <liczba5> - wartość przepływu prądu wyrażona w miliamperach z zakresu 0 - \unit[65535]{mA}
+			\item P - Symbol poprzedzający wartość mocy
+			\item <liczba6> - wartość mocy wyrażona w miliwatach z zakresu 0 - \unit[65535]{mW}
+			\item CRC - Ciąg znaków poprzedzający wartość 8-bitowej sumy kontrolnej
+			\item <liczba7> - wartość sumy kontrolnej z zakresu 0 - 255
+			\item $\backslash$n - symbol końca pakietu danych
+		\end{itemize}
+	Przykładowe wyniki(suma kontrolna wysyłana jest decymalnie w procesie wyświetlania została przekonwertowana do heksadecymalnego):
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.6\textwidth]{figures/serial_wyniki.png}
@@ -331,9 +362,8 @@ Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platf
 	
 \section{Rezultaty końcowe}
 	\subsection{Zrealizowane zadania}
-	Udało się zrealizować większość prac z wcześniej ustalonego harmonogramu. Wizualizacja platformy działa poprawnie, choć z widocznym opóźnieniem (około 0,1 - 0,5[s]). Natężenie światła mierzę z dokładnością do 4[lx]. Czujnik zezwala na pomiar z dokładnością do 0.5[lx], jednak wtedy czas pomiaru trwa 120ms i wprowadza to znaczne opóźnienia w działaniu platformy. Dodatkowo wyższa rozdzielczość pomiaru nie ma logicznego sensu bez wcześniejszej kalibracji względem profesjonalnego sprzętu. Aktualnie czas pomiaru wynosi 16 [ms]. W mikrokontrolerze zaimplementowałem quasirównoległość wykonywania zadań. Czas ponownego wykonywania najbardziej czasochłonnej operacji (komunikacji z czujnikiem natężenia światła) ustawiłem na 277[ms]. Wybrałem liczbę pierwszą tak aby jak najczęściej trafiać w czas bezczynności mikrokontrolera i zwiększyć tym samym jego płynność działania. Dane są wysyłane co 100[ms] więc poziom natężenia światła jest odświeżany (na komputerze) co trzeci cykl danych. \\
-	Dokładność pozycjonowania platformy zarówno horyzontalnie jak i wertykalnie wynosi 1 stopień kątowy[$^{\circ}$]. Dla serwomechanizmu (pozycjonowania wertykalnego) jest to limit narzucony przez wykorzystywane API. Natomiast dla silnika krokowego (pozycjonowania horyzontalnego) istnieje możliwość rozszerzenia dokładności do $\frac{360 * 2}{2734} \approx 0.26[^{\circ}]$.
-	\unit[5]{m}
+	Udało się zrealizować większość prac z wcześniej ustalonego harmonogramu. Wizualizacja platformy działa poprawnie, choć z widocznym opóźnieniem (około 0,1 - \unit[0.5]{s}). Natężenie światła mierzę z dokładnością do \unit[4]{lx}. Czujnik zezwala na pomiar z dokładnością do \unit[0.5]{lx}, jednak wtedy czas pomiaru trwa \unit[120]{ms} i wprowadza to znaczne opóźnienia w działaniu platformy. Dodatkowo wyższa rozdzielczość pomiaru nie ma logicznego sensu bez wcześniejszej kalibracji względem profesjonalnego sprzętu. Aktualnie czas pomiaru wynosi \unit[16]{ms}. W mikrokontrolerze zaimplementowałem quasirównoległość wykonywania zadań. Czas ponownego wykonywania najbardziej czasochłonnej operacji (komunikacji z czujnikiem natężenia światła) ustawiłem na \unit[277]{ms}. Wybrałem liczbę pierwszą tak aby jak najczęściej trafiać w czas bezczynności mikrokontrolera i zwiększyć tym samym jego płynność działania. Dane są wysyłane co \unit[100]{ms} więc poziom natężenia światła jest odświeżany (na komputerze) co trzeci cykl danych. \\
+	Dokładność pozycjonowania platformy zarówno horyzontalnie jak i wertykalnie wynosi \unit[1]{$^{\circ}$} (stopień kątowy). Dla serwomechanizmu (pozycjonowania wertykalnego) jest to limit narzucony przez wykorzystywane API. Natomiast dla silnika krokowego (pozycjonowania horyzontalnego) istnieje możliwość rozszerzenia dokładności do $\frac{360 * 2}{2734} \approx \unit[0.26]{^{\circ}}$.
 \end{document}
 
 

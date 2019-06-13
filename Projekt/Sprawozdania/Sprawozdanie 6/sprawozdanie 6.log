@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.6.4)  12 JUN 2019 22:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.6.4)  13 JUN 2019 22:05
 entering extended mode
 **"./sprawozdanie 6.tex"
 ("sprawozdanie 6.tex"
@@ -97,6 +97,18 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 
 (E:\Programy\Miktex\tex/latex/graphics\dvipsnam.def
 File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+))
+(E:\Programy\Miktex\tex/latex/units\units.sty
+Package: units 1998/08/04 v0.9b Typesetting units
+
+(E:\Programy\Miktex\tex/latex/base\ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(E:\Programy\Miktex\tex/latex/units\nicefrac.sty
+Package: nicefrac 1998/08/04 v0.9b Nice fractions
+\L@UnitsRaiseDisplaystyle=\skip43
+\L@UnitsRaiseTextstyle=\skip44
+\L@UnitsRaiseScriptstyle=\skip45
 ))
 \@input{preambula.aux}
 \openout2 = `preambula.aux'.
@@ -228,7 +240,7 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip43
+\Hy@SectionHShift=\skip46
 )
 (E:\Programy\Miktex\tex/latex/geometry\geometry.sty
 Package: geometry 2018/04/16 v5.8 Page Geometry
@@ -330,25 +342,21 @@ Package grfext Info: Graphics extension search list:
 )
 (E:\Programy\Miktex\tex/latex/graphics\rotating.sty
 Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
-
-(E:\Programy\Miktex\tex/latex/base\ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
 \c@r@tfl@t=\count103
-\rotFPtop=\skip44
-\rotFPbot=\skip45
+\rotFPtop=\skip47
+\rotFPbot=\skip48
 \rot@float@box=\box27
 \rot@mess@toks=\toks19
 )
 ("C:\Users\Papa Smerf\AppData\Roaming\MiKTeX\2.9\tex/latex/subfigure\subfigure.
 sty"
 Package: subfigure 2002/07/30 v2.1.4 subfigure package
-\subfigtopskip=\skip46
-\subfigcapskip=\skip47
+\subfigtopskip=\skip49
+\subfigcapskip=\skip50
 \subfigcaptopadj=\dimen122
-\subfigbottomskip=\skip48
+\subfigbottomskip=\skip51
 \subfigcapmargin=\dimen123
-\subfiglabelskip=\skip49
+\subfiglabelskip=\skip52
 \c@subfigure=\count104
 \c@lofdepth=\count105
 \c@subtable=\count106
@@ -360,8 +368,8 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 
 ("C:\Users\Papa Smerf\AppData\Roaming\MiKTeX\2.9\tex/latex/subfigure\subfigure.
 cfg")
-\subfig@top=\skip50
-\subfig@bottom=\skip51
+\subfig@top=\skip53
+\subfig@bottom=\skip54
 ) ("C:\Users\Papa Smerf\AppData\Roaming\MiKTeX\2.9\tex/latex/eepic\epic.sty"
 Enhancements to Picture Environment. Version 1.2 - Released June 1, 1986
 \@@multicnt=\count108
@@ -395,7 +403,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )
 (E:\Programy\Miktex\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2018/12/01 v2.17b AMS math features
-\@mathmargin=\skip52
+\@mathmargin=\skip55
 
 For additional information on amsmath, use the `?' option.
 (E:\Programy\Miktex\tex/latex/amsmath\amstext.sty
@@ -445,8 +453,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 \totwidth@=\dimen137
 \lineht@=\dimen138
 \@envbody=\toks24
-\multlinegap=\skip53
-\multlinetaggap=\skip54
+\multlinegap=\skip56
+\multlinetaggap=\skip57
 \mathdisplay@stack=\toks25
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
@@ -505,12 +513,12 @@ Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Bcount=\count142
 \calc@Adimen=\dimen139
 \calc@Bdimen=\dimen140
-\calc@Askip=\skip55
-\calc@Bskip=\skip56
+\calc@Askip=\skip58
+\calc@Bskip=\skip59
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count143
-\calc@Cskip=\skip57
+\calc@Cskip=\skip60
 )
 ("C:\Users\Papa Smerf\AppData\Roaming\MiKTeX\2.9\tex/latex/leftidx\leftidx.sty"
 Package: leftidx 2003/09/24 v1.03 Left indices
@@ -520,9 +528,9 @@ bular.sty"
 Package: supertabular 2004/02/20 v4.1e the supertabular environment
 \c@tracingst=\count144
 \ST@wd=\dimen141
-\ST@rightskip=\skip58
-\ST@leftskip=\skip59
-\ST@parfillskip=\skip60
+\ST@rightskip=\skip61
+\ST@leftskip=\skip62
+\ST@parfillskip=\skip63
 \ST@pageleft=\dimen142
 \ST@headht=\dimen143
 \ST@tailht=\dimen144
@@ -540,8 +548,8 @@ Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
 \ar@mcellbox=\box32
 \extrarowheight=\dimen153
 \NC@list=\toks26
-\extratabsurround=\skip61
-\backup@length=\skip62
+\extratabsurround=\skip64
+\backup@length=\skip65
 \ar@cellbox=\box33
 )
 (E:\Programy\Miktex\tex/latex/tools\tabularx.sty
@@ -559,10 +567,10 @@ Package: hhline 2014/10/28 v2.03 Table rule package (DPC)
 )
 (E:\Programy\Miktex\tex/latex/tools\longtable.sty
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)+ FMi change
-\LTleft=\skip63
-\LTright=\skip64
-\LTpre=\skip65
-\LTpost=\skip66
+\LTleft=\skip66
+\LTright=\skip67
+\LTpre=\skip68
+\LTpost=\skip69
 \LTchunksize=\count146
 \LTcapwidth=\dimen159
 \LT@head=\box34
@@ -589,8 +597,8 @@ Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
 \page@free=\dimen162
 \premulticols=\dimen163
 \postmulticols=\dimen164
-\multicolsep=\skip67
-\multicolbaselineskip=\skip68
+\multicolsep=\skip70
+\multicolbaselineskip=\skip71
 \partial@page=\box39
 \last@line=\box40
 \maxbalancingoverflow=\dimen165
@@ -843,31 +851,31 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 ) ("sprawozdanie 6.aux")
 \openout1 = `"sprawozdanie 6.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 33.
 
 (E:\Programy\Miktex\tex/latex/base\ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    ... okay on input line 33.
 
 ("C:\Users\Papa Smerf\AppData\Roaming\MiKTeX\2.9\tex/context/base/mkii\supp-pdf
 .mkii"
@@ -885,7 +893,7 @@ LaTeX Font Info:    ... okay on input line 31.
 \everyMPtoPDFconversion=\toks35
 )
 \AtBeginShipoutBox=\box69
-Package hyperref Info: Link coloring ON on input line 31.
+Package hyperref Info: Link coloring ON on input line 33.
  (E:\Programy\Miktex\tex/latex/hyperref\nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -894,9 +902,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count177
 )
-LaTeX Info: Redefining \ref on input line 31.
-LaTeX Info: Redefining \pageref on input line 31.
-LaTeX Info: Redefining \nameref on input line 31.
+LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \pageref on input line 33.
+LaTeX Info: Redefining \nameref on input line 33.
 
 ("sprawozdanie 6.out") ("sprawozdanie 6.out")
 \@outlinefile=\write4
@@ -984,45 +992,45 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.62 \newpage
+l.63 \newpage
               [1]
-Underfull \hbox (badness 10000) in paragraph at lines 67--70
+Underfull \hbox (badness 10000) in paragraph at lines 68--71
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--70
+Underfull \hbox (badness 10000) in paragraph at lines 68--71
 
  []
 
 <figures/diag_uml.png, id=136, 583.17876pt x 221.82875pt>
 File: figures/diag_uml.png Graphic file (type png)
 <use figures/diag_uml.png>
-Package pdftex.def Info: figures/diag_uml.png  used on input line 73.
+Package pdftex.def Info: figures/diag_uml.png  used on input line 74.
 (pdftex.def)             Requested size: 455.24411pt x 173.17125pt.
 [2pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.103 \newpage
+l.104 \newpage
                <./figures/diag_uml.png>]
 <figures/harm1.png, id=150, 1209.76968pt x 424.58624pt>
 File: figures/harm1.png Graphic file (type png)
 <use figures/harm1.png>
-Package pdftex.def Info: figures/harm1.png  used on input line 157.
+Package pdftex.def Info: figures/harm1.png  used on input line 158.
 (pdftex.def)             Requested size: 637.33897pt x 223.68207pt.
  [3] [4pdfTeX warning (ext4): destination with the same identifier (name{figure
 .2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.168 			\item L
+l.169 			\item L
                 ista wyboru prędkości połączenia <./figures/harm1.png>]
 <figures/paint.png, id=172, 1445.4pt x 813.0375pt>
 File: figures/paint.png Graphic file (type png)
 <use figures/paint.png>
-Package pdftex.def Info: figures/paint.png  used on input line 197.
+Package pdftex.def Info: figures/paint.png  used on input line 198.
 (pdftex.def)             Requested size: 455.24411pt x 256.07095pt.
 
 [5pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
@@ -1030,139 +1038,124 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.201 			\newpage
+l.202 			\newpage
                   <./figures/paint.png>] [6]
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 241.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 241.
-<figures/opcje.png, id=207, 148.1535pt x 136.1085pt>
+<figures/opcje.png, id=201, 148.1535pt x 136.1085pt>
 File: figures/opcje.png Graphic file (type png)
 <use figures/opcje.png>
-Package pdftex.def Info: figures/opcje.png  used on input line 251.
+Package pdftex.def Info: figures/opcje.png  used on input line 265.
 (pdftex.def)             Requested size: 136.57462pt x 125.48093pt.
-<figures/okno_glowne.png, id=208, 252.34274pt x 213.1965pt>
+<figures/okno_glowne.png, id=202, 252.34274pt x 213.1965pt>
 File: figures/okno_glowne.png Graphic file (type png)
 <use figures/okno_glowne.png>
-Package pdftex.def Info: figures/okno_glowne.png  used on input line 260.
+Package pdftex.def Info: figures/okno_glowne.png  used on input line 274.
 (pdftex.def)             Requested size: 182.09486pt x 153.85269pt.
  [7pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.267 			\end{enumerate}
-                        pdfTeX warning (ext4): destination with the same identi
-fier (name{figure.5}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.267 			\end{enumerate}
-                         <./figures/opcje.png> <./figures/okno_glowne.png>]
-<figures/serial_wyniki.png, id=236, 340.8735pt x 125.87025pt>
+l.278 			
+          <./figures/opcje.png>]
+<figures/serial_wyniki.png, id=212, 340.8735pt x 125.87025pt>
 File: figures/serial_wyniki.png Graphic file (type png)
 <use figures/serial_wyniki.png>
-Package pdftex.def Info: figures/serial_wyniki.png  used on input line 278.
+Package pdftex.def Info: figures/serial_wyniki.png  used on input line 310.
 (pdftex.def)             Requested size: 273.14923pt x 100.86919pt.
-<figures/okno_glowne1.png, id=237, 1155.1155pt x 549.252pt>
+ [8pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.314 	
+        <./figures/okno_glowne.png>]
+<figures/okno_glowne1.png, id=220, 1155.1155pt x 549.252pt>
 File: figures/okno_glowne1.png Graphic file (type png)
 <use figures/okno_glowne1.png>
-Package pdftex.def Info: figures/okno_glowne1.png  used on input line 288.
+Package pdftex.def Info: figures/okno_glowne1.png  used on input line 320.
 (pdftex.def)             Requested size: 446.13727pt x 212.13733pt.
-
-[8pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) 
-has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.293 					
-           pdfTeX warning (ext4): destination with the same identifier (name{fi
-gure.7}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.293 					
-            <./figures/serial_wyniki.png> <./figures/okno_glowne1.png>]
-<figures/wykresy.png, id=256, 560.0925pt x 461.3235pt>
+<figures/wykresy.png, id=221, 560.0925pt x 461.3235pt>
 File: figures/wykresy.png Graphic file (type png)
 <use figures/wykresy.png>
-Package pdftex.def Info: figures/wykresy.png  used on input line 297.
+Package pdftex.def Info: figures/wykresy.png  used on input line 329.
 (pdftex.def)             Requested size: 455.24411pt x 374.97928pt.
-
-[9pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) 
-has been already used, duplicate ignored
+ [9pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.302 			\newpage
+l.333 			D
+          o rysowania wykresów używam biblioteki zewnętrznej QCustomPlot....
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
+s been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.333 			D
+          o rysowania wykresów używam biblioteki zewnętrznej QCustomPlot....
+ <./figures/serial_wyniki.png> <./figures/okno_glowne1.png>] [10pdfTeX warning 
+(ext4): destination with the same identifier (name{figure.8}) has been already 
+used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.334 			\newpage
                   <./figures/wykresy.png>]
-<figures/wizualizacja.png, id=265, 575.751pt x 481.8pt>
+<figures/wizualizacja.png, id=239, 575.751pt x 481.8pt>
 File: figures/wizualizacja.png Graphic file (type png)
 <use figures/wizualizacja.png>
-Package pdftex.def Info: figures/wizualizacja.png  used on input line 306.
+Package pdftex.def Info: figures/wizualizacja.png  used on input line 338.
 (pdftex.def)             Requested size: 455.24411pt x 380.9707pt.
- [10pdfTeX warning (ext4): destination with the same identifier (name{figure.9}
+ [11pdfTeX warning (ext4): destination with the same identifier (name{figure.9}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.330 	
+l.362 	
         <./figures/wizualizacja.png>]
-! Undefined control sequence.
-l.335 	\unit
-            [5]{m}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 336.
-[11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 336.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 367.
+ [12]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 367.
  ("sprawozdanie 6.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 336.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 336.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 367.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 367.
 Package rerunfilecheck Info: File `"sprawozdanie 6".out' has not changed.
 (rerunfilecheck)             Checksum: C9D9F2588143CB8A9B18048D6119D0FC;3514.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 336.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 367.
  ) 
 Here is how much of TeX's memory you used:
  14627 strings out of 493801
- 200104 string characters out of 3158050
- 503996 words of memory out of 3000000
- 18047 multiletter control sequences out of 15000+200000
- 23881 words of font info for 57 fonts, out of 3000000 for 9000
+ 200337 string characters out of 3158050
+ 505833 words of memory out of 3000000
+ 18062 multiletter control sequences out of 15000+200000
+ 18447 words of font info for 44 fonts, out of 3000000 for 9000
  625 hyphenation exceptions out of 8191
- 33i,8n,51p,1086b,441s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,8n,51p,1143b,441s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plmi.enc}{
 C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plrm.enc}{C:/
 Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plms.enc} <C:\Us
 ers\Papa Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk> <C:\Users\Papa Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
-/ec/dpi600\ecrm0800.pk> <C:\Users\Papa Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/
-ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\Papa Smerf\AppData\Local\MiKTe
-X\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Papa Smerf\AppD
-ata\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\
-Papa Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000
+/ec/dpi600\ecbx1200.pk> <C:\Users\Papa Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/
+ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Papa Smerf\AppData\Local\MiKTe
+X\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Papa Smerf\AppD
+ata\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\
+Papa Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200
 .pk> <C:\Users\Papa Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/
-dpi600\ecbx1000.pk> <C:\Users\Papa Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/ljfo
-ur/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Papa Smerf\AppData\Local\MiKTeX\2.
-9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Papa Smerf\AppData\
-Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\Papa
- Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk>
- <C:\Users\Papa Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
-00\ecbx2074.pk> <C:\Users\Papa Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/j
-knappen/ec/dpi600\eccc1440.pk> <C:\Users\Papa Smerf\AppData\Local\MiKTeX\2.9\fo
-nts/pk/ljfour/jknappen/ec/dpi600\eccc1728.pk><C:/Users/Papa Smerf/AppData/Roami
-ng/MiKTeX/2.9/fonts/type1/public/pl/plmi10.pfb><C:/Users/Papa Smerf/AppData/Roa
-ming/MiKTeX/2.9/fonts/type1/public/pl/plr10.pfb><C:/Users/Papa Smerf/AppData/Ro
-aming/MiKTeX/2.9/fonts/type1/public/pl/plr7.pfb><C:/Users/Papa Smerf/AppData/Ro
-aming/MiKTeX/2.9/fonts/type1/public/pl/plsy10.pfb><C:/Users/Papa Smerf/AppData/
-Roaming/MiKTeX/2.9/fonts/type1/public/pl/plsy7.pfb>
-Output written on "sprawozdanie 6.pdf" (12 pages, 3546683 bytes).
+dpi600\eccc1200.pk> <C:\Users\Papa Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/ljfo
+ur/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Papa Smerf\AppData\Local\MiKTeX\2.
+9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\Papa Smerf\AppData\
+Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1440.pk> <C:\Users\Papa
+ Smerf\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1728.pk>
+<C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/plmi10.pf
+b><C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/plr10.p
+fb><C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/plr7.p
+fb><C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/plsy10
+.pfb><C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/plsy
+7.pfb>
+Output written on "sprawozdanie 6.pdf" (13 pages, 3525628 bytes).
 PDF statistics:
- 733 PDF objects out of 1000 (max. 8388607)
- 101 named destinations out of 1000 (max. 500000)
+ 641 PDF objects out of 1000 (max. 8388607)
+ 88 named destinations out of 1000 (max. 500000)
  230 words of extra memory for PDF output out of 10000 (max. 10000000)
 
