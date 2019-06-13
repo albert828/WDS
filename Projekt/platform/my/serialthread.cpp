@@ -9,7 +9,12 @@
 
 /**
  * @brief mapf function is used to change the range of vertical rotation values
- * 
+ * @param[in] x : maped value
+ * @param[in] in_min : minimum value of the input variable
+ * @param[in] in_max : maximum value of the input variable
+ * @param[in] out_min : minimum value of the output variable
+ * @param[in] out_max : maximum value of the output variable
+ * @return Mapped value between out_min and out_max values 
  */
 int mapf(int x, int in_min, int in_max, int out_min, int out_max) 
 {

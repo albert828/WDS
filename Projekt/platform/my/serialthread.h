@@ -7,7 +7,7 @@
 #include "qcustomplot.h"
 
 /**
- * @brief The SerialThread class. Creates serial comunnication object in separated thread.
+ * @brief The SerialThread class. Used to create serial comunnication object in separated thread.
  */
 class SerialThread : public QThread
 {
@@ -28,11 +28,11 @@ public:
     ~SerialThread() override;
     /**
      * @brief Runs serial comunication thread
-     * @param pV : pointer to OpenGL viewer widget
-     * @param pwidgetLight : pointer to Light chart widget
-     * @param pwidgetVoltage : pointer to Voltage chart widget
-     * @param pwidgetCurrent : pointer to Current chart widget
-     * @param pwidgetPower : pointer to Power chart widget
+     * @param[in] pV : pointer to OpenGL viewer widget
+     * @param[in] pwidgetLight : pointer to Light chart widget
+     * @param[in] pwidgetVoltage : pointer to Voltage chart widget
+     * @param[in] pwidgetCurrent : pointer to Current chart widget
+     * @param[in] pwidgetPower : pointer to Power chart widget
      */
     void startSerial(QWidget *pV, QCustomPlot *pwidgetLight, QCustomPlot *pwidgetVoltage, QCustomPlot *pwidgetCurrent, QCustomPlot *pwidgetPower);
     /**
@@ -78,7 +78,7 @@ private:
      */
     void replotCurrentWidget(QCustomPlot *pwidgetCurrent, double key);
     /**
-     * @brief Runs all replot methods
+     * @brief Calls all replot methods
      * @param[in] pwidgetLight : pointer to Light widget
      * @param[in] pwidgetVoltage : pointer to Voltage widget
      * @param[in] pwidgetCurrent : pointer to Current widget
@@ -87,9 +87,11 @@ private:
     void replot(QCustomPlot *pwidgetLight, QCustomPlot *pwidgetVoltage, QCustomPlot *pwidgetCurrent, QCustomPlot *pwidgetPower);
     /**
      * @brief CRC8 - function for calculating CRC8 checksum
+    *  @param[in] data : pointer to c string for which the checksum will be counted 
+    * @param[in] len : length of the c string
      * @return value of the checksum
      */
-    char CRC8(const char*,int);
+    char CRC8(const char *data, int len);
     /**
      * @brief prepareData : function is used for decoding data from serial port and split it into 
             variables

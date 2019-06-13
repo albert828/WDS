@@ -22,7 +22,7 @@ class Manipulator {
   /**
    * @brief Manipulator This is the constructor
    *
-   * It sets up horizontal and vertical rotation angle into 0
+   * It sets the horizontal and vertical values of the rotation angle to 0
    */
   Manipulator()
      { _Q0_deg = _Q2_deg = 0; }

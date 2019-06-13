@@ -18,7 +18,7 @@ class Viewer : public QGLViewer
   Viewer(QWidget *pParent = nullptr): QGLViewer(pParent) {}
  protected :
   /**
-   * @brief It's overrided from QGLViever class. Draws all OpenGL view. 
+   * @brief It's overrided from QGLViever class. Draws OpenGL view. 
    Draws background texture. Draws
     solar platform objects with textures. Changes position of objects.
    */
