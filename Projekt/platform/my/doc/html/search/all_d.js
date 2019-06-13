@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['replot',['replot',['../class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2',1,'SerialThread']]],
-  ['replotcurrentwidget',['replotCurrentWidget',['../class_serial_thread.html#a1d4229dcace27157d665ee47c3f2d10b',1,'SerialThread']]],
-  ['replotlightwidget',['replotLightWidget',['../class_serial_thread.html#a6456c07a66fa2558da229a162c495a0f',1,'SerialThread']]],
-  ['replotpowerwidget',['replotPowerWidget',['../class_serial_thread.html#acf8dfd1d106daa5c5ecc499957ba6f82',1,'SerialThread']]],
-  ['replotvoltagewidget',['replotVoltageWidget',['../class_serial_thread.html#af63bbe53f33f608bca6aa4c647693df5',1,'SerialThread']]],
-  ['request',['request',['../class_serial_thread.html#a794e9508de4f1e225453637e17b677af',1,'SerialThread']]],
-  ['run',['run',['../class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160',1,'SerialThread']]]
+  ['u',['U',['../globals_8cpp.html#aaf3731a8c483abf88c7b7b725610aba2',1,'U():&#160;globals.cpp'],['../globals_8h.html#aaf3731a8c483abf88c7b7b725610aba2',1,'U():&#160;globals.cpp']]],
+  ['ui',['Ui',['../namespace_ui.html',1,'Ui'],['../class_serial_options_dialog.html#a6d1cc40b4e4a50298142c078e9aeff1c',1,'SerialOptionsDialog::ui()']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['h',['H',['../globals_8cpp.html#af4d36c14073dea9cea5019db8b634aaf',1,'H():&#160;globals.cpp'],['../globals_8h.html#af4d36c14073dea9cea5019db8b634aaf',1,'H():&#160;globals.cpp']]]
+  ['l',['L',['../globals_8cpp.html#a84abb9e0f8af3dc02520648c072011b2',1,'L():&#160;globals.cpp'],['../globals_8h.html#a84abb9e0f8af3dc02520648c072011b2',1,'L():&#160;globals.cpp']]]
 ];

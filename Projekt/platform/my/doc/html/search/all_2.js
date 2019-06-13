@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['crc8',['CRC8',['../class_serial_thread.html#a36733331ff00c53d6d0d7bf50008cbba',1,'SerialThread']]]
+  ['crc8',['CRC8',['../class_serial_thread.html#ab88bbbbe1f98b8e0bcd42d8b3b887fa1',1,'SerialThread']]]
 ];

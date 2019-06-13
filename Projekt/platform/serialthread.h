@@ -1,7 +1,6 @@
 #ifndef SERIALTHREAD_H
 #define SERIALTHREAD_H
 
-//#include <QMutex>
 #include <QThread>
 #include <QWaitCondition>
 #include <qserialport.h>
@@ -30,11 +29,6 @@ public:
      * @brief Closes serial communication
      */
     void stopSerial();
-
-//signals:
-    //void request(const QString &s);
-    //void error(const QString &s);
-    //void timeout(const QString &s);
 
 private:
     /**

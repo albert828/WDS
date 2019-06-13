@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['replot',['replot',['../class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2',1,'SerialThread']]],
-  ['replotcurrentwidget',['replotCurrentWidget',['../class_serial_thread.html#a1d4229dcace27157d665ee47c3f2d10b',1,'SerialThread']]],
-  ['replotlightwidget',['replotLightWidget',['../class_serial_thread.html#a6456c07a66fa2558da229a162c495a0f',1,'SerialThread']]],
-  ['replotpowerwidget',['replotPowerWidget',['../class_serial_thread.html#acf8dfd1d106daa5c5ecc499957ba6f82',1,'SerialThread']]],
-  ['replotvoltagewidget',['replotVoltageWidget',['../class_serial_thread.html#af63bbe53f33f608bca6aa4c647693df5',1,'SerialThread']]],
-  ['request',['request',['../class_serial_thread.html#a794e9508de4f1e225453637e17b677af',1,'SerialThread']]],
-  ['run',['run',['../class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160',1,'SerialThread']]]
+  ['serialoptionsdialog',['SerialOptionsDialog',['../class_serial_options_dialog.html#ad48060b7bfb552c2646ca0c0e08eb815',1,'SerialOptionsDialog']]],
+  ['serialthread',['SerialThread',['../class_serial_thread.html#ae32d63ec5bc7135842cf264722d89c61',1,'SerialThread']]],
+  ['setq0_5fdeg',['SetQ0_deg',['../class_manipulator.html#a01cd549da09fa063c1e751c4e8932c42',1,'Manipulator']]],
+  ['setq2_5fdeg',['SetQ2_deg',['../class_manipulator.html#a5af745e0f86bd4ec59e445c1533def51',1,'Manipulator']]],
+  ['startserial',['startSerial',['../class_serial_thread.html#a13261e92b6b1e7d3638607b17cf28a80',1,'SerialThread']]],
+  ['stopserial',['stopSerial',['../class_serial_thread.html#a04dbd35fb8532f9dc47cf223fcf363a9',1,'SerialThread']]]
 ];

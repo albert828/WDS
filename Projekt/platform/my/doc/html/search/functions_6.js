@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['on_5fpushbutton_5fclicked',['on_pushButton_clicked',['../class_serial_options_dialog.html#a9f2ebca8e8b666437ad774159b49c81a',1,'SerialOptionsDialog']]]
+  ['preparedata',['prepareData',['../class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132',1,'SerialThread']]]
 ];

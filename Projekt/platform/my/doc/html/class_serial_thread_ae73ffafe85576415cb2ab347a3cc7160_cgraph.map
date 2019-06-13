@@ -1,11 +1,11 @@
 <map id="SerialThread::run" name="SerialThread::run">
-<area shape="rect" id="node1" title="Runs serial comunication thread. It&#39;s overrided from Qthread class&#45;&#45;&#45;&#45;— &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;— dopisać..." alt="" coords="5,125,127,152"/>
-<area shape="rect" id="node2" href="$class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132" title="prepareData function is used for decoding data from serial port" alt="" coords="175,49,349,76"/>
+<area shape="rect" id="node1" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,125,127,152"/>
+<area shape="rect" id="node2" href="$class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132" title="prepareData : function is used for decoding data from serial port and split it into variables" alt="" coords="175,49,349,76"/>
 <area shape="rect" id="node5" href="$class_manipulator.html#a5af745e0f86bd4ec59e445c1533def51" title="SetQ2_deg Sets value of the Vertical rotation angle." alt="" coords="181,100,343,127"/>
 <area shape="rect" id="node6" href="$class_manipulator.html#a01cd549da09fa063c1e751c4e8932c42" title="SetQ0_deg Sets value of the Horizontal rotation angle." alt="" coords="181,151,343,177"/>
-<area shape="rect" id="node7" href="$class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Runs all replot methods." alt="" coords="195,201,329,228"/>
-<area shape="rect" id="node3" href="$serialthread_8cpp.html#a39f85784d59a193404abb82ef88f065d" title=" " alt="" coords="461,5,512,32"/>
-<area shape="rect" id="node4" href="$class_serial_thread.html#a36733331ff00c53d6d0d7bf50008cbba" title="CRC8 &#45; function for calculating CRC8 checksum." alt="" coords="417,56,557,83"/>
+<area shape="rect" id="node7" href="$class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Calls all replot methods." alt="" coords="195,201,329,228"/>
+<area shape="rect" id="node3" href="$serialthread_8cpp.html#a39f85784d59a193404abb82ef88f065d" title="mapf function is used to change the range of vertical rotation values" alt="" coords="461,5,512,32"/>
+<area shape="rect" id="node4" href="$class_serial_thread.html#ab88bbbbe1f98b8e0bcd42d8b3b887fa1" title="CRC8 &#45; function for calculating CRC8 checksum." alt="" coords="417,56,557,83"/>
 <area shape="rect" id="node8" href="$class_serial_thread.html#a6456c07a66fa2558da229a162c495a0f" title="Updates Light Widget." alt="" coords="405,121,568,162"/>
 <area shape="rect" id="node9" href="$class_serial_thread.html#acf8dfd1d106daa5c5ecc499957ba6f82" title="Updates Power Widget." alt="" coords="401,186,573,227"/>
 <area shape="rect" id="node10" href="$class_serial_thread.html#a1d4229dcace27157d665ee47c3f2d10b" title="Updates Current Widget." alt="" coords="397,251,576,293"/>

@@ -87,7 +87,6 @@ $(document).ready(function(){initNavTree('class_serial_thread.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -97,7 +96,7 @@ $(document).ready(function(){initNavTree('class_serial_thread.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>The <a class="el" href="class_serial_thread.html" title="The SerialThread class. Creates serial comunnication object in separated thread.">SerialThread</a> class. Creates serial comunnication object in separated thread.  
+<p>The <a class="el" href="class_serial_thread.html" title="The SerialThread class. Used to create serial comunnication object in separated thread.">SerialThread</a> class. Used to create serial comunnication object in separated thread.  
  <a href="class_serial_thread.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="serialthread_8h_source.html">serialthread.h</a>&gt;</code></p>
@@ -106,7 +105,7 @@ Inheritance diagram for SerialThread:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_serial_thread__inherit__graph.png" border="0" usemap="#_serial_thread_inherit__map" alt="Inheritance graph"/></div>
 <map name="_serial_thread_inherit__map" id="_serial_thread_inherit__map">
-<area shape="rect" title="The SerialThread class. Creates serial comunnication object in separated thread." alt="" coords="5,80,100,107"/>
+<area shape="rect" title="The SerialThread class. Used to create serial comunnication object in separated thread." alt="" coords="5,80,100,107"/>
 <area shape="rect" title=" " alt="" coords="17,5,89,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -115,20 +114,11 @@ Collaboration diagram for SerialThread:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_serial_thread__coll__graph.png" border="0" usemap="#_serial_thread_coll__map" alt="Collaboration graph"/></div>
 <map name="_serial_thread_coll__map" id="_serial_thread_coll__map">
-<area shape="rect" title="The SerialThread class. Creates serial comunnication object in separated thread." alt="" coords="5,80,100,107"/>
+<area shape="rect" title="The SerialThread class. Used to create serial comunnication object in separated thread." alt="" coords="5,80,100,107"/>
 <area shape="rect" title=" " alt="" coords="17,5,89,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
-Signals</h2></td></tr>
-<tr class="memitem:a794e9508de4f1e225453637e17b677af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#a794e9508de4f1e225453637e17b677af">request</a> (const QString &amp;s)</td></tr>
-<tr class="separator:a794e9508de4f1e225453637e17b677af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab633dd0daaefcf73390ec1cfe5b41a90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#ab633dd0daaefcf73390ec1cfe5b41a90">error</a> (const QString &amp;s)</td></tr>
-<tr class="separator:ab633dd0daaefcf73390ec1cfe5b41a90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a3659c494b935215d6a47bfeaf1d866"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#a7a3659c494b935215d6a47bfeaf1d866">timeout</a> (const QString &amp;s)</td></tr>
-<tr class="separator:a7a3659c494b935215d6a47bfeaf1d866"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae32d63ec5bc7135842cf264722d89c61"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#ae32d63ec5bc7135842cf264722d89c61">SerialThread</a> (QObject *parent=nullptr)</td></tr>
@@ -147,7 +137,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ae73ffafe85576415cb2ab347a3cc7160"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160">run</a> () override</td></tr>
-<tr class="memdesc:ae73ffafe85576415cb2ab347a3cc7160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs serial comunication thread. It's overrided from Qthread class----&mdash; --------------------&mdash; dopisać co robi.  <a href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160">More...</a><br /></td></tr>
+<tr class="memdesc:ae73ffafe85576415cb2ab347a3cc7160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs serial comunication thread. It's overrided from Qthread class. Reads data from serial port and calls preapareData() method. If decoding was succesful, it changes values of the rotation angles, updates OpenGl and updates plots widgets. If comunication goes wrong 10 times it clears serial port buffer.  <a href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160">More...</a><br /></td></tr>
 <tr class="separator:ae73ffafe85576415cb2ab347a3cc7160"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6456c07a66fa2558da229a162c495a0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#a6456c07a66fa2558da229a162c495a0f">replotLightWidget</a> (QCustomPlot *<a class="el" href="class_serial_thread.html#a5416113bb965526a07dbcb3647eaddb6">pwidgetLight</a>, double key)</td></tr>
 <tr class="memdesc:a6456c07a66fa2558da229a162c495a0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates Light Widget.  <a href="class_serial_thread.html#a6456c07a66fa2558da229a162c495a0f">More...</a><br /></td></tr>
@@ -162,13 +152,13 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:a1d4229dcace27157d665ee47c3f2d10b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates Current Widget.  <a href="class_serial_thread.html#a1d4229dcace27157d665ee47c3f2d10b">More...</a><br /></td></tr>
 <tr class="separator:a1d4229dcace27157d665ee47c3f2d10b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07720f446e8abf466d6fc39892f200c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2">replot</a> (QCustomPlot *<a class="el" href="class_serial_thread.html#a5416113bb965526a07dbcb3647eaddb6">pwidgetLight</a>, QCustomPlot *<a class="el" href="class_serial_thread.html#a7be72ddc12aad76e1c62cd54d0645a8b">pwidgetVoltage</a>, QCustomPlot *<a class="el" href="class_serial_thread.html#a9ca5f57e8e2b2d8a530575e4be9ddf05">pwidgetCurrent</a>, QCustomPlot *<a class="el" href="class_serial_thread.html#add01655d420a73f7a159b622cd5d24fd">pwidgetPower</a>)</td></tr>
-<tr class="memdesc:a07720f446e8abf466d6fc39892f200c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs all replot methods.  <a href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2">More...</a><br /></td></tr>
+<tr class="memdesc:a07720f446e8abf466d6fc39892f200c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls all replot methods.  <a href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2">More...</a><br /></td></tr>
 <tr class="separator:a07720f446e8abf466d6fc39892f200c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36733331ff00c53d6d0d7bf50008cbba"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#a36733331ff00c53d6d0d7bf50008cbba">CRC8</a> (const char *, int)</td></tr>
-<tr class="memdesc:a36733331ff00c53d6d0d7bf50008cbba"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC8 - function for calculating CRC8 checksum.  <a href="class_serial_thread.html#a36733331ff00c53d6d0d7bf50008cbba">More...</a><br /></td></tr>
-<tr class="separator:a36733331ff00c53d6d0d7bf50008cbba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab88bbbbe1f98b8e0bcd42d8b3b887fa1"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#ab88bbbbe1f98b8e0bcd42d8b3b887fa1">CRC8</a> (const char *data, int len)</td></tr>
+<tr class="memdesc:ab88bbbbe1f98b8e0bcd42d8b3b887fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC8 - function for calculating CRC8 checksum.  <a href="class_serial_thread.html#ab88bbbbe1f98b8e0bcd42d8b3b887fa1">More...</a><br /></td></tr>
+<tr class="separator:ab88bbbbe1f98b8e0bcd42d8b3b887fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac28ae6be9f0082f6774ac7e96b791132"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132">prepareData</a> (const QString &amp;response, int &amp;counter)</td></tr>
-<tr class="memdesc:ac28ae6be9f0082f6774ac7e96b791132"><td class="mdescLeft">&#160;</td><td class="mdescRight">prepareData function is used for decoding data from serial port  <a href="class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132">More...</a><br /></td></tr>
+<tr class="memdesc:ac28ae6be9f0082f6774ac7e96b791132"><td class="mdescLeft">&#160;</td><td class="mdescRight">prepareData : function is used for decoding data from serial port and split it into variables  <a href="class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132">More...</a><br /></td></tr>
 <tr class="separator:ac28ae6be9f0082f6774ac7e96b791132"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -191,11 +181,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:add01655d420a73f7a159b622cd5d24fd"><td class="memItemLeft" align="right" valign="top">QCustomPlot *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#add01655d420a73f7a159b622cd5d24fd">pwidgetPower</a></td></tr>
 <tr class="memdesc:add01655d420a73f7a159b622cd5d24fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">pwidgetPower - pointer to Power plot  <a href="class_serial_thread.html#add01655d420a73f7a159b622cd5d24fd">More...</a><br /></td></tr>
 <tr class="separator:add01655d420a73f7a159b622cd5d24fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc68b999a796f40b3afecba50e35d241"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_serial_thread.html#afc68b999a796f40b3afecba50e35d241">flag</a> = false</td></tr>
-<tr class="separator:afc68b999a796f40b3afecba50e35d241"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="class_serial_thread.html" title="The SerialThread class. Creates serial comunnication object in separated thread.">SerialThread</a> class. Creates serial comunnication object in separated thread. </p>
+<div class="textblock"><p>The <a class="el" href="class_serial_thread.html" title="The SerialThread class. Used to create serial comunnication object in separated thread.">SerialThread</a> class. Used to create serial comunnication object in separated thread. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae32d63ec5bc7135842cf264722d89c61"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae32d63ec5bc7135842cf264722d89c61">&#9670;&nbsp;</a></span>SerialThread()</h2>
@@ -260,8 +248,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a36733331ff00c53d6d0d7bf50008cbba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36733331ff00c53d6d0d7bf50008cbba">&#9670;&nbsp;</a></span>CRC8()</h2>
+<a id="ab88bbbbe1f98b8e0bcd42d8b3b887fa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab88bbbbe1f98b8e0bcd42d8b3b887fa1">&#9670;&nbsp;</a></span>CRC8()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -295,43 +283,24 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>CRC8 - function for calculating CRC8 checksum. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>: pointer to c string for which the checksum will be counted </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>: length of the c string </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>value of the checksum </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_serial_thread_a36733331ff00c53d6d0d7bf50008cbba_icgraph.png" border="0" usemap="#class_serial_thread_a36733331ff00c53d6d0d7bf50008cbba_icgraph" alt=""/></div>
-<map name="class_serial_thread_a36733331ff00c53d6d0d7bf50008cbba_icgraph" id="class_serial_thread_a36733331ff00c53d6d0d7bf50008cbba_icgraph">
+<div class="center"><img src="class_serial_thread_ab88bbbbe1f98b8e0bcd42d8b3b887fa1_icgraph.png" border="0" usemap="#class_serial_thread_ab88bbbbe1f98b8e0bcd42d8b3b887fa1_icgraph" alt=""/></div>
+<map name="class_serial_thread_ab88bbbbe1f98b8e0bcd42d8b3b887fa1_icgraph" id="class_serial_thread_ab88bbbbe1f98b8e0bcd42d8b3b887fa1_icgraph">
 <area shape="rect" title="CRC8 &#45; function for calculating CRC8 checksum." alt="" coords="397,5,537,32"/>
-<area shape="rect" href="class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132" title="prepareData function is used for decoding data from serial port" alt="" coords="175,5,349,32"/>
-<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class&#45;&#45;&#45;&#45;— &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;— dopisać..." alt="" coords="5,5,127,32"/>
+<area shape="rect" href="class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132" title="prepareData : function is used for decoding data from serial port and split it into variables" alt="" coords="175,5,349,32"/>
+<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,5,127,32"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="ab633dd0daaefcf73390ec1cfe5b41a90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab633dd0daaefcf73390ec1cfe5b41a90">&#9670;&nbsp;</a></span>error</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SerialThread::error </td>
-          <td>(</td>
-          <td class="paramtype">const QString &amp;&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -369,11 +338,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>prepareData function is used for decoding data from serial port </p>
+<p>prepareData : function is used for decoding data from serial port and split it into variables </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">response</td><td>data to prepare from serial port </td></tr>
-    <tr><td class="paramname">counter</td><td>numer of errors </td></tr>
+    <tr><td class="paramname">response[in]</td><td>: data to prepare from serial port </td></tr>
+    <tr><td class="paramname">counter[in]</td><td>: numer of errors </td></tr>
   </table>
   </dd>
 </dl>
@@ -383,9 +352,9 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_serial_thread_ac28ae6be9f0082f6774ac7e96b791132_cgraph.png" border="0" usemap="#class_serial_thread_ac28ae6be9f0082f6774ac7e96b791132_cgraph" alt=""/></div>
 <map name="class_serial_thread_ac28ae6be9f0082f6774ac7e96b791132_cgraph" id="class_serial_thread_ac28ae6be9f0082f6774ac7e96b791132_cgraph">
-<area shape="rect" title="prepareData function is used for decoding data from serial port" alt="" coords="5,31,180,57"/>
-<area shape="rect" href="serialthread_8cpp.html#a39f85784d59a193404abb82ef88f065d" title=" " alt="" coords="273,5,323,32"/>
-<area shape="rect" href="class_serial_thread.html#a36733331ff00c53d6d0d7bf50008cbba" title="CRC8 &#45; function for calculating CRC8 checksum." alt="" coords="228,56,368,83"/>
+<area shape="rect" title="prepareData : function is used for decoding data from serial port and split it into variables" alt="" coords="5,31,180,57"/>
+<area shape="rect" href="serialthread_8cpp.html#a39f85784d59a193404abb82ef88f065d" title="mapf function is used to change the range of vertical rotation values" alt="" coords="273,5,323,32"/>
+<area shape="rect" href="class_serial_thread.html#ab88bbbbe1f98b8e0bcd42d8b3b887fa1" title="CRC8 &#45; function for calculating CRC8 checksum." alt="" coords="228,56,368,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -393,8 +362,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_serial_thread_ac28ae6be9f0082f6774ac7e96b791132_icgraph.png" border="0" usemap="#class_serial_thread_ac28ae6be9f0082f6774ac7e96b791132_icgraph" alt=""/></div>
 <map name="class_serial_thread_ac28ae6be9f0082f6774ac7e96b791132_icgraph" id="class_serial_thread_ac28ae6be9f0082f6774ac7e96b791132_icgraph">
-<area shape="rect" title="prepareData function is used for decoding data from serial port" alt="" coords="175,5,349,32"/>
-<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class&#45;&#45;&#45;&#45;— &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;— dopisać..." alt="" coords="5,5,127,32"/>
+<area shape="rect" title="prepareData : function is used for decoding data from serial port and split it into variables" alt="" coords="175,5,349,32"/>
+<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,5,127,32"/>
 </map>
 </div>
 
@@ -446,13 +415,13 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Runs all replot methods. </p>
+<p>Calls all replot methods. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pwidgetLight</td><td>: pointer to Light widget </td></tr>
-    <tr><td class="paramname">pwidgetVoltage</td><td>: pointer to Voltage widget </td></tr>
-    <tr><td class="paramname">pwidgetCurrent</td><td>: pointer to Current widget </td></tr>
-    <tr><td class="paramname">pwidgetPower</td><td>: pointer to Power widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetLight</td><td>: pointer to Light widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetVoltage</td><td>: pointer to Voltage widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetCurrent</td><td>: pointer to Current widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetPower</td><td>: pointer to Power widget </td></tr>
   </table>
   </dd>
 </dl>
@@ -461,7 +430,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_serial_thread_a07720f446e8abf466d6fc39892f200c2_cgraph.png" border="0" usemap="#class_serial_thread_a07720f446e8abf466d6fc39892f200c2_cgraph" alt=""/></div>
 <map name="class_serial_thread_a07720f446e8abf466d6fc39892f200c2_cgraph" id="class_serial_thread_a07720f446e8abf466d6fc39892f200c2_cgraph">
-<area shape="rect" title="Runs all replot methods." alt="" coords="5,111,140,138"/>
+<area shape="rect" title="Calls all replot methods." alt="" coords="5,111,140,138"/>
 <area shape="rect" href="class_serial_thread.html#a6456c07a66fa2558da229a162c495a0f" title="Updates Light Widget." alt="" coords="196,5,359,47"/>
 <area shape="rect" href="class_serial_thread.html#acf8dfd1d106daa5c5ecc499957ba6f82" title="Updates Power Widget." alt="" coords="191,71,363,112"/>
 <area shape="rect" href="class_serial_thread.html#a1d4229dcace27157d665ee47c3f2d10b" title="Updates Current Widget." alt="" coords="188,136,367,177"/>
@@ -473,8 +442,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_serial_thread_a07720f446e8abf466d6fc39892f200c2_icgraph.png" border="0" usemap="#class_serial_thread_a07720f446e8abf466d6fc39892f200c2_icgraph" alt=""/></div>
 <map name="class_serial_thread_a07720f446e8abf466d6fc39892f200c2_icgraph" id="class_serial_thread_a07720f446e8abf466d6fc39892f200c2_icgraph">
-<area shape="rect" title="Runs all replot methods." alt="" coords="175,5,309,32"/>
-<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class&#45;&#45;&#45;&#45;— &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;— dopisać..." alt="" coords="5,5,127,32"/>
+<area shape="rect" title="Calls all replot methods." alt="" coords="175,5,309,32"/>
+<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,5,127,32"/>
 </map>
 </div>
 
@@ -517,8 +486,8 @@ Here is the caller graph for this function:</div>
 <p>Updates Current Widget. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pwidgetCurrent</td><td>: pointer to Current widget </td></tr>
-    <tr><td class="paramname">key</td><td>: x axis time value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetCurrent</td><td>: pointer to Current widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>: x axis time value </td></tr>
   </table>
   </dd>
 </dl>
@@ -528,8 +497,8 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_serial_thread_a1d4229dcace27157d665ee47c3f2d10b_icgraph.png" border="0" usemap="#class_serial_thread_a1d4229dcace27157d665ee47c3f2d10b_icgraph" alt=""/></div>
 <map name="class_serial_thread_a1d4229dcace27157d665ee47c3f2d10b_icgraph" id="class_serial_thread_a1d4229dcace27157d665ee47c3f2d10b_icgraph">
 <area shape="rect" title="Updates Current Widget." alt="" coords="357,5,536,47"/>
-<area shape="rect" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Runs all replot methods." alt="" coords="175,13,309,39"/>
-<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class&#45;&#45;&#45;&#45;— &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;— dopisać..." alt="" coords="5,13,127,39"/>
+<area shape="rect" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Calls all replot methods." alt="" coords="175,13,309,39"/>
+<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,13,127,39"/>
 </map>
 </div>
 
@@ -572,8 +541,8 @@ Here is the caller graph for this function:</div>
 <p>Updates Light Widget. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pwidgetLight</td><td>: pointer to Light widget </td></tr>
-    <tr><td class="paramname">key</td><td>: x axis time value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetLight</td><td>: pointer to Light widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>: x axis time value </td></tr>
   </table>
   </dd>
 </dl>
@@ -583,8 +552,8 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_serial_thread_a6456c07a66fa2558da229a162c495a0f_icgraph.png" border="0" usemap="#class_serial_thread_a6456c07a66fa2558da229a162c495a0f_icgraph" alt=""/></div>
 <map name="class_serial_thread_a6456c07a66fa2558da229a162c495a0f_icgraph" id="class_serial_thread_a6456c07a66fa2558da229a162c495a0f_icgraph">
 <area shape="rect" title="Updates Light Widget." alt="" coords="357,5,520,47"/>
-<area shape="rect" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Runs all replot methods." alt="" coords="175,13,309,39"/>
-<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class&#45;&#45;&#45;&#45;— &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;— dopisać..." alt="" coords="5,13,127,39"/>
+<area shape="rect" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Calls all replot methods." alt="" coords="175,13,309,39"/>
+<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,13,127,39"/>
 </map>
 </div>
 
@@ -627,8 +596,8 @@ Here is the caller graph for this function:</div>
 <p>Updates Power Widget. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pwidgetPower</td><td>: pointer to Power widget </td></tr>
-    <tr><td class="paramname">key</td><td>: x axis time value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetPower</td><td>: pointer to Power widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>: x axis time value </td></tr>
   </table>
   </dd>
 </dl>
@@ -638,8 +607,8 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_serial_thread_acf8dfd1d106daa5c5ecc499957ba6f82_icgraph.png" border="0" usemap="#class_serial_thread_acf8dfd1d106daa5c5ecc499957ba6f82_icgraph" alt=""/></div>
 <map name="class_serial_thread_acf8dfd1d106daa5c5ecc499957ba6f82_icgraph" id="class_serial_thread_acf8dfd1d106daa5c5ecc499957ba6f82_icgraph">
 <area shape="rect" title="Updates Power Widget." alt="" coords="357,5,529,47"/>
-<area shape="rect" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Runs all replot methods." alt="" coords="175,13,309,39"/>
-<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class&#45;&#45;&#45;&#45;— &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;— dopisać..." alt="" coords="5,13,127,39"/>
+<area shape="rect" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Calls all replot methods." alt="" coords="175,13,309,39"/>
+<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,13,127,39"/>
 </map>
 </div>
 
@@ -682,8 +651,8 @@ Here is the caller graph for this function:</div>
 <p>Updates Voltage Widget. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pwidgetVoltage</td><td>: pointer to Voltage widget </td></tr>
-    <tr><td class="paramname">key</td><td>: x axis time value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetVoltage</td><td>: pointer to Voltage widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>: x axis time value </td></tr>
   </table>
   </dd>
 </dl>
@@ -693,36 +662,10 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_serial_thread_af63bbe53f33f608bca6aa4c647693df5_icgraph.png" border="0" usemap="#class_serial_thread_af63bbe53f33f608bca6aa4c647693df5_icgraph" alt=""/></div>
 <map name="class_serial_thread_af63bbe53f33f608bca6aa4c647693df5_icgraph" id="class_serial_thread_af63bbe53f33f608bca6aa4c647693df5_icgraph">
 <area shape="rect" title="Updates Voltage Widget." alt="" coords="357,5,536,47"/>
-<area shape="rect" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Runs all replot methods." alt="" coords="175,13,309,39"/>
-<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class&#45;&#45;&#45;&#45;— &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;— dopisać..." alt="" coords="5,13,127,39"/>
+<area shape="rect" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Calls all replot methods." alt="" coords="175,13,309,39"/>
+<area shape="rect" href="class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,13,127,39"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="a794e9508de4f1e225453637e17b677af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a794e9508de4f1e225453637e17b677af">&#9670;&nbsp;</a></span>request</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SerialThread::request </td>
-          <td>(</td>
-          <td class="paramtype">const QString &amp;&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -749,19 +692,19 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Runs serial comunication thread. It's overrided from Qthread class----&mdash; --------------------&mdash; dopisać co robi. </p>
+<p>Runs serial comunication thread. It's overrided from Qthread class. Reads data from serial port and calls preapareData() method. If decoding was succesful, it changes values of the rotation angles, updates OpenGl and updates plots widgets. If comunication goes wrong 10 times it clears serial port buffer. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_serial_thread_ae73ffafe85576415cb2ab347a3cc7160_cgraph.png" border="0" usemap="#class_serial_thread_ae73ffafe85576415cb2ab347a3cc7160_cgraph" alt=""/></div>
 <map name="class_serial_thread_ae73ffafe85576415cb2ab347a3cc7160_cgraph" id="class_serial_thread_ae73ffafe85576415cb2ab347a3cc7160_cgraph">
-<area shape="rect" title="Runs serial comunication thread. It&#39;s overrided from Qthread class&#45;&#45;&#45;&#45;— &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;— dopisać..." alt="" coords="5,125,127,152"/>
-<area shape="rect" href="class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132" title="prepareData function is used for decoding data from serial port" alt="" coords="175,49,349,76"/>
+<area shape="rect" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,125,127,152"/>
+<area shape="rect" href="class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132" title="prepareData : function is used for decoding data from serial port and split it into variables" alt="" coords="175,49,349,76"/>
 <area shape="rect" href="class_manipulator.html#a5af745e0f86bd4ec59e445c1533def51" title="SetQ2_deg Sets value of the Vertical rotation angle." alt="" coords="181,100,343,127"/>
 <area shape="rect" href="class_manipulator.html#a01cd549da09fa063c1e751c4e8932c42" title="SetQ0_deg Sets value of the Horizontal rotation angle." alt="" coords="181,151,343,177"/>
-<area shape="rect" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Runs all replot methods." alt="" coords="195,201,329,228"/>
-<area shape="rect" href="serialthread_8cpp.html#a39f85784d59a193404abb82ef88f065d" title=" " alt="" coords="461,5,512,32"/>
-<area shape="rect" href="class_serial_thread.html#a36733331ff00c53d6d0d7bf50008cbba" title="CRC8 &#45; function for calculating CRC8 checksum." alt="" coords="417,56,557,83"/>
+<area shape="rect" href="class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Calls all replot methods." alt="" coords="195,201,329,228"/>
+<area shape="rect" href="serialthread_8cpp.html#a39f85784d59a193404abb82ef88f065d" title="mapf function is used to change the range of vertical rotation values" alt="" coords="461,5,512,32"/>
+<area shape="rect" href="class_serial_thread.html#ab88bbbbe1f98b8e0bcd42d8b3b887fa1" title="CRC8 &#45; function for calculating CRC8 checksum." alt="" coords="417,56,557,83"/>
 <area shape="rect" href="class_serial_thread.html#a6456c07a66fa2558da229a162c495a0f" title="Updates Light Widget." alt="" coords="405,121,568,162"/>
 <area shape="rect" href="class_serial_thread.html#acf8dfd1d106daa5c5ecc499957ba6f82" title="Updates Power Widget." alt="" coords="401,186,573,227"/>
 <area shape="rect" href="class_serial_thread.html#a1d4229dcace27157d665ee47c3f2d10b" title="Updates Current Widget." alt="" coords="397,251,576,293"/>
@@ -818,11 +761,11 @@ Here is the call graph for this function:</div>
 <p>Runs serial comunication thread. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pV</td><td>: pointer to OpenGL viewer widget </td></tr>
-    <tr><td class="paramname">pwidgetLight</td><td>: pointer to Light chart widget </td></tr>
-    <tr><td class="paramname">pwidgetVoltage</td><td>: pointer to Voltage chart widget </td></tr>
-    <tr><td class="paramname">pwidgetCurrent</td><td>: pointer to Current chart widget </td></tr>
-    <tr><td class="paramname">pwidgetPower</td><td>: pointer to Power chart widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pV</td><td>: pointer to OpenGL viewer widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetLight</td><td>: pointer to Light chart widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetVoltage</td><td>: pointer to Voltage chart widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetCurrent</td><td>: pointer to Current chart widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pwidgetPower</td><td>: pointer to Power chart widget </td></tr>
   </table>
   </dd>
 </dl>
@@ -848,55 +791,7 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a7a3659c494b935215d6a47bfeaf1d866"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a3659c494b935215d6a47bfeaf1d866">&#9670;&nbsp;</a></span>timeout</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SerialThread::timeout </td>
-          <td>(</td>
-          <td class="paramtype">const QString &amp;&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="afc68b999a796f40b3afecba50e35d241"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc68b999a796f40b3afecba50e35d241">&#9670;&nbsp;</a></span>flag</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool SerialThread::flag = false</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a25ab5d7f81059e639e76c83e0838fc80"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a25ab5d7f81059e639e76c83e0838fc80">&#9670;&nbsp;</a></span>pViever</h2>
 
