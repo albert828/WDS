@@ -1,0 +1,435 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = pl_PL
+
+% $Id:$
+
+%Author: Wojciech Domski
+%Szablon do ząłożeń projektowych, raportu i dokumentacji z steorwników robotów
+%Wersja v.1.0.0
+%
+
+\newcommand{\kurs}{Wizualizacja danych sensorycznych}
+\newcommand{\formakursu}{Projekt}
+
+\newcommand{\doctype}{Za\l{}o\.{z}enia projektowe} %etap I
+
+\newcommand{\projectname}{Wizualizacja samopozycjonującej się platformy fotowoltaicznej}
+
+\newcommand{\osobaA}{Albert \textsc{Lis}, 235534}
+
+\newcommand{\termin}{Śr 17:05 }
+
+\newcommand{\prowadzacy}{dr in\.{z}. Bogdan \textsc{Kreczmer}}
+
+\documentclass[10pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{units}
+
+
+\include{preambula}
+	
+\begin{document}
+
+\def\tablename{Tabela}	%zmienienie nazwy tabel z Tablica na Tabela
+
+\begin{titlepage}
+	\begin{center}
+		\textsc{\LARGE \formakursu}\\[1cm]		
+		\textsc{\Large \kurs}\\[0.5cm]		
+		\rule{\textwidth}{0.08cm}\\[0.4cm]
+		{\huge \bfseries \doctype}\\[1cm]
+		{\huge \bfseries \projectname}\\[0.5cm]
+		\rule{\textwidth}{0.08cm}\\[1cm]
+		
+		\begin{flushright} \large
+		\osobaA\\[0.4cm]
+		
+		\emph{Termin: }\termin\\[0.4cm]
+
+		\emph{Prowadzący:} \\
+		\prowadzacy \\
+		
+		\end{flushright}
+		
+		\vfill
+		
+		{\large \today}
+	\end{center}	
+\end{titlepage}
+\newpage
+\tableofcontents
+\newpage
+
+\section{Opis projektu}
+\label{sec:OpisProjektu}
+
+Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platforma jest sterowana za pomocą mikrokontrolera i czterech czujników. Dzięki temu ma możliwość podążania za najintensywniejszym źródłem światła i pozycjonowania się w sposób umożliwiający optymalne korzystanie z energii słonecznej. Dane o pozycji platformy zostaną przesłane do komputera PC. W komputerze zostanie uruchomiona aplikacja pozwalająca pokazywać aktualną pozycję platformy.
+\newline
+\newline
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{figures/diag_uml.png}
+	\caption{Architektura systemu}
+	\label{fig:Architektura}
+\end{figure}
+
+\section{Założenia projektowe}
+
+	\subsection{Komunikacja}
+	\begin{enumerate}
+		\item Połączenie ze sterownikiem
+		\newline
+		Realizowane za pomocą modułu Wi-Fi ESP8266 i protokołu UDP/TCP lub bez łączności bezprzewodowej z użyciem portu szeregowego.
+		\item Połączenie modułu Wi-Fi z mikrokontrolerem
+		\newline
+		Realizowane za pomocą portu szeregowego.
+	\end{enumerate}
+
+	\subsection{Wizualizacja}
+	\begin{enumerate}
+		\item Środowisko
+		\newline
+		Zostanie wykorzystany silnik graficzny UNITY w darmowej wersji.
+		\item Modele
+		\newline
+		Zostaną wygenerowane za pomocą programu Blender.
+		\item Tekstury
+		\newline
+		Zostaną stworzone za pomocą programu GIMP lub pobrane z dowolnej internetowej bazy z darmowymi teksturami.
+	\end{enumerate}
+
+\newpage
+%Obecne w dokumencie do etapu I
+\section{Harmonogram pracy}
+
+	\subsection{Zakres prac}
+		\begin{enumerate}
+			\item Zapoznanie się ze środowiskiem UNITY
+			\newline
+			Stworzenie kilku prostych projektów tak aby zapoznać się ze środowiskiem i jego możliwościami.
+			
+			\item Stworzenie podstawowego modelu 3D
+			\newline
+			Stworzenie prostego modelu platformy bez dbałości o detale.
+			
+			\item Implementacja obrotów platformy za pomocą klawiatury
+			\newline
+			Stworzenie wizualizacji poruszania się modelu za pomocą strzałek na klawiaturze.
+			
+			\item Stworzenie dokładnych modeli w programie Blender
+			\newline
+			Stworzenie dokładnego odwzorowania platformy z uwzględnieniem połączeń krawędzi.
+			
+			\item Wygenerowanie tekstur
+			\newline
+			Stworzenie lub pobranie z internetu tekstur dla obiektów.
+			
+			\item Opracowanie standardu komunikacji sterownik - PC
+			\newline
+			Zastanowienie się nad sposobem przesyłania informacji oraz ich kodowaniem.
+			
+			\item Implementacja komunikacji sterownik - PC
+			\newline
+			Implementacja jednostronnej komunikacji między sterownikiem a PC.
+			
+			\item Implementacja obrotów platformy za pomocą danych ze sterownika
+			\newline
+			Modyfikacja istniejącego sterowania w taki sposób aby zwizualizowany stan platformy zgadzał się z rzeczywistym.
+			
+			\item Poprawki stylistyczne
+			\newline
+			Poprawa elementów które okazały się niedopracowane w trakcie projektu.
+		\end{enumerate}
+	
+	\subsection{Kamienie milowe}
+		\begin{enumerate}
+			\item Implementacja działającej wizualizacji w oparciu o sterowanie klawiaturą
+			\item Implementacja poprawnej komunikacji sterownik - PC
+			\item Implementacja wizualizacji w oparciu o dane ze sterownika
+		\end{enumerate}
+	
+	\subsection{Wykres Gantta}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.4\textwidth, angle = 90]{figures/harm1.png}
+		\caption{Diagram Gantta}
+		\label{fig:DiagramGantta}
+	\end{figure}
+
+\section{Projekt interfejsu graficznego}
+	\subsection{Funkcjonalność UI}
+		\begin{enumerate}
+			\item Lista wyboru nazwy portu szeregowego
+				\newline
+				Powinna umożliwić wybranie portu do którego podłączony jest sterownik.
+			\item Lista wyboru prędkości połączenia
+				\newline
+				Powinna zawierać takie prędkości wyrażone w bodach względem których przesłanie pakietu danych będzie trwało mniej niż \unit[1/60]{s}. 
+			\item Przycisk nawiązania połączenia
+				\newline
+				Przycisk umożliwiający nawiązanie połączenia ze sterownikiem po wybraniu odpowiednich parametrów.
+			\item Przycisk zakończenia połączenia
+				\newline
+				Przycisk umożliwiający zakończenie połączenia ze sterownikiem.
+			\item Przycisk zamknięcia aplikacji
+				\newline
+				Przycisk umożliwiający zamknięcie aplikacji. Powinien realizować również akcję zamykania połączenia jeśli nadal by było ono otwarte.	
+		\end{enumerate}
+	
+	\subsection{Funkcjonalność aplikacji}
+		\begin{enumerate}
+			\item Wyświetlanie aktualnej wartości natężenia światła
+				\newline	
+				Wartość natężenia światła powinna być wyświetlana nad platformą np w postaci napisu 3D.
+			\item Wyświetlanie aktualnej pozycji
+				\newline	
+				Powyżej/poniżej wartości natężenia światła powinna być wyświetlana informacja o aktualnej pozycji. Za pomocą schematu XYZ.
+		\end{enumerate}
+	
+	\subsection{Graficzna reprezentacja aplikacji}
+		\begin{enumerate}[I.]
+			\item Schemat
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1\textwidth]{figures/paint.png}
+					\caption{Wygląd aplikacji}
+					\label{fig:ArchitekturaBD1}
+				\end{figure}
+			\newpage
+			\item Szczegółowy opis UI
+				\begin{enumerate}[1]
+					\item COM
+						\newline	
+						Lista modyfikująca parametr odpowiedzialny za nazwę portu w skrypcie obsługi portu szeregowego.
+					
+					\item Baud Rate
+						\newline	
+						Lista modyfikująca parametr odpowiedzialny za prędkość transmisji w skrypcie obsługi portu szeregowego.
+					
+					\item Connect
+						\newline	
+						Przycisk wywołujący funkcję odpowiedzialną za nawiązanie połączenia w skrypcie obsługi portu szeregowego.
+						
+					\item Disconnect
+						\newline	
+						Przycisk wywołujący funkcję odpowiedzialną za zamknięcie połączenia w skrypcie obsługi portu szeregowego.
+						
+					\item Close application
+						\newline	
+						Przycisk wywołujący skrypt odpowiedzialny za zamknięcie aplikacji.
+				\end{enumerate}
+			\item Szczegółowy opis napisów interaktywnych
+			\begin{enumerate}[a)]
+				\item Value
+				\newline	
+				Napis wyświetlający bieżącą wartość natężenia światła. Połączony ze skryptem rotacji aby dostosowywał swoje położenie względem kamery.
+				
+				\item X \dots Y \dots Z \dots
+				\newline	
+				Napis wyświetlający aktualne położenie we współrzędnych kartezjańskich. Połączony ze skryptem rotacji aby dostosowywał swoje położenie względem kamery.
+			\end{enumerate}
+		\end{enumerate}
+			
+\newpage
+\section{Wstępne rezultaty}
+		\subsection{Zmiany w projekcie}
+		Nastąpiła zmiana środowiska programistycznego z Unity na Qt + OpenGL. To pociągnęło za sobą zmiany w harmonogramie pracy i podejście do projektu. Najpierw zostanie stworzona komunikacja między PC a sterownikiem a następnie wizualizacja 3D. Dodatkowo zmieni się format przesyłanych danych. Aktualnie przewiduję że pakiet danych będzie wyglądał następująco: 
+		\begin{center}
+			"H<liczba1> V<liczba2> L<liczba3> I<liczba4> CRC<liczba5>$\backslash$n".
+		\end{center}
+		Gdzie:
+		\begin{itemize}
+			\item H - Symbol poprzedzający wartość kąta rotacji w kierunku horyzontalnym
+			\item <liczba1> - wartość kąta rotacji w kierunku horyzontalnym wyrażona w stopniach z zakresu \newline \unit[0 - 360]{\textdegree}
+			\item V - Symbol poprzedzający wartość kąta rotacji w kierunku wertykalnym
+			\item <liczba2> - wartość kąta rotacji w kierunku wertykalnym wyrażona w stopniach z zakresu 0 - \unit[180]{\textdegree}
+			\item L - Symbol poprzedzający wartość natężenia światła
+			\item <liczba3> - wartość natężenia światła wyrażona w luksach z zakresu 1 - \unit[65535]{lux}
+			\item I - Symbol poprzedzający wartość przepływu prądu
+			\item <liczba4> - wartość przepływu prądu wyrażona w miliamperach z zakresu 0 - \unit[65535]{mA}
+			\item CRC - Ciąg znaków poprzedzający wartość 8-bitowej sumy kontrolnej
+			\item <liczba5> - wartość sumy kontrolnej z zakresu 0 - 255
+			\item $\backslash$n - symbol końca pakietu danych
+		\end{itemize}
+		
+		\subsection{Zrealizowane zadania}
+			\begin{enumerate}
+				\item \textbf{Graficzy interfejs użytkownika} \newline
+				Stworzyłem aplikację komunikującą się ze sterownikiem za pomocą portu szeregowego. Aplikacja po uruchomieniu prosi o podanie prędkości komunikacji w bodach oraz portu do którego został przyłączony sterownik. Domyślna prędkość to 9600 bodów. Natomiast lista portów wczytuje tylko te dostępne.
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.3\textwidth]{figures/opcje.png}
+					\caption{Okno opcji}
+					\label{fig:opcje}
+				\end{figure}
+				
+				Po zaakceptowaniu ustawień uruchamia się okno główne w którym mamy opcje Connect oraz Disconnect. Obie wzajemnie się wykluczają. Dodatkowo gdy połączenie jest aktywne wygaszona zostaje opcja zmiany ustawień połączenia.
+				
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.4\textwidth]{figures/okno_glowne.png}
+					\caption{Okno główne}
+					\label{fig:okno_glowne}
+				\end{figure}
+			
+				\item \textbf{Komunikacja} \newline
+				Komunikacja jest uruchamiana w osobnym wątku tak aby nie zakłócać pracy głównego okna. Port szeregowy został skonfigurowany z 8 bitami danych, bitem parzystości oraz bitem stopu. Aktualnie przesyłane dane wyświetlam za pomocą konsoli. Gdy suma kontrolna się nie zgadza wyświetlam komunikat o niepoprawnej ramce danych.
+			\end{enumerate}
+		
+\section{Zaawansowane rezultaty}
+	\subsection{Komunikacja}
+	Zmianie uległ format danych. Zostały dodane dodatkowe pola. Oraz liczona jest suma kontrolna 8-bitowa. Nazwa sumy: CRC-8-Dallas/Maxim, Wielomian: 0x8C.
+		\begin{center}
+			"H<liczba1> V<liczba2> L<liczba3> U<liczba4> I<liczba5> P<liczba6> CRC<liczba7> $\backslash$n"
+		\end{center}
+	Gdzie:
+		\begin{itemize}
+			\item H - Symbol poprzedzający wartość kąta rotacji w kierunku horyzontalnym
+			\item <liczba1> - wartość kąta rotacji w kierunku horyzontalnym wyrażona w stopniach z zakresu \newline \unit[0 - 360]{\textdegree}
+			\item V - Symbol poprzedzający wartość kąta rotacji w kierunku wertykalnym
+			\item <liczba2> - wartość kąta rotacji w kierunku wertykalnym wyrażona w stopniach z zakresu 0 - \unit[180]{\textdegree}
+			\item L - Symbol poprzedzający wartość natężenia światła
+			\item <liczba3> - wartość natężenia światła wyrażona w luksach z zakresu 1 - \unit[65535]{lux}
+			\item U - Symbol poprzedzający wartość napięcia
+			\item <liczba4> - wartość napięcia wyrażona w miliwoltach z zakresu 0 - \unit[65535]{mV}
+			\item I - Symbol poprzedzający wartość przepływu prądu
+			\item <liczba5> - wartość przepływu prądu wyrażona w miliamperach z zakresu 0 - \unit[65535]{mA}
+			\item P - Symbol poprzedzający wartość mocy
+			\item <liczba6> - wartość mocy wyrażona w miliwatach z zakresu 0 - \unit[65535]{mW}
+			\item CRC - Ciąg znaków poprzedzający wartość 8-bitowej sumy kontrolnej
+			\item <liczba7> - wartość sumy kontrolnej z zakresu 0 - 255
+			\item $\backslash$n - symbol końca pakietu danych
+		\end{itemize}
+	Przykładowe wyniki(suma kontrolna wysyłana jest decymalnie w procesie wyświetlania została przekonwertowana do heksadecymalnego):
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{figures/serial_wyniki.png}
+			\caption{Przykładowe wyniki}
+			\label{fig:serial_wyniki}
+		\end{figure}
+	
+	\subsection{Graficzny interfejs użytkownika}
+		\begin{enumerate}
+			\item Okno główne
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=0.98\textwidth]{figures/okno_glowne1.png}
+					\caption{Okno główne}
+					\label{fig:okno_glowne1}
+				\end{figure}
+			Po lewej znajdują się wykresy wartości pomiarowych. Natomiast po prawej stronie mamy wizualizację platformy fotowoltaicznej.
+					
+			\item Wykresy
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1.0\textwidth]{figures/wykresy.png}
+					\caption{Wykresy}
+					\label{fig:wykresy}
+				\end{figure}
+			Do rysowania wykresów używam biblioteki zewnętrznej QCustomPlot. Na osi pionowej znajdują się poszczególne wartości pomiarów. Na osi poziomej mamy czas w formacie minuty:sekundy. Wykres jest dynamiczny o stałym oknie czasowym. Na przykładowym rysunku \ref{fig:wykresy} wynosi ono 8 sekund.
+			\newpage
+			\item Wizualizacja
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=1.0\textwidth]{figures/wizualizacja.png}
+					\caption{Wizualizacja}
+					\label{fig:wizualizacja}
+				\end{figure}
+			Zaimplementowałem dwuosiową rotację. Horyzontalna (cała platforma) oraz wertykalna (tylko panel fotowoltaiczny).
+		\end{enumerate}
+\section{Rezultaty prawie końcowe}
+	\subsection{Zrealizowane zadania}
+	Ze względu na wysoki poziom zaawansowania projektu ograniczyłem się do podstawowych zadań, a dostępne zasoby, wykorzystałem do realizacji projektów równoległych. \\
+	Zrealizowane zadania:
+		\begin{enumerate}
+			\item  Stworzenie dokumentacji za pomocą generatora Doxygen.
+			\item Dopracowanie komunikacji między sterownikiem a komputerem.
+			\begin{itemize}
+				\item Obliczenie ilości półkroków silnika krokowego \\ Ilość półkroków jakie wykonuje silnik w czasie pełnego obrotu wynosi 2734.
+				\item Wykorzystanie rzeczywistych pomiarów położenia horyzontalnego i wertykalnego.
+				\item Wykorzystanie rzeczywistych pomiarów natężenia światła.
+				\item Wykorzystanie dzielnika napięciowego do pomiaru przepływu prądu oraz napięcia.
+			\end{itemize}
+			\item Testy poprawności modyfikacji.
+		\end{enumerate}
+	
+	\subsection{Zmiany w projekcie}
+	Niestety w trakcie transportu nieodwracalnemu uszkodzeniu uległ panel fotowoltaiczny, co dyskwalifikuje jego użycie w projekcie. Na jego miejsce zostanie użyty fotorezystor, który będzie symulował jego działanie. Po pierwszych testach i wprowadzeniu współczynników korekcyjnych rozwiązanie działa poprawnie.
+	
+\section{Rezultaty końcowe}
+	\subsection{Zrealizowane zadania}
+	Udało się zrealizować większość prac z wcześniej ustalonego harmonogramu. Wizualizacja platformy działa poprawnie, choć z widocznym opóźnieniem (około 0,1 - \unit[0.5]{s}). Natężenie światła mierzę z dokładnością do \unit[4]{lx}. Czujnik zezwala na pomiar z dokładnością do \unit[0.5]{lx}, jednak wtedy czas pomiaru trwa \unit[120]{ms} i wprowadza to znaczne opóźnienia w działaniu platformy. Dodatkowo wyższa rozdzielczość pomiaru nie ma logicznego sensu bez wcześniejszej kalibracji względem profesjonalnego sprzętu. Aktualnie czas pomiaru wynosi \unit[16]{ms}\label{16ms}. W mikrokontrolerze zaimplementowałem quasirównoległość wykonywania zadań. Czas ponownego wykonywania najbardziej czasochłonnej operacji (komunikacji z czujnikiem natężenia światła) ustawiłem na \unit[277]{ms}. Wybrałem liczbę pierwszą tak aby jak najczęściej trafiać w czas bezczynności mikrokontrolera i zwiększyć tym samym jego płynność działania. Dane są wysyłane co \unit[50]{ms} więc poziom natężenia światła jest odświeżany (na komputerze) co trzeci cykl danych. \\
+	Dokładność pozycjonowania platformy zarówno horyzontalnie jak i wertykalnie wynosi \unit[1]{$^{\circ}$} (stopień kątowy). Dla serwomechanizmu (pozycjonowania wertykalnego) jest to limit narzucony przez wykorzystywane API. Natomiast dla silnika krokowego (pozycjonowania horyzontalnego) istnieje możliwość rozszerzenia dokładności do $\frac{360 * 2}{2734} \approx \unit[0.26]{^{\circ}}$.
+	\subsection{Końcowy wygląd aplikacji}
+	Okno w trybie niezmaksymalizowanym: 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\textwidth]{figures/oknoGlowneMin.png}
+			\caption{Wygląd końcowy okno niezmaksymalizowane}
+			\label{fig:minimalized}
+		\end{figure}
+	W tym trybie wykresy zajmują $\frac{1}{3}$ przestrzeni, natomiast wizualizacja $\frac{2}{3}$. \newpage
+	Okno w trybie zmaksymalizowanym:
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1.0\textwidth]{figures/oknoGlowneMax.png}
+			\caption{Wygląd końcowy okno zmaksymalizowane}
+			\label{fig:maxymalized}
+		\end{figure}
+	Gdy okno jest zmaksymalizowane obszar jest dzielony po równo na wykresy i wizualizację. \\
+	Wygląd okna po uruchomieniu ustawień portu szeregowego:
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1.0\textwidth]{figures/options.png}
+			\caption{Wygląd końcowy okno ustawień}
+			\label{fig:settings}
+		\end{figure}
+	Po uruchomieniu okna ustawień nie jest możliwe wykonywanie operacji w oknie głównym aż do czasu zamknięcia okna ustawień. W sekcji Port wyświetlane są dostępne porty szeregowe. Jeśli nie ma żadnego lista jest pusta jak na rysunku: \ref{fig:settings}. Domyślna prędkość połączenia wynosi 9600 bodów.
+	\section{Podsumowanie}
+	Udało się zrealizować większość założeń projektowych. Nie udało się osiągnąć zakładanej płynności \unit[60]{fps} (frames per second). Wynika to z ograniczeń mikrokontrolera i czujnika natężenia światła, którego czas konwersji (szerzej opisane w \ref{16ms}) wynosi \unit[16]{ms}. Natomiast aby otrzymać zakładaną płynność czas wykonania wszystkich czynności na mikrokontrolerze i wysłania pakietu danych powinien się mieścić w czasie $\unit[\frac{1}{60}]{s} \approx \unit[16.67]{ms}$.
+	Ustawiony przeze mnie czas wysyłania wynosi \unit[50]{ms}. Pozwala to uzyskać (przy braku błędów transmisji) częstotliwość odświeżania na poziomie \unit[20]{fps}. Warto zwrócić uwagę, że komercyjne systemy sterowania platformami z reguły  są wolno zmienne. Pozycja zmienia się wraz z pozycją słońca. Nawet w przypadku zbudowanego modelu częstotliwość ta była wystarczająca aby uzyskać dobrą płynność obrazu.
+	
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

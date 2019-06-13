@@ -17,14 +17,19 @@ void loop() {
   data += String(V, DEC);
   data += String(" L");
   data += String(L, DEC);
+  data += String(" U");
+  data += String(U, DEC);
   data += String(" I");
   data += String(I, DEC);
+  data += String(" P");
+  data += String(P, DEC);
 
   CRC = CRC8(data.c_str(), data.length());
   data += String(" CRC");
   data += String(CRC, DEC);
-  Serial.println(data);
-  delay(1000);
+  data += '\n';
+  Serial.print(data);
+  delay(100);
 }
 
 char CRC8(const char *data,int len) 

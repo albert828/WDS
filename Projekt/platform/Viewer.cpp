@@ -1,36 +1,70 @@
 #include "Viewer.hh"
 #include <iostream>
 #include "Manipulator.hh"
-#include <SOIL/SOIL.h>
+#include <stb_image.h>
+#include <qdebug.h>
 
 using namespace std;
-
-#define HEIGHT__CHECK_BOARD 64
-#define WIDTH__CHECK_BOARD  64
-static GLubyte Image_CheckBoard[HEIGHT__CHECK_BOARD][WIDTH__CHECK_BOARD][4];
-static GLuint Texture4Bg;
-static GLuint Texture4Manip;
-
-
-void MakeImage_CheckBoard(void)
-{
-    int Idx_Height, Idx_Width, Intensity;
-    
-    for (Idx_Height = 0; Idx_Height < HEIGHT__CHECK_BOARD; Idx_Height++) {
-        for (Idx_Width = 0; Idx_Width < WIDTH__CHECK_BOARD; Idx_Width++) {
-            Intensity = (((Idx_Height & 0x8)==0)^((Idx_Width & 0x8)==0))*255;
-            Image_CheckBoard[Idx_Height][Idx_Width][0] = static_cast<GLubyte>(Intensity);
-            Image_CheckBoard[Idx_Height][Idx_Width][1] = static_cast<GLubyte>(Intensity);
-            Image_CheckBoard[Idx_Height][Idx_Width][2] = static_cast<GLubyte>(Intensity);
-            Image_CheckBoard[Idx_Height][Idx_Width][3] = static_cast<GLubyte>(255);
-        }
-    }
-}
+static GLuint TextureBackground, TextureSolar;
 
 void GLCreateBox( double Size_X,  double Size_Y,  double Size_Z )
 {
     glPushMatrix();
-    glScalef( Size_X, Size_Y, Size_Z );
+    glScalef( static_cast<GLfloat>(Size_X), static_cast<GLfloat>(Size_Y), static_cast<GLfloat>(Size_Z) );
+    glBegin(GL_POLYGON);
+    //glColor3f(   1.0,  1.0, 1.0 );
+    glTexCoord2f(0.0, 0.0); glVertex3f(  0.5, -0.5, 0.5 );
+    glTexCoord2f(0.0, 1.0); glVertex3f(  0.5,  0.5, 0.5 );
+    glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, 0.5 );
+    glTexCoord2f(1.0, 0.0); glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+
+    // Purple side - RIGHT
+    glBegin(GL_POLYGON);
+    // glColor3f(  1.0,  0.0,  1.0 );
+    glTexCoord2f(0.0, 0.0); glVertex3f( 0.5, -0.5, -0.5 );
+    glTexCoord2f(0.0, 1.0); glVertex3f( 0.5,  0.5, -0.5 );
+    glTexCoord2f(1.0, 1.0); glVertex3f( 0.5,  0.5,  0.5 );
+    glTexCoord2f(1.0, 0.0); glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+
+    // Green side - LEFT
+    glBegin(GL_POLYGON);
+    // glColor3f(   0.0,  1.0,  0.0 );
+    glTexCoord2f(0.0, 0.0); glVertex3f( -0.5, -0.5,  0.5 );
+    glTexCoord2f(0.0, 1.0); glVertex3f( -0.5,  0.5,  0.5 );
+    glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, -0.5 );
+    glTexCoord2f(1.0, 0.0); glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+
+    // Blue side - TOP
+    glBegin(GL_POLYGON);
+    // glColor3f(   0.0,  0.0,  1.0 );
+    glTexCoord2f(0.0, 0.0); glVertex3f(  0.5,  0.5,  0.5 );
+    glTexCoord2f(0.0, 1.0); glVertex3f(  0.5,  0.5, -0.5 );
+    glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, -0.5 );
+    glTexCoord2f(1.0, 0.0); glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+
+    // Red side - BOTTOM
+    glBegin(GL_POLYGON);
+    //   glColor3f(   1.0,  0.0,  0.0 );
+    glTexCoord2f(0.0, 0.0); glVertex3f(  0.5, -0.5, -0.5 );
+    glTexCoord2f(0.0, 1.0); glVertex3f(  0.5, -0.5,  0.5 );
+    glTexCoord2f(1.0, 1.0); glVertex3f( -0.5, -0.5,  0.5 );
+    glTexCoord2f(1.0, 0.0); glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glPopMatrix();
+}
+
+void GLCreateTextureBox( double Size_X,  double Size_Y,  double Size_Z )
+{
+    glPushMatrix();
+    glScalef( static_cast<GLfloat>(Size_X), static_cast<GLfloat>(Size_Y), static_cast<GLfloat>(Size_Z) );
+
+    glEnable(GL_TEXTURE_2D);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+    glBindTexture(GL_TEXTURE_2D, TextureSolar);
 
     glBegin(GL_POLYGON);
     //glColor3f(   1.0,  1.0, 1.0 );
@@ -39,6 +73,8 @@ void GLCreateBox( double Size_X,  double Size_Y,  double Size_Z )
     glTexCoord2f(1.0, 1.0); glVertex3f( -0.5,  0.5, 0.5 );
     glTexCoord2f(1.0, 0.0); glVertex3f( -0.5, -0.5, 0.5 );
     glEnd();
+
+    glDisable(GL_TEXTURE_2D);
 
     // Purple side - RIGHT
     glBegin(GL_POLYGON);
@@ -86,11 +122,9 @@ void Viewer::draw()
     /*-----------------------------------------------------
     *  Tworzenie tła wypełnionego wygenerowaną teksturą
     */
-
     glEnable(GL_TEXTURE_2D);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-    glBindTexture(GL_TEXTURE_2D, Texture4Bg);
-
+    glBindTexture(GL_TEXTURE_2D, TextureBackground);
 
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
@@ -104,6 +138,7 @@ void Viewer::draw()
     glLoadIdentity();
     glOrtho(0,1,1,0,-1,1);
 
+    glColor3f(   0.0,  0.0,  1.0 );
     glBegin(GL_QUADS);  // Tworzenie kwadratu, na którym będzie
     glTexCoord2f(0,0); // rozpięta tekstura tła.
     glVertex2f(0,0);
@@ -125,31 +160,28 @@ void Viewer::draw()
     glPopMatrix();
     glDepthMask(GL_TRUE);
 
+    glDisable(GL_TEXTURE_2D);
     /*- Koniec ---
    *  Tworzenie tła wypełnionego
    *------------------------------------------------------------*/
-
-    //glBindTexture(GL_TEXTURE_2D, Texture4Manip);
-
-    glDisable(GL_TEXTURE_2D);
 
     glScalef( 1.0, 1.0, 1.0 );
 
     glRotatef( -90, 1.0, 0.0, 0.0);
     glRotatef( -90, 0.0, 0.0, 1.0);
-    glRotatef( Manip.GetQ0_deg(), 0.0, 0.0, 1.0 );
+    glRotatef( static_cast<GLfloat>(Manip.GetQ0_deg()), 0.0, 0.0, 1.0 );
     glTranslatef( 0.0, 0.0, -0.5 );
     glColor3f(1.0,1.0,1.0);
     GLCreateBox(0.1,0.1,1.0);
 
-    //glBindTexture(GL_TEXTURE_2D, Texture4Manip);
-    //glEnable(GL_TEXTURE_2D);
     glTranslatef( 0.0, 0.0, 0.55 );
-    glRotatef( Manip.GetQ2_deg(), 0.0, 1.0, 0 );
-    GLCreateBox(1.0,1.5,0.01);
+    glRotatef( static_cast<GLfloat>(Manip.GetQ2_deg()), 0.0, 1.0, 0 );
+    GLCreateTextureBox(1.0,1.5,0.01);
+
+    glTranslatef( 0.0, 0.0, -0.019);
+    GLCreateBox(1.05,1.55,0.02);
 
     glFlush();
-    //glDisable(GL_TEXTURE_2D);
 }
 
 void Viewer::init()
@@ -158,6 +190,48 @@ void Viewer::init()
     glShadeModel(GL_FLAT);
     glEnable(GL_DEPTH_TEST);
 
+    glGenTextures(1, &TextureBackground);
+    glBindTexture(GL_TEXTURE_2D, TextureBackground);
+    // set the texture wrapping/filtering options (on the currently bound texture object)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // load and generate the texture
+    int width, height, nrChannels;
+    unsigned char *data = stbi_load("laka.jpg", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        //glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        qDebug() << "Failed to load texture" << endl;
+    }
+    stbi_image_free(data);
+
+    glGenTextures(1, &TextureSolar);
+    glBindTexture(GL_TEXTURE_2D, TextureSolar);
+    // set the texture wrapping/filtering options (on the currently bound texture object)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // load and generate the texture
+    int width1, height1, nrChannels1;
+    unsigned char *data1 = stbi_load("solar.jpg", &width1, &height1, &nrChannels1, 0);
+    if (data1)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width1, height1, 0, GL_RGB, GL_UNSIGNED_BYTE, data1);
+        //glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        qDebug() << "Failed to load texture" << endl;
+    }
+    stbi_image_free(data1);
+#if COMPILE_TEXTURES == 1
     MakeImage_CheckBoard();
 
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
@@ -190,6 +264,6 @@ void Viewer::init()
                 SOIL_CREATE_NEW_ID,
                 SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
                 );
-
+#endif
 }
 
