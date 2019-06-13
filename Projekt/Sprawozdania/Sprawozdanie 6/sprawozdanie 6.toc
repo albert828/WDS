@@ -22,3 +22,5 @@
 \contentsline {subsection}{\numberline {7.2}Zmiany w projekcie}{12}{subsection.7.2}% 
 \contentsline {section}{\numberline {8}Rezultaty ko\IeC {\'n}cowe}{12}{section.8}% 
 \contentsline {subsection}{\numberline {8.1}Zrealizowane zadania}{12}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {8.2}Ko\IeC {\'n}cowy wygl\IeC {\k a}d aplikacji}{12}{subsection.8.2}% 
+\contentsline {section}{\numberline {9}Podsumowanie}{14}{section.9}% 

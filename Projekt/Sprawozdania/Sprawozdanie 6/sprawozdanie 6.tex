@@ -362,8 +362,37 @@ Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platf
 	
 \section{Rezultaty końcowe}
 	\subsection{Zrealizowane zadania}
-	Udało się zrealizować większość prac z wcześniej ustalonego harmonogramu. Wizualizacja platformy działa poprawnie, choć z widocznym opóźnieniem (około 0,1 - \unit[0.5]{s}). Natężenie światła mierzę z dokładnością do \unit[4]{lx}. Czujnik zezwala na pomiar z dokładnością do \unit[0.5]{lx}, jednak wtedy czas pomiaru trwa \unit[120]{ms} i wprowadza to znaczne opóźnienia w działaniu platformy. Dodatkowo wyższa rozdzielczość pomiaru nie ma logicznego sensu bez wcześniejszej kalibracji względem profesjonalnego sprzętu. Aktualnie czas pomiaru wynosi \unit[16]{ms}. W mikrokontrolerze zaimplementowałem quasirównoległość wykonywania zadań. Czas ponownego wykonywania najbardziej czasochłonnej operacji (komunikacji z czujnikiem natężenia światła) ustawiłem na \unit[277]{ms}. Wybrałem liczbę pierwszą tak aby jak najczęściej trafiać w czas bezczynności mikrokontrolera i zwiększyć tym samym jego płynność działania. Dane są wysyłane co \unit[100]{ms} więc poziom natężenia światła jest odświeżany (na komputerze) co trzeci cykl danych. \\
+	Udało się zrealizować większość prac z wcześniej ustalonego harmonogramu. Wizualizacja platformy działa poprawnie, choć z widocznym opóźnieniem (około 0,1 - \unit[0.5]{s}). Natężenie światła mierzę z dokładnością do \unit[4]{lx}. Czujnik zezwala na pomiar z dokładnością do \unit[0.5]{lx}, jednak wtedy czas pomiaru trwa \unit[120]{ms} i wprowadza to znaczne opóźnienia w działaniu platformy. Dodatkowo wyższa rozdzielczość pomiaru nie ma logicznego sensu bez wcześniejszej kalibracji względem profesjonalnego sprzętu. Aktualnie czas pomiaru wynosi \unit[16]{ms}\label{16ms}. W mikrokontrolerze zaimplementowałem quasirównoległość wykonywania zadań. Czas ponownego wykonywania najbardziej czasochłonnej operacji (komunikacji z czujnikiem natężenia światła) ustawiłem na \unit[277]{ms}. Wybrałem liczbę pierwszą tak aby jak najczęściej trafiać w czas bezczynności mikrokontrolera i zwiększyć tym samym jego płynność działania. Dane są wysyłane co \unit[50]{ms} więc poziom natężenia światła jest odświeżany (na komputerze) co trzeci cykl danych. \\
 	Dokładność pozycjonowania platformy zarówno horyzontalnie jak i wertykalnie wynosi \unit[1]{$^{\circ}$} (stopień kątowy). Dla serwomechanizmu (pozycjonowania wertykalnego) jest to limit narzucony przez wykorzystywane API. Natomiast dla silnika krokowego (pozycjonowania horyzontalnego) istnieje możliwość rozszerzenia dokładności do $\frac{360 * 2}{2734} \approx \unit[0.26]{^{\circ}}$.
+	\subsection{Końcowy wygląd aplikacji}
+	Okno w trybie niezmaksymalizowanym: 
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\textwidth]{figures/oknoGlowneMin.png}
+			\caption{Wygląd końcowy okno niezmaksymalizowane}
+			\label{fig:minimalized}
+		\end{figure}
+	W tym trybie wykresy zajmują $\frac{1}{3}$ przestrzeni, natomiast wizualizacja $\frac{2}{3}$. \newpage
+	Okno w trybie zmaksymalizowanym:
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1.0\textwidth]{figures/oknoGlowneMax.png}
+			\caption{Wygląd końcowy okno zmaksymalizowane}
+			\label{fig:maxymalized}
+		\end{figure}
+	Gdy okno jest zmaksymalizowane obszar jest dzielony po równo na wykresy i wizualizację. \\
+	Wygląd okna po uruchomieniu ustawień portu szeregowego:
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1.0\textwidth]{figures/options.png}
+			\caption{Wygląd końcowy okno ustawień}
+			\label{fig:settings}
+		\end{figure}
+	Po uruchomieniu okna ustawień nie jest możliwe wykonywanie operacji w oknie głównym aż do czasu zamknięcia okna ustawień. W sekcji Port wyświetlane są dostępne porty szeregowe. Jeśli nie ma żadnego lista jest pusta jak na rysunku: \ref{fig:settings}. Domyślna prędkość połączenia wynosi 9600 bodów.
+	\section{Podsumowanie}
+	Udało się zrealizować większość założeń projektowych. Nie udało się osiągnąć zakładanej płynności \unit[60]{fps} (frames per second). Wynika to z ograniczeń mikrokontrolera i czujnika natężenia światła, którego czas konwersji (szerzej opisane w \ref{16ms}) wynosi \unit[16]{ms}. Natomiast aby otrzymać zakładaną płynność czas wykonania wszystkich czynności na mikrokontrolerze i wysłania pakietu danych powinien się mieścić w czasie $\unit[\frac{1}{60}]{s} \approx \unit[16.67]{ms}$.
+	Ustawiony przeze mnie czas wysyłania wynosi \unit[50]{ms}. Pozwala to uzyskać (przy braku błędów transmisji) częstotliwość odświeżania na poziomie \unit[20]{fps}. Warto zwrócić uwagę, że komercyjne systemy sterowania platformami z reguły  są wolno zmienne. Pozycja zmienia się wraz z pozycją słońca. Nawet w przypadku zbudowanego modelu częstotliwość ta była wystarczająca aby uzyskać dobrą płynność obrazu.
+	
 \end{document}
 
 
