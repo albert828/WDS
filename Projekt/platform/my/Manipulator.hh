@@ -48,7 +48,10 @@ class Manipulator {
   double GetQ2_deg() const { return _Q2_deg; }
 
 };
-
+/**
+ * @brief Platform object
+ * 
+ */
 extern Manipulator  Manip;
 
 #endif

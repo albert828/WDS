@@ -31,10 +31,10 @@ public:
      */
     void stopSerial();
 
-signals:
-    void request(const QString &s);
-    void error(const QString &s);
-    void timeout(const QString &s);
+//signals:
+    //void request(const QString &s);
+    //void error(const QString &s);
+    //void timeout(const QString &s);
 
 private:
     /**
@@ -108,7 +108,7 @@ private:
      */
     QCustomPlot *pwidgetPower;
 
-    bool flag = false;
+    //bool flag = false;
 };
 
 #endif // SERIALTHREAD_H

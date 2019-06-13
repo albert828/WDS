@@ -66,11 +66,7 @@ void SerialThread::run()
     else {
         serial.readAll();
     }
-    //qDebug("M from Thread");
-    //serial.close();
-    //uint32_t counter{0};
     int counter = 0;
-#if SERIAL_WHILE == 1
 
     while(serial.isOpen())
     {
@@ -100,105 +96,6 @@ void SerialThread::run()
         else
             qDebug() << "Timeout";
     }
-#endif
-#if SERIAL_WHILE == 0
-    while(flag)
-    {
-        ++H;
-        ++V;
-        ++(L %= 100);
-        ++(U %= 200);
-        ++(I %= 300);
-        P = I * U;
-        Manip.SetQ2_deg(V);
-        Manip.SetQ0_deg(H);
-        //assert(pViever);
-        pViever->update();
-        replot(pwidgetLight, pwidgetVoltage, pwidgetCurrent, pwidgetPower);
-        msleep(50);
-    }
-    #endif
-}
-
-void SerialThread::replot(QCustomPlot *pwidgetLight, QCustomPlot *pwidgetVoltage, QCustomPlot *pwidgetCurrent, QCustomPlot *pwidgetPower)
-{
-    static QTime time(QTime::currentTime());
-    // calculate new data points:
-    double key = time.elapsed()/1000.0; // time elapsed since start in seconds
-
-    replotLightWidget(pwidgetLight, key);
-    replotPowerWidget(pwidgetPower, key);
-    replotCurrentWidget(pwidgetCurrent, key);
-    replotVoltageWidget(pwidgetVoltage, key);
-}
-
-void SerialThread::replotLightWidget(QCustomPlot *pwidgetLight, double key)
-{
-    // add data to lines:
-    pwidgetLight->graph(0)->addData(key, L);
-    // rescale value (vertical) axis to fit the current data:
-    pwidgetLight->graph(0)->rescaleValueAxis(false);
-
-    // make key axis range scroll with the data (at a constant range size of 8):
-    pwidgetLight->xAxis->setRange(key, 8, Qt::AlignRight);
-    pwidgetLight->replot();
-}
-
-void SerialThread::replotVoltageWidget(QCustomPlot *pwidgetVoltage, double key)
-{
-    // add data to lines:
-    pwidgetVoltage->graph(0)->addData(key, U);
-    // rescale value (vertical) axis to fit the current data:
-    pwidgetVoltage->graph(0)->rescaleValueAxis(false);
-
-    // make key axis range scroll with the data (at a constant range size of 8):
-    pwidgetVoltage->xAxis->setRange(key, 8, Qt::AlignRight);
-    pwidgetVoltage->replot();
-}
-
-void SerialThread::replotCurrentWidget(QCustomPlot *pwidgetCurrent, double key)
-{
-    // add data to lines:
-    pwidgetCurrent->graph(0)->addData(key, I);
-    // rescale value (vertical) axis to fit the current data:
-    pwidgetCurrent->graph(0)->rescaleValueAxis(false);
-
-    // make key axis range scroll with the data (at a constant range size of 8):
-    pwidgetCurrent->xAxis->setRange(key, 8, Qt::AlignRight);
-    pwidgetCurrent->replot();
-}
-
-void SerialThread::replotPowerWidget(QCustomPlot *pwidgetPower, double key)
-{
-    // add data to lines:
-    pwidgetPower->graph(0)->addData(key, P);
-    // rescale value (vertical) axis to fit the current data:
-    pwidgetPower->graph(0)->rescaleValueAxis(false);
-
-    // make key axis range scroll with the data (at a constant range size of 8):
-    pwidgetPower->xAxis->setRange(key, 8, Qt::AlignRight);
-    pwidgetPower->replot();
-}
-
-char SerialThread::CRC8(const char *data,int len)
-{
-   char crc = 0x00;
-   char extract;
-   char sum;
-   for(int i=0;i<len;i++)
-   {
-      extract = *data;
-      for (char tempI = 8; tempI; tempI--)
-      {
-         sum = (crc ^ extract) & 0x01;
-         crc >>= 1;
-         if (sum)
-            crc ^= 0x8C;
-         extract >>= 1;
-      }
-      data++;
-   }
-   return crc;
 }
 
 bool SerialThread::prepareData(const QString &response, int &counter)
@@ -221,7 +118,7 @@ bool SerialThread::prepareData(const QString &response, int &counter)
             return false;
         }
 
-        //Removing CRC and \r\n for calculations
+        //Removing CRC and \n for calculations
         size_t dataEndPosition = text.find_last_of(' ');
         if(dataEndPosition != string::npos)
             text = text.substr(0, dataEndPosition);
@@ -247,9 +144,9 @@ bool SerialThread::prepareData(const QString &response, int &counter)
     }
 
     //Cast values
-    size_t hPosition, vPosition, lPosition, uPosition, iPosition, pPosition;
     try
     {
+        size_t hPosition, vPosition, lPosition, uPosition, iPosition, pPosition;
         hPosition = text.find('H') + 1;
         if(hPosition != string::npos)
             H = stoi( text.substr(hPosition) );
@@ -342,3 +239,83 @@ bool SerialThread::prepareData(const QString &response, int &counter)
     return true;
 }
 
+void SerialThread::replot(QCustomPlot *pwidgetLight, QCustomPlot *pwidgetVoltage, QCustomPlot *pwidgetCurrent, QCustomPlot *pwidgetPower)
+{
+    static QTime time(QTime::currentTime());
+    // calculate new data points:
+    double key = time.elapsed()/1000.0; // time elapsed since start in seconds
+
+    replotLightWidget(pwidgetLight, key);
+    replotPowerWidget(pwidgetPower, key);
+    replotCurrentWidget(pwidgetCurrent, key);
+    replotVoltageWidget(pwidgetVoltage, key);
+}
+
+void SerialThread::replotLightWidget(QCustomPlot *pwidgetLight, double key)
+{
+    // add data to lines:
+    pwidgetLight->graph(0)->addData(key, L);
+    // rescale value (vertical) axis to fit the current data:
+    pwidgetLight->graph(0)->rescaleValueAxis(false);
+
+    // make key axis range scroll with the data (at a constant range size of 8):
+    pwidgetLight->xAxis->setRange(key, 8, Qt::AlignRight);
+    pwidgetLight->replot();
+}
+
+void SerialThread::replotVoltageWidget(QCustomPlot *pwidgetVoltage, double key)
+{
+    // add data to lines:
+    pwidgetVoltage->graph(0)->addData(key, U);
+    // rescale value (vertical) axis to fit the current data:
+    pwidgetVoltage->graph(0)->rescaleValueAxis(false);
+
+    // make key axis range scroll with the data (at a constant range size of 8):
+    pwidgetVoltage->xAxis->setRange(key, 8, Qt::AlignRight);
+    pwidgetVoltage->replot();
+}
+
+void SerialThread::replotCurrentWidget(QCustomPlot *pwidgetCurrent, double key)
+{
+    // add data to lines:
+    pwidgetCurrent->graph(0)->addData(key, I);
+    // rescale value (vertical) axis to fit the current data:
+    pwidgetCurrent->graph(0)->rescaleValueAxis(false);
+
+    // make key axis range scroll with the data (at a constant range size of 8):
+    pwidgetCurrent->xAxis->setRange(key, 8, Qt::AlignRight);
+    pwidgetCurrent->replot();
+}
+
+void SerialThread::replotPowerWidget(QCustomPlot *pwidgetPower, double key)
+{
+    // add data to lines:
+    pwidgetPower->graph(0)->addData(key, P);
+    // rescale value (vertical) axis to fit the current data:
+    pwidgetPower->graph(0)->rescaleValueAxis(false);
+
+    // make key axis range scroll with the data (at a constant range size of 8):
+    pwidgetPower->xAxis->setRange(key, 8, Qt::AlignRight);
+    pwidgetPower->replot();
+}
+
+char SerialThread::CRC8(const char *data,int len)
+{
+   char crc = 0x00;
+   char extract;
+   char sum;
+   for(int i=0;i<len;i++)
+   {
+      extract = *data;
+      for (char tempI = 8; tempI; tempI--)
+      {
+         sum = (crc ^ extract) & 0x01;
+         crc >>= 1;
+         if (sum)
+            crc ^= 0x8C;
+         extract >>= 1;
+      }
+      data++;
+   }
+   return crc;
+}

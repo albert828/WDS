@@ -90,9 +90,9 @@ private:
      */
     char CRC8(const char*,int);
     /**
-     * @brief prepareData function is used for decoding data from serial port
-     * @param response data to prepare from serial port
-     * @param counter numer of errors
+     * @brief prepareData : function is used for decoding data from serial port
+     * @param response : data to prepare from serial port
+     * @param counter : numer of errors
      * @return true if decoding was succesful else returns false
      */
     bool prepareData(const QString &response, int &counter);

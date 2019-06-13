@@ -26,7 +26,7 @@ SerialThread::~SerialThread()
 {
     if(serial.isOpen())
         serial.close();
-    flag = false;
+    //flag = false;
     quit();
     qDebug("Closing serial from destructor");
 }
@@ -41,14 +41,14 @@ void SerialThread::startSerial(QWidget *pV,  QCustomPlot *pwidgetL,  QCustomPlot
     pwidgetVoltage = pwidgetV;
     if (!isRunning())
         start();
-    flag = true;
+    //flag = true;
 }
 
 void SerialThread::stopSerial()
 {
     if (serial.isOpen())
         serial.close();
-    flag = false;
+    //flag = false;
     qDebug("Closing serial");
 }
 
