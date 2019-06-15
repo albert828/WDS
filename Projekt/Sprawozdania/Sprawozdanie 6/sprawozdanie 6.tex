@@ -127,11 +127,11 @@ Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platf
 			\newline
 			Stworzenie lub pobranie z internetu tekstur dla obiektów.
 			
-			\item Opracowanie standardu komunikacji sterownik - PC
+			\item Opracowanie standardu komunikacji sterownik -- PC
 			\newline
 			Zastanowienie się nad sposobem przesyłania informacji oraz ich kodowaniem.
 			
-			\item Implementacja komunikacji sterownik - PC
+			\item Implementacja komunikacji sterownik -- PC
 			\newline
 			Implementacja jednostronnej komunikacji między sterownikiem a PC.
 			
@@ -147,7 +147,7 @@ Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platf
 	\subsection{Kamienie milowe}
 		\begin{enumerate}
 			\item Implementacja działającej wizualizacji w oparciu o sterowanie klawiaturą
-			\item Implementacja poprawnej komunikacji sterownik - PC
+			\item Implementacja poprawnej komunikacji sterownik -- PC
 			\item Implementacja wizualizacji w oparciu o dane ze sterownika
 		\end{enumerate}
 	
@@ -244,21 +244,21 @@ Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platf
 		Gdzie:
 		\begin{itemize}
 			\item H - Symbol poprzedzający wartość kąta rotacji w kierunku horyzontalnym
-			\item <liczba1> - wartość kąta rotacji w kierunku horyzontalnym wyrażona w stopniach z zakresu \newline \unit[0 - 360]{\textdegree}
+			\item <liczba1> - wartość kąta rotacji w kierunku horyzontalnym wyrażona w stopniach z zakresu \newline \unit[0 -- 360]{\textdegree}. Liczba decymalna.
 			\item V - Symbol poprzedzający wartość kąta rotacji w kierunku wertykalnym
-			\item <liczba2> - wartość kąta rotacji w kierunku wertykalnym wyrażona w stopniach z zakresu 0 - \unit[180]{\textdegree}
+			\item <liczba2> - wartość kąta rotacji w kierunku wertykalnym wyrażona w stopniach z zakresu 0 -- \unit[180]{\textdegree}. Liczba decymalna.
 			\item L - Symbol poprzedzający wartość natężenia światła
-			\item <liczba3> - wartość natężenia światła wyrażona w luksach z zakresu 1 - \unit[65535]{lux}
+			\item <liczba3> - wartość natężenia światła wyrażona w luksach z zakresu 1 -- \unit[65535]{lux}. Liczba decymalna.
 			\item I - Symbol poprzedzający wartość przepływu prądu
-			\item <liczba4> - wartość przepływu prądu wyrażona w miliamperach z zakresu 0 - \unit[65535]{mA}
+			\item <liczba4> - wartość przepływu prądu wyrażona w miliamperach z zakresu 0 -- \unit[65535]{mA}. Liczba decymalna.
 			\item CRC - Ciąg znaków poprzedzający wartość 8-bitowej sumy kontrolnej
-			\item <liczba5> - wartość sumy kontrolnej z zakresu 0 - 255
+			\item <liczba5> - wartość sumy kontrolnej z zakresu 0 -- 255. Liczba decymalna.
 			\item $\backslash$n - symbol końca pakietu danych
 		\end{itemize}
 		
 		\subsection{Zrealizowane zadania}
 			\begin{enumerate}
-				\item \textbf{Graficzy interfejs użytkownika} \newline
+				\item \textbf{Graficzny interfejs użytkownika} \newline
 				Stworzyłem aplikację komunikującą się ze sterownikiem za pomocą portu szeregowego. Aplikacja po uruchomieniu prosi o podanie prędkości komunikacji w bodach oraz portu do którego został przyłączony sterownik. Domyślna prędkość to 9600 bodów. Natomiast lista portów wczytuje tylko te dostępne.
 				\begin{figure}[H]
 					\centering
@@ -289,19 +289,19 @@ Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platf
 	Gdzie:
 		\begin{itemize}
 			\item H - Symbol poprzedzający wartość kąta rotacji w kierunku horyzontalnym
-			\item <liczba1> - wartość kąta rotacji w kierunku horyzontalnym wyrażona w stopniach z zakresu \newline \unit[0 - 360]{\textdegree}
+			\item <liczba1> - wartość kąta rotacji w kierunku horyzontalnym wyrażona w stopniach z zakresu \newline \unit[0 -- 360]{\textdegree}. Liczba decymalna.
 			\item V - Symbol poprzedzający wartość kąta rotacji w kierunku wertykalnym
-			\item <liczba2> - wartość kąta rotacji w kierunku wertykalnym wyrażona w stopniach z zakresu 0 - \unit[180]{\textdegree}
+			\item <liczba2> - wartość kąta rotacji w kierunku wertykalnym wyrażona w stopniach z zakresu 0 -- \unit[180]{\textdegree}. Liczba decymalna.
 			\item L - Symbol poprzedzający wartość natężenia światła
-			\item <liczba3> - wartość natężenia światła wyrażona w luksach z zakresu 1 - \unit[65535]{lux}
+			\item <liczba3> - wartość natężenia światła wyrażona w luksach z zakresu 1 -- \unit[65535]{lux}. Liczba decymalna.
 			\item U - Symbol poprzedzający wartość napięcia
-			\item <liczba4> - wartość napięcia wyrażona w miliwoltach z zakresu 0 - \unit[65535]{mV}
+			\item <liczba4> - wartość napięcia wyrażona w miliwoltach z zakresu 0 -- \unit[65535]{mV}. Liczba decymalna.
 			\item I - Symbol poprzedzający wartość przepływu prądu
-			\item <liczba5> - wartość przepływu prądu wyrażona w miliamperach z zakresu 0 - \unit[65535]{mA}
+			\item <liczba5> - wartość przepływu prądu wyrażona w miliamperach z zakresu 0 -- \unit[65535]{mA}. Liczba decymalna.
 			\item P - Symbol poprzedzający wartość mocy
-			\item <liczba6> - wartość mocy wyrażona w miliwatach z zakresu 0 - \unit[65535]{mW}
+			\item <liczba6> - wartość mocy wyrażona w miliwatach z zakresu 0 -- \unit[65535]{mW}. Liczba decymalna.
 			\item CRC - Ciąg znaków poprzedzający wartość 8-bitowej sumy kontrolnej
-			\item <liczba7> - wartość sumy kontrolnej z zakresu 0 - 255
+			\item <liczba7> - wartość sumy kontrolnej z zakresu 0 -- 255. Liczba decymalna.
 			\item $\backslash$n - symbol końca pakietu danych
 		\end{itemize}
 	Przykładowe wyniki(suma kontrolna wysyłana jest decymalnie w procesie wyświetlania została przekonwertowana do heksadecymalnego):
@@ -362,7 +362,7 @@ Celem projektu jest stworzenie wizualizacji 3D platformy fotowoltanicznej. Platf
 	
 \section{Rezultaty końcowe}
 	\subsection{Zrealizowane zadania}
-	Udało się zrealizować większość prac z wcześniej ustalonego harmonogramu. Wizualizacja platformy działa poprawnie, choć z widocznym opóźnieniem (około 0,1 - \unit[0.5]{s}). Natężenie światła mierzę z dokładnością do \unit[4]{lx}. Czujnik zezwala na pomiar z dokładnością do \unit[0.5]{lx}, jednak wtedy czas pomiaru trwa \unit[120]{ms} i wprowadza to znaczne opóźnienia w działaniu platformy. Dodatkowo wyższa rozdzielczość pomiaru nie ma logicznego sensu bez wcześniejszej kalibracji względem profesjonalnego sprzętu. Aktualnie czas pomiaru wynosi \unit[16]{ms}\label{16ms}. W mikrokontrolerze zaimplementowałem quasirównoległość wykonywania zadań. Czas ponownego wykonywania najbardziej czasochłonnej operacji (komunikacji z czujnikiem natężenia światła) ustawiłem na \unit[277]{ms}. Wybrałem liczbę pierwszą tak aby jak najczęściej trafiać w czas bezczynności mikrokontrolera i zwiększyć tym samym jego płynność działania. Dane są wysyłane co \unit[50]{ms} więc poziom natężenia światła jest odświeżany (na komputerze) co trzeci cykl danych. \\
+	Udało się zrealizować większość prac z wcześniej ustalonego harmonogramu. Wizualizacja platformy działa poprawnie, choć z widocznym opóźnieniem (około 0,1 -- \unit[0.5]{s}). Natężenie światła mierzę z dokładnością do \unit[4]{lx}. Czujnik zezwala na pomiar z dokładnością do \unit[0.5]{lx}, jednak wtedy czas pomiaru trwa \unit[120]{ms} i wprowadza to znaczne opóźnienia w działaniu platformy. Dodatkowo wyższa rozdzielczość pomiaru nie ma logicznego sensu bez wcześniejszej kalibracji względem profesjonalnego sprzętu. Aktualnie czas pomiaru wynosi \unit[16]{ms}\label{16ms}. W mikrokontrolerze zaimplementowałem quasirównoległość wykonywania zadań. Czas ponownego wykonywania najbardziej czasochłonnej operacji (komunikacji z czujnikiem natężenia światła) ustawiłem na \unit[277]{ms}. Wybrałem liczbę pierwszą tak aby jak najczęściej trafiać w czas bezczynności mikrokontrolera i zwiększyć tym samym jego płynność działania. Dane są wysyłane co \unit[50]{ms} więc poziom natężenia światła jest odświeżany (na komputerze) co trzeci cykl danych. \\
 	Dokładność pozycjonowania platformy zarówno horyzontalnie jak i wertykalnie wynosi \unit[1]{$^{\circ}$} (stopień kątowy). Dla serwomechanizmu (pozycjonowania wertykalnego) jest to limit narzucony przez wykorzystywane API. Natomiast dla silnika krokowego (pozycjonowania horyzontalnego) istnieje możliwość rozszerzenia dokładności do $\frac{360 * 2}{2734} \approx \unit[0.26]{^{\circ}}$.
 	\subsection{Końcowy wygląd aplikacji}
 	Okno w trybie niezmaksymalizowanym: 

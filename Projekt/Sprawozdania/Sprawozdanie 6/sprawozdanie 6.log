@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.6.4)  13 JUN 2019 23:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.6.4)  15 JUN 2019 15:10
 entering extended mode
 **"./sprawozdanie 6.tex"
 ("sprawozdanie 6.tex"
@@ -1067,8 +1067,8 @@ Package pdftex.def Info: figures/serial_wyniki.png  used on input line 310.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.314 	
-        <./figures/okno_glowne.png>]
+l.313 		\end{figure}
+                     <./figures/okno_glowne.png>]
 <figures/okno_glowne1.png, id=230, 1155.1155pt x 549.252pt>
 File: figures/okno_glowne1.png Graphic file (type png)
 <use figures/okno_glowne1.png>
@@ -1167,7 +1167,7 @@ Here is how much of TeX's memory you used:
  18080 multiletter control sequences out of 15000+200000
  18447 words of font info for 44 fonts, out of 3000000 for 9000
  625 hyphenation exceptions out of 8191
- 33i,8n,51p,1154b,441s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,8n,51p,1155b,441s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plmi.enc}{
 C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plrm.enc}{C:/
 Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plms.enc} <C:\Us
@@ -1190,9 +1190,9 @@ fb><C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/plr7.p
 fb><C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/plsy10
 .pfb><C:/Users/Papa Smerf/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/plsy
 7.pfb>
-Output written on "sprawozdanie 6.pdf" (15 pages, 6528842 bytes).
+Output written on "sprawozdanie 6.pdf" (15 pages, 6529348 bytes).
 PDF statistics:
- 679 PDF objects out of 1000 (max. 8388607)
+ 680 PDF objects out of 1000 (max. 8388607)
  95 named destinations out of 1000 (max. 500000)
  261 words of extra memory for PDF output out of 10000 (max. 10000000)
 
