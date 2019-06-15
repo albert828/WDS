@@ -4,10 +4,7 @@
 #include <serialoptionsdialog.h>
 #include "serialthread.h"
 
-/**
- * @brief Contains serial port name
- * 
- */
+
 QString PortName{};
 uint32_t BaudRate{};
 

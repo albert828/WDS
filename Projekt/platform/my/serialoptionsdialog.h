@@ -20,7 +20,7 @@ namespace Ui {
 class SerialOptionsDialog;
 }
 /**
- * @brief This class creates Widnow with Serial settings
+ * @brief This class creates Widnow with Serial comunication settings
  * 
  */
 class SerialOptionsDialog : public QDialog

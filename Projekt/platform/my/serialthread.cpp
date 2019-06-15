@@ -26,7 +26,6 @@ SerialThread::SerialThread(QObject *parent) :
 {
 }
 
-//! [0]
 SerialThread::~SerialThread()
 {
     if(serial.isOpen())
