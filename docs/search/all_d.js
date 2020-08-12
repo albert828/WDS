@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['u',['U',['../globals_8cpp.html#aaf3731a8c483abf88c7b7b725610aba2',1,'U():&#160;globals.cpp'],['../globals_8h.html#aaf3731a8c483abf88c7b7b725610aba2',1,'U():&#160;globals.cpp']]],
-  ['ui',['Ui',['../namespace_ui.html',1,'Ui'],['../class_serial_options_dialog.html#a6d1cc40b4e4a50298142c078e9aeff1c',1,'SerialOptionsDialog::ui()']]]
+  ['texturebackground_50',['TextureBackground',['../_viewer_8cpp.html#aafdb3dc45872edbe2032a69a8072cab1',1,'Viewer.cpp']]],
+  ['texturesolar_51',['TextureSolar',['../_viewer_8cpp.html#a31d4f9fbe436f0f8c8aafc6bae57c6b1',1,'Viewer.cpp']]]
 ];

@@ -1,5 +1,5 @@
 <map id="SerialThread::replotPowerWidget" name="SerialThread::replotPowerWidget">
-<area shape="rect" id="node1" title="Updates Power Widget." alt="" coords="357,5,529,47"/>
-<area shape="rect" id="node2" href="$class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Calls all replot methods." alt="" coords="175,13,309,39"/>
-<area shape="rect" id="node3" href="$class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,13,127,39"/>
+<area shape="rect" id="node1" title="Updates Power Widget." alt="" coords="385,5,576,47"/>
+<area shape="rect" id="node2" href="$class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Calls all replot methods." alt="" coords="187,13,337,39"/>
+<area shape="rect" id="node3" href="$class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,13,139,39"/>
 </map>

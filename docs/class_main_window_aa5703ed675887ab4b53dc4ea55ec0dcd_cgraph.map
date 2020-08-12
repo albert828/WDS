@@ -1,4 +1,0 @@
-<map id="MainWindow::StartSerial" name="MainWindow::StartSerial">
-<area shape="rect" id="node1" title="StartSerial Runs serial comunication." alt="" coords="5,5,172,32"/>
-<area shape="rect" id="node2" href="$class_serial_thread.html#a13261e92b6b1e7d3638607b17cf28a80" title="Runs serial comunication." alt="" coords="220,5,383,32"/>
-</map>

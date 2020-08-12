@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['v',['V',['../globals_8cpp.html#a74375372ea26fa1f0d20f2c2549a882c',1,'V():&#160;globals.cpp'],['../globals_8h.html#a74375372ea26fa1f0d20f2c2549a882c',1,'V():&#160;globals.cpp']]],
-  ['viewer',['Viewer',['../class_viewer.html',1,'Viewer'],['../class_viewer.html#a52be9f2c4058fe2c6d49810431252a3f',1,'Viewer::Viewer()']]],
-  ['viewer_2ecpp',['Viewer.cpp',['../_viewer_8cpp.html',1,'']]],
-  ['viewer_2ehh',['Viewer.hh',['../_viewer_8hh.html',1,'']]]
+  ['u_52',['U',['../globals_8cpp.html#aaf3731a8c483abf88c7b7b725610aba2',1,'U():&#160;globals.cpp'],['../globals_8h.html#aaf3731a8c483abf88c7b7b725610aba2',1,'U():&#160;globals.cpp']]],
+  ['ui_53',['Ui',['../namespace_ui.html',1,'Ui'],['../class_serial_options_dialog.html#a6d1cc40b4e4a50298142c078e9aeff1c',1,'SerialOptionsDialog::ui()']]]
 ];

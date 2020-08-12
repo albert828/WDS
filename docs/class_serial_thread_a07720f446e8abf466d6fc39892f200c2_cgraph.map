@@ -1,7 +1,7 @@
 <map id="SerialThread::replot" name="SerialThread::replot">
-<area shape="rect" id="node1" title="Calls all replot methods." alt="" coords="5,111,140,138"/>
-<area shape="rect" id="node2" href="$class_serial_thread.html#a6456c07a66fa2558da229a162c495a0f" title="Updates Light Widget." alt="" coords="196,5,359,47"/>
-<area shape="rect" id="node3" href="$class_serial_thread.html#acf8dfd1d106daa5c5ecc499957ba6f82" title="Updates Power Widget." alt="" coords="191,71,363,112"/>
-<area shape="rect" id="node4" href="$class_serial_thread.html#a1d4229dcace27157d665ee47c3f2d10b" title="Updates Current Widget." alt="" coords="188,136,367,177"/>
-<area shape="rect" id="node5" href="$class_serial_thread.html#af63bbe53f33f608bca6aa4c647693df5" title="Updates Voltage Widget." alt="" coords="188,201,367,243"/>
+<area shape="rect" id="node1" title="Calls all replot methods." alt="" coords="5,111,156,138"/>
+<area shape="rect" id="node2" href="$class_serial_thread.html#a1d4229dcace27157d665ee47c3f2d10b" title="Updates Current Widget." alt="" coords="204,5,403,47"/>
+<area shape="rect" id="node3" href="$class_serial_thread.html#a6456c07a66fa2558da229a162c495a0f" title="Updates Light Widget." alt="" coords="212,71,395,112"/>
+<area shape="rect" id="node4" href="$class_serial_thread.html#acf8dfd1d106daa5c5ecc499957ba6f82" title="Updates Power Widget." alt="" coords="208,136,399,177"/>
+<area shape="rect" id="node5" href="$class_serial_thread.html#af63bbe53f33f608bca6aa4c647693df5" title="Updates Voltage Widget." alt="" coords="204,201,403,243"/>
 </map>

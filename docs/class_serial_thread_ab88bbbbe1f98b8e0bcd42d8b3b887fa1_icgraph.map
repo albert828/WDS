@@ -1,5 +1,5 @@
 <map id="SerialThread::CRC8" name="SerialThread::CRC8">
-<area shape="rect" id="node1" title="CRC8 &#45; function for calculating CRC8 checksum." alt="" coords="397,5,537,32"/>
-<area shape="rect" id="node2" href="$class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132" title="prepareData : function is used for decoding data from serial port and split it into variables" alt="" coords="175,5,349,32"/>
-<area shape="rect" id="node3" href="$class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,5,127,32"/>
+<area shape="rect" id="node1" title="CRC8 &#45; function for calculating CRC8 checksum." alt="" coords="428,5,575,32"/>
+<area shape="rect" id="node2" href="$class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132" title="prepareData : function is used for decoding data from serial port and split it into variables" alt="" coords="187,5,380,32"/>
+<area shape="rect" id="node3" href="$class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,5,139,32"/>
 </map>
