@@ -1,0 +1,5 @@
+<map id="SerialThread::prepareData" name="SerialThread::prepareData">
+<area shape="rect" id="node1" title="prepareData : function is used for decoding data from serial port and split it into variables" alt="" coords="5,31,180,57"/>
+<area shape="rect" id="node2" href="$serialthread_8cpp.html#a39f85784d59a193404abb82ef88f065d" title="mapf function is used to change the range of vertical rotation values" alt="" coords="273,5,323,32"/>
+<area shape="rect" id="node3" href="$class_serial_thread.html#ab88bbbbe1f98b8e0bcd42d8b3b887fa1" title="CRC8 &#45; function for calculating CRC8 checksum." alt="" coords="228,56,368,83"/>
+</map>
