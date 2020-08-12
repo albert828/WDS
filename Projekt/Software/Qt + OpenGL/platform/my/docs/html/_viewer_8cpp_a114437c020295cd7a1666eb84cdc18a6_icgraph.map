@@ -1,0 +1,4 @@
+<map id="GLCreateTextureBox" name="GLCreateTextureBox">
+<area shape="rect" id="node1" title="Creates a cuboid with solar panel texture on the front side." alt="" coords="160,5,315,32"/>
+<area shape="rect" id="node2" href="$class_viewer.html#a9ce9d06343c4e089ac76b19f78fe29e4" title="It&#39;s overrided from QGLViever class. Draws OpenGL view. Draws background texture. Draws solar platfor..." alt="" coords="5,5,112,32"/>
+</map>

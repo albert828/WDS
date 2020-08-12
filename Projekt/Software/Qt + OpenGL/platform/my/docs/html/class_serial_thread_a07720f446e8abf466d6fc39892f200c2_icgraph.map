@@ -1,0 +1,4 @@
+<map id="SerialThread::replot" name="SerialThread::replot">
+<area shape="rect" id="node1" title="Calls all replot methods." alt="" coords="187,5,337,32"/>
+<area shape="rect" id="node2" href="$class_serial_thread.html#ae73ffafe85576415cb2ab347a3cc7160" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,5,139,32"/>
+</map>

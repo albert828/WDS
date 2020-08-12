@@ -1,0 +1,13 @@
+<map id="SerialThread::run" name="SerialThread::run">
+<area shape="rect" id="node1" title="Runs serial comunication thread. It&#39;s overrided from Qthread class. Reads data from serial port and c..." alt="" coords="5,205,139,232"/>
+<area shape="rect" id="node2" href="$class_serial_thread.html#ac28ae6be9f0082f6774ac7e96b791132" title="prepareData : function is used for decoding data from serial port and split it into variables" alt="" coords="187,56,380,83"/>
+<area shape="rect" id="node5" href="$class_serial_thread.html#a07720f446e8abf466d6fc39892f200c2" title="Calls all replot methods." alt="" coords="208,180,359,207"/>
+<area shape="rect" id="node10" href="$class_manipulator.html#a01cd549da09fa063c1e751c4e8932c42" title="SetQ0_deg Sets value of the Horizontal rotation angle." alt="" coords="194,231,373,257"/>
+<area shape="rect" id="node11" href="$class_manipulator.html#a5af745e0f86bd4ec59e445c1533def51" title="SetQ2_deg Sets value of the Vertical rotation angle." alt="" coords="194,281,373,308"/>
+<area shape="rect" id="node3" href="$class_serial_thread.html#ab88bbbbe1f98b8e0bcd42d8b3b887fa1" title="CRC8 &#45; function for calculating CRC8 checksum." alt="" coords="454,5,601,32"/>
+<area shape="rect" id="node4" href="$serialthread_8cpp.html#a39f85784d59a193404abb82ef88f065d" title="mapf function is used to change the range of vertical rotation values" alt="" coords="499,56,555,83"/>
+<area shape="rect" id="node6" href="$class_serial_thread.html#a1d4229dcace27157d665ee47c3f2d10b" title="Updates Current Widget." alt="" coords="428,107,627,149"/>
+<area shape="rect" id="node7" href="$class_serial_thread.html#a6456c07a66fa2558da229a162c495a0f" title="Updates Light Widget." alt="" coords="436,173,619,214"/>
+<area shape="rect" id="node8" href="$class_serial_thread.html#acf8dfd1d106daa5c5ecc499957ba6f82" title="Updates Power Widget." alt="" coords="432,238,623,279"/>
+<area shape="rect" id="node9" href="$class_serial_thread.html#af63bbe53f33f608bca6aa4c647693df5" title="Updates Voltage Widget." alt="" coords="428,303,627,345"/>
+</map>
